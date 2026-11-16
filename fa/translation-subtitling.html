@@ -215,5 +215,42 @@ p,li{font-size:16px;color:var(--muted)}
 <a href="https://imankeyhanfard.github.io/translation-subtitling.html">English</a>
 </footer>
 </main>
+<script>
+(function(){
+  const entries={
+    context:{term:"Context",ipa:"/ˈkɑːn.tekst/",meaning:"زمینه، بافت معنایی؛ شرایط و اطلاعاتی که به درک درست یک موضوع کمک می‌کند.",example:"The context of a statement matters.",faSpeak:"زمینه، بافت معنایی",url:"https://dictionary.cambridge.org/dictionary/english/context"},
+    accuracy:{term:"Accuracy",ipa:"/ˈæk.jɚ.ə.si/",meaning:"دقت، صحت؛ درست‌بودن جزئیات و وفاداری به واقعیت.",example:"Accuracy is essential in news translation.",faSpeak:"دقت، صحت",url:"https://dictionary.cambridge.org/dictionary/english/accuracy"},
+    statement:{term:"Statement",ipa:"/ˈsteɪt.mənt/",meaning:"اظهار، بیانیه یا اظهارنظر؛ بسته به بافت و گوینده.",example:"The ministry issued an official statement.",faSpeak:"اظهار، بیانیه",url:"https://dictionary.cambridge.org/dictionary/english/statement"},
+    source:{term:"Source",ipa:"/sɔːrs/",meaning:"منبع؛ شخص، سند یا نهادی که اطلاعات از آن به دست می‌آید.",example:"The report cited an official source.",faSpeak:"منبع",url:"https://dictionary.cambridge.org/dictionary/english/source"},
+    footage:{term:"Footage",ipa:"/ˈfʊt̬.ɪdʒ/",meaning:"تصاویر ضبط‌شده؛ معمولاً ویدئویی که برای تدوین یا انتشار استفاده می‌شود.",example:"The crew delivered the footage to the newsroom.",faSpeak:"تصاویر ضبط‌شده",url:"https://dictionary.cambridge.org/dictionary/english/footage"},
+    editorial:{term:"Editorial",ipa:"/ˌed.ɪˈtɔːr.i.əl/",meaning:"تحریریه‌ای یا مرتبط با تصمیم‌ها و استانداردهای محتوایی رسانه.",example:"Editorial judgment helps preserve the meaning.",faSpeak:"تحریریه‌ای، مربوط به ویراستاری",url:"https://dictionary.cambridge.org/dictionary/english/editorial"}
+  };
+  const chips=[...document.querySelectorAll(".word-chip")];
+  const term=document.getElementById("glossary-term"),ipa=document.getElementById("glossary-ipa"),meaning=document.getElementById("glossary-meaning"),example=document.getElementById("glossary-example"),link=document.getElementById("dictionary-link");
+  let selected=entries.context;
+  function choose(key){
+    const e=entries[key];if(!e)return;selected=e;
+    term.textContent=e.term;ipa.textContent=e.ipa;meaning.textContent=e.meaning;example.textContent=e.example;link.href=e.url;
+    chips.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.word===key)));
+  }
+  chips.forEach(b=>{b.addEventListener("click",()=>choose(b.dataset.word));b.addEventListener("focus",()=>choose(b.dataset.word));});
+  function speak(text,lang){
+    const status=document.getElementById("speech-status");
+    if(!("speechSynthesis" in window)){status.textContent="پخش گفتار در این مرورگر پشتیبانی نمی‌شود. می‌توانید از لینک فرهنگ لغت استفاده کنید.";return;}
+    window.speechSynthesis.cancel();
+    const utterance=new SpeechSynthesisUtterance(text);utterance.lang=lang;utterance.rate=.88;
+    utterance.onerror=()=>{status.textContent="پخش صدا در این دستگاه در دسترس نیست؛ لینک فرهنگ لغت را امتحان کنید.";};
+    window.speechSynthesis.speak(utterance);
+    status.textContent="درخواست پخش تلفظ ارسال شد.";
+  }
+  document.getElementById("speak-english").addEventListener("click",()=>speak(selected.term,"en-US"));
+  document.getElementById("speak-persian").addEventListener("click",()=>speak(selected.faSpeak,"fa-IR"));
+  document.querySelectorAll(".bilingual-line").forEach(btn=>{
+    const show=()=>{document.getElementById("sentence-translation").textContent=btn.dataset.translation;document.querySelectorAll(".bilingual-line").forEach(x=>x.classList.toggle("active",x===btn));};
+    btn.addEventListener("mouseenter",show);btn.addEventListener("focus",show);btn.addEventListener("click",show);
+  });
+  document.querySelectorAll(".poem-line").forEach(btn=>btn.addEventListener("click",()=>{document.getElementById("poem-translation").textContent=btn.dataset.translation;}));
+})();
+</script>
 </body>
 </html>
