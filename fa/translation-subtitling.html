@@ -56,6 +56,31 @@ p,li{font-size:16px;color:var(--muted)}
 .foot{border-top:1px solid var(--line);padding-top:20px;color:#9aa6b7;font-size:14px}
 @media(max-width:600px){main{width:min(100% - 28px,1000px)}.hero{padding:38px 0 24px}.panel{margin:16px 0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+
+/* Interactive bilingual language lab */
+.lab-intro{max-width:780px}
+.word-tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin:18px 0}
+.word-chip{appearance:none;border:1px solid #405064;background:#151e2b;color:#eaf0f7;border-radius:12px;padding:12px 14px;text-align:right;font:600 15px "Vazirmatn",sans-serif;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.word-chip:hover,.word-chip:focus-visible,.word-chip[aria-pressed="true"]{background:#35252a;border-color:var(--accent);outline:none;transform:translateY(-2px)}
+.word-chip small{display:block;color:#aebccc;font-size:12px;font-weight:400;direction:ltr;text-align:left}
+.word-detail{border:1px solid #526176;background:linear-gradient(120deg,rgba(240,139,121,.10),rgba(86,123,160,.08));border-radius:15px;padding:20px;min-height:190px}
+.word-detail h3{font-size:25px;margin:0 0 3px;direction:ltr;text-align:left}
+.word-detail .ipa{direction:ltr;text-align:left;color:#aebccc;font-family:Arial,sans-serif;font-size:14px}
+.word-detail .meaning{font-size:19px;color:#fff;margin:8px 0}
+.word-detail .example{direction:ltr;text-align:left;border-left:2px solid var(--accent);padding:5px 12px;color:#d8e1eb}
+.word-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.tool-link,.speak-btn{display:inline-flex;align-items:center;gap:7px;border:1px solid #526176;border-radius:9px;padding:8px 13px;background:#172130;color:#f2c0b5;text-decoration:none;font:500 13px "Vazirmatn",sans-serif;cursor:pointer}
+.tool-link:hover,.speak-btn:hover{border-color:var(--accent);color:white}
+.bilingual-lines{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.bilingual-line{border:1px solid #354254;border-radius:12px;padding:15px;background:rgba(255,255,255,.02);cursor:pointer;transition:border-color .2s,background .2s}
+.bilingual-line:hover,.bilingual-line:focus-visible,.bilingual-line.active{border-color:var(--accent);background:rgba(240,139,121,.07);outline:none}
+.bilingual-line p{margin:5px 0 0}
+.line-label{font-size:11px;color:var(--accent2);font-weight:700}
+.poem-line{display:block;width:100%;text-align:right;border:1px solid #354254;border-radius:10px;padding:11px 14px;margin:8px 0;background:#121b27;color:#e8edf4;font:500 15px "Vazirmatn",sans-serif;cursor:pointer}
+.poem-line:hover,.poem-line:focus-visible{border-color:var(--accent);outline:none}
+.poem-translation{min-height:48px;padding:12px 15px;border-right:3px solid var(--accent);background:rgba(255,255,255,.025);border-radius:8px;color:#dbe3ed}
+@media(max-width:650px){.bilingual-lines{grid-template-columns:1fr}.word-chip{min-height:58px}}
+
 </style>
 </head>
 <body>
@@ -98,6 +123,64 @@ p,li{font-size:16px;color:var(--muted)}
 <p lang="en" dir="ltr">“When covering developments across the region, access to accurate information is only one part of a media organization's responsibility. Placing events in their proper context and conveying statements clearly are equally important to audience understanding.”</p>
 </div>
 <p class="note">این متن صرفاً برای نمایش نمونه‌ای از رویکرد ترجمه تهیه شده و نمونه سفارش یا پروژه منتشرشده مشتری نیست. نمونه‌های واقعی و قابل انتشار می‌توانند با رعایت حقوق و محرمانگی جایگزین آن شوند.</p>
+</section>
+
+
+<section class="panel" id="interactive-glossary">
+<h2>واژه‌نامه تعاملی فارسی و انگلیسی</h2>
+<p class="lab-intro">روی هر واژه بزنید یا با کلید صفحه‌کلید انتخابش کنید تا معنی، آوانگاری، مثال و امکان شنیدن تلفظ را ببینید. این ابزار بدون نیاز به ثبت‌نام کار می‌کند؛ پخش صدا به پشتیبانی مرورگر و صداهای نصب‌شده روی دستگاه بستگی دارد.</p>
+<div class="word-tools" role="group" aria-label="واژه‌های قابل انتخاب">
+<button class="word-chip" type="button" data-word="context" aria-pressed="true">Context <small>زمینه، بافت</small></button>
+<button class="word-chip" type="button" data-word="accuracy" aria-pressed="false">Accuracy <small>دقت، صحت</small></button>
+<button class="word-chip" type="button" data-word="statement" aria-pressed="false">Statement <small>اظهار، بیانیه</small></button>
+<button class="word-chip" type="button" data-word="source" aria-pressed="false">Source <small>منبع</small></button>
+<button class="word-chip" type="button" data-word="footage" aria-pressed="false">Footage <small>تصاویر ضبط‌شده</small></button>
+<button class="word-chip" type="button" data-word="editorial" aria-pressed="false">Editorial <small>تحریریه‌ای</small></button>
+</div>
+<div class="word-detail" aria-live="polite" aria-atomic="true">
+<h3 id="glossary-term">Context</h3>
+<div class="ipa" id="glossary-ipa">/ˈkɑːn.tekst/</div>
+<p class="meaning" id="glossary-meaning">زمینه، بافت معنایی؛ شرایط و اطلاعاتی که به درک درست یک موضوع کمک می‌کند.</p>
+<div class="example" id="glossary-example">The context of a statement matters.</div>
+<div class="word-actions">
+<button class="speak-btn" type="button" id="speak-english">▶ شنیدن تلفظ انگلیسی</button>
+<button class="speak-btn" type="button" id="speak-persian">▶ شنیدن معنی فارسی</button>
+<a class="tool-link" id="dictionary-link" href="https://dictionary.cambridge.org/dictionary/english/context" target="_blank" rel="noopener noreferrer">جست‌وجو در فرهنگ لغت کمبریج ↗</a>
+</div>
+<p class="note" id="speech-status">تلفظ صوتی با قابلیت گفتار مرورگر انجام می‌شود؛ کیفیت و دسترس‌پذیری صدا ممکن است در دستگاه‌های مختلف متفاوت باشد.</p>
+</div>
+</section>
+
+<section class="panel" id="translation-hover">
+<h2>ترجمه با لمس یا حرکت ماوس</h2>
+<p>روی هر جمله بزنید یا نشانگر را روی آن ببرید تا معادل زبان دیگر نمایش داده شود. در موبایل، لمس جمله همین کار را انجام می‌دهد.</p>
+<div class="bilingual-lines">
+<button class="bilingual-line" type="button" data-translation="دقت در انتساب گفته‌ها برای گزارش‌نویسی ضروری است." aria-pressed="false">
+<span class="line-label">ENGLISH · TAP OR HOVER</span><p lang="en" dir="ltr">Accurate attribution is essential in news reporting.</p>
+</button>
+<button class="bilingual-line" type="button" data-translation="Accurate attribution is essential in news reporting." aria-pressed="false">
+<span class="line-label">فارسی · لمس کنید</span><p>دقت در انتساب گفته‌ها برای گزارش‌نویسی ضروری است.</p>
+</button>
+</div>
+<div class="poem-translation" id="sentence-translation" aria-live="polite">ترجمه متن انتخاب‌شده اینجا نمایش داده می‌شود.</div>
+</section>
+
+<section class="panel" id="bilingual-poem">
+<h2>یک تجربه کوتاه ادبی</h2>
+<p>این دو سطر، متن کوتاهی原创ی برای نمایش تعامل دوزبانه‌اند؛ با انتخاب هر سطر، ترجمه متناظر ظاهر می‌شود.</p>
+<button class="poem-line" type="button" data-translation="A window opens toward the morning light.">پنجره‌ای رو به روشنایی صبح باز می‌شود.</button>
+<button class="poem-line" type="button" data-translation="And words build a bridge between two worlds.">و واژه‌ها پلی میان دو جهان می‌سازند.</button>
+<div class="poem-translation" id="poem-translation" aria-live="polite">برای دیدن ترجمه، یکی از سطرها را انتخاب کنید.</div>
+</section>
+
+<section class="panel" id="dictionary-resources">
+<h2>منابع واژگان و فرهنگ لغت</h2>
+<p>برای بررسی معنی، کاربرد، تلفظ و مترادف‌ها می‌توانید از فرهنگ‌های زیر نیز استفاده کنید:</p>
+<div class="grid">
+<div class="item"><h3>Cambridge Dictionary</h3><p>تعریف، تلفظ بریتانیایی و آمریکایی، مثال و کاربرد واژه‌های انگلیسی.</p><a href="https://dictionary.cambridge.org/" target="_blank" rel="noopener noreferrer">ورود به کمبریج ↗</a></div>
+<div class="item"><h3>Merriam-Webster</h3><p>تعریف انگلیسی، آوانگاری، کاربرد و اطلاعات واژگانی.</p><a href="https://www.merriam-webster.com/" target="_blank" rel="noopener noreferrer">ورود به مریام‌وبستر ↗</a></div>
+<div class="item"><h3>واژه‌یاب</h3><p>جست‌وجوی واژه‌ها و معادل‌های فارسی و انگلیسی.</p><a href="https://vajehyab.com/" target="_blank" rel="noopener noreferrer">ورود به واژه‌یاب ↗</a></div>
+</div>
 </section>
 
 <section class="panel">
