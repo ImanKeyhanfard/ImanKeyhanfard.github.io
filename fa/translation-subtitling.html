@@ -65,7 +65,7 @@ p,li{font-size:16px;color:var(--muted)}
 .word-chip small{display:block;color:#aebccc;font-size:12px;font-weight:400;direction:ltr;text-align:left}
 .word-detail{border:1px solid #526176;background:linear-gradient(120deg,rgba(240,139,121,.10),rgba(86,123,160,.08));border-radius:15px;padding:20px;min-height:190px}
 .word-detail h3{font-size:25px;margin:0 0 3px;direction:ltr;text-align:left}
-.word-detail .ipa{direction:ltr;text-align:left;color:#aebccc;font-family:Arial,sans-serif;font-size:14px}
+.word-detail .ipa{direction:ltr;text-align:left;color:#aebccc;font-family:Arial,sans-serif;font-size:14px}.word-detail .fa-phon{direction:rtl;text-align:right;font-family:"Vazirmatn",sans-serif}
 .word-detail .meaning{font-size:19px;color:#fff;margin:8px 0}
 .word-detail .example{direction:ltr;text-align:left;border-left:2px solid var(--accent);padding:5px 12px;color:#d8e1eb}
 .word-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
@@ -139,7 +139,7 @@ p,li{font-size:16px;color:var(--muted)}
 </div>
 <div class="word-detail" aria-live="polite" aria-atomic="true">
 <h3 id="glossary-term">Context</h3>
-<div class="ipa" id="glossary-ipa">/ˈkɑːn.tekst/</div>
+<div class="ipa" id="glossary-ipa">IPA: /ˈkɑːn.tekst/</div><div class="ipa fa-phon" id="glossary-fa-phon">خوانش تقریبی فارسی: کانتِکست</div>
 <p class="meaning" id="glossary-meaning">زمینه، بافت معنایی؛ شرایط و اطلاعاتی که به درک درست یک موضوع کمک می‌کند.</p>
 <div class="example" id="glossary-example">The context of a statement matters.</div>
 <div class="word-actions">
@@ -218,19 +218,19 @@ p,li{font-size:16px;color:var(--muted)}
 <script>
 (function(){
   const entries={
-    context:{term:"Context",ipa:"/ˈkɑːn.tekst/",meaning:"زمینه، بافت معنایی؛ شرایط و اطلاعاتی که به درک درست یک موضوع کمک می‌کند.",example:"The context of a statement matters.",faSpeak:"زمینه، بافت معنایی",url:"https://dictionary.cambridge.org/dictionary/english/context"},
-    accuracy:{term:"Accuracy",ipa:"/ˈæk.jɚ.ə.si/",meaning:"دقت، صحت؛ درست‌بودن جزئیات و وفاداری به واقعیت.",example:"Accuracy is essential in news translation.",faSpeak:"دقت، صحت",url:"https://dictionary.cambridge.org/dictionary/english/accuracy"},
-    statement:{term:"Statement",ipa:"/ˈsteɪt.mənt/",meaning:"اظهار، بیانیه یا اظهارنظر؛ بسته به بافت و گوینده.",example:"The ministry issued an official statement.",faSpeak:"اظهار، بیانیه",url:"https://dictionary.cambridge.org/dictionary/english/statement"},
-    source:{term:"Source",ipa:"/sɔːrs/",meaning:"منبع؛ شخص، سند یا نهادی که اطلاعات از آن به دست می‌آید.",example:"The report cited an official source.",faSpeak:"منبع",url:"https://dictionary.cambridge.org/dictionary/english/source"},
-    footage:{term:"Footage",ipa:"/ˈfʊt̬.ɪdʒ/",meaning:"تصاویر ضبط‌شده؛ معمولاً ویدئویی که برای تدوین یا انتشار استفاده می‌شود.",example:"The crew delivered the footage to the newsroom.",faSpeak:"تصاویر ضبط‌شده",url:"https://dictionary.cambridge.org/dictionary/english/footage"},
-    editorial:{term:"Editorial",ipa:"/ˌed.ɪˈtɔːr.i.əl/",meaning:"تحریریه‌ای یا مرتبط با تصمیم‌ها و استانداردهای محتوایی رسانه.",example:"Editorial judgment helps preserve the meaning.",faSpeak:"تحریریه‌ای، مربوط به ویراستاری",url:"https://dictionary.cambridge.org/dictionary/english/editorial"}
+    context:{term:"Context",ipa:"/ˈkɑːn.tekst/",faPhon:"کانتِکست",meaning:"زمینه، بافت معنایی؛ شرایط و اطلاعاتی که به درک درست یک موضوع کمک می‌کند.",example:"The context of a statement matters.",faSpeak:"زمینه، بافت معنایی",url:"https://dictionary.cambridge.org/dictionary/english/context"},
+    accuracy:{term:"Accuracy",ipa:"/ˈæk.jɚ.ə.si/",faPhon:"اَکیورِسی",meaning:"دقت، صحت؛ درست‌بودن جزئیات و وفاداری به واقعیت.",example:"Accuracy is essential in news translation.",faSpeak:"دقت، صحت",url:"https://dictionary.cambridge.org/dictionary/english/accuracy"},
+    statement:{term:"Statement",ipa:"/ˈsteɪt.mənt/",faPhon:"اِستِیت‌مِنت",meaning:"اظهار، بیانیه یا اظهارنظر؛ بسته به بافت و گوینده.",example:"The ministry issued an official statement.",faSpeak:"اظهار، بیانیه",url:"https://dictionary.cambridge.org/dictionary/english/statement"},
+    source:{term:"Source",ipa:"/sɔːrs/",faPhon:"سورس",meaning:"منبع؛ شخص، سند یا نهادی که اطلاعات از آن به دست می‌آید.",example:"The report cited an official source.",faSpeak:"منبع",url:"https://dictionary.cambridge.org/dictionary/english/source"},
+    footage:{term:"Footage",ipa:"/ˈfʊt̬.ɪdʒ/",faPhon:"فوتِج",meaning:"تصاویر ضبط‌شده؛ معمولاً ویدئویی که برای تدوین یا انتشار استفاده می‌شود.",example:"The crew delivered the footage to the newsroom.",faSpeak:"تصاویر ضبط‌شده",url:"https://dictionary.cambridge.org/dictionary/english/footage"},
+    editorial:{term:"Editorial",ipa:"/ˌed.ɪˈtɔːr.i.əl/",faPhon:"اِدیتوریال",meaning:"تحریریه‌ای یا مرتبط با تصمیم‌ها و استانداردهای محتوایی رسانه.",example:"Editorial judgment helps preserve the meaning.",faSpeak:"تحریریه‌ای، مربوط به ویراستاری",url:"https://dictionary.cambridge.org/dictionary/english/editorial"}
   };
   const chips=[...document.querySelectorAll(".word-chip")];
-  const term=document.getElementById("glossary-term"),ipa=document.getElementById("glossary-ipa"),meaning=document.getElementById("glossary-meaning"),example=document.getElementById("glossary-example"),link=document.getElementById("dictionary-link");
+  const term=document.getElementById("glossary-term"),ipa=document.getElementById("glossary-ipa"),faPhon=document.getElementById("glossary-fa-phon"),meaning=document.getElementById("glossary-meaning"),example=document.getElementById("glossary-example"),link=document.getElementById("dictionary-link");
   let selected=entries.context;
   function choose(key){
     const e=entries[key];if(!e)return;selected=e;
-    term.textContent=e.term;ipa.textContent=e.ipa;meaning.textContent=e.meaning;example.textContent=e.example;link.href=e.url;
+    term.textContent=e.term;ipa.textContent="IPA: "+e.ipa;faPhon.textContent="خوانش تقریبی فارسی: "+e.faPhon;meaning.textContent=e.meaning;example.textContent=e.example;link.href=e.url;
     chips.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.word===key)));
   }
   chips.forEach(b=>{b.addEventListener("click",()=>choose(b.dataset.word));b.addEventListener("focus",()=>choose(b.dataset.word));});
