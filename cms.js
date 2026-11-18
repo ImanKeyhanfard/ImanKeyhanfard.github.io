@@ -69,6 +69,13 @@
       link.href = canonical;
       ensureMeta('meta[property="og:url"]', "content", canonical);
     }
+    for (const [language, value] of [["en",record.alternate_en],["fa",record.alternate_fa],["x-default",record.alternate_en]]) {
+      const href = safeUrl(value);
+      if (!href) continue;
+      let alternate = document.querySelector('link[rel="alternate"][hreflang="' + language + '"]');
+      if (!alternate) { alternate = document.createElement("link"); alternate.rel = "alternate"; alternate.hreflang = language; document.head.appendChild(alternate); }
+      alternate.href = href;
+    }
     ensureMeta('meta[property="og:title"]', "content", title);
     ensureMeta('meta[property="og:description"]', "content", description);
     const image = safeUrl(record.og_image);
