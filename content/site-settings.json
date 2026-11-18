@@ -18,5 +18,7 @@
   "seo_og_image": "/iman-field.jpg",
   "layout_content_width": 1600,
   "layout_section_gap": 24,
-  "layout_card_min_width": 220
+  "layout_card_min_width": 220,
+  "profile_image": "/iman-field.jpg",
+  "contact_image": "/iman-contact.jpg"
 }
