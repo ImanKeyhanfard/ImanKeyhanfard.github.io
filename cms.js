@@ -116,6 +116,7 @@
       const slug = String(section.slug || section.name || "");
       const panel = document.querySelector('[data-view-panel="' + CSS.escape(slug) + '"]');
       if (!panel) continue;
+      if (section.layout) panel.dataset.cmsLayout = section.layout;
       const desktop = clamp(section.columns_desktop, 3, 1, 6);
       const tablet = clamp(section.columns_tablet, 2, 1, 4);
       const mobile = clamp(section.columns_mobile, 1, 1, 2);
