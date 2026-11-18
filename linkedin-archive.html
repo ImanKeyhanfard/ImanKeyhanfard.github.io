@@ -6,9 +6,9 @@
 <meta name="description" content="Original LinkedIn posts by Iman Keyhanfard on Iran, the Middle East, journalism, conflict, diplomacy and international affairs.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://imankeyhanfard.github.io/linkedin-archive.html"><link rel="alternate" hreflang="en" href="https://imankeyhanfard.github.io/linkedin-archive.html"><link rel="alternate" hreflang="fa" href="https://imankeyhanfard.github.io/fa/linkedin-archive.html"><link rel="alternate" hreflang="x-default" href="https://imankeyhanfard.github.io/linkedin-archive.html">
-<meta property="og:type" content="website"><meta property="og:site_name" content="Iman Keyhanfard"><meta property="og:url" content="https://imankeyhanfard.github.io/linkedin-archive.html"><meta property="og:title" content="LinkedIn Posts on Iran & International Affairs | Iman Keyhanfard"><meta property="og:description" content="Original LinkedIn posts by Iman Keyhanfard on Iran, the Middle East, journalism, conflict, diplomacy and international affairs."><meta property="og:image" content="https://imankeyhanfard.github.io/iman-field.jpg">
+<meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:site_name" content="Iman Keyhanfard"><meta property="og:url" content="https://imankeyhanfard.github.io/linkedin-archive.html"><meta property="og:title" content="LinkedIn Posts on Iran & International Affairs | Iman Keyhanfard"><meta property="og:description" content="Original LinkedIn posts by Iman Keyhanfard on Iran, the Middle East, journalism, conflict, diplomacy and international affairs."><meta property="og:image" content="https://imankeyhanfard.github.io/iman-field.jpg">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="LinkedIn Posts on Iran & International Affairs | Iman Keyhanfard"><meta name="twitter:description" content="Original LinkedIn posts by Iman Keyhanfard on Iran, the Middle East, journalism, conflict, diplomacy and international affairs."><meta name="twitter:image" content="https://imankeyhanfard.github.io/iman-field.jpg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"LinkedIn Posts on Iran & International Affairs | Iman Keyhanfard","url":"https://imankeyhanfard.github.io/linkedin-archive.html","description":"Original LinkedIn posts by Iman Keyhanfard on Iran, the Middle East, journalism, conflict, diplomacy and international affairs.","isPartOf":{"@type":"WebSite","name":"Iman Keyhanfard","url":"https://imankeyhanfard.github.io/"}}</script>
+
 <title>LinkedIn Posts on Iran &amp; International Affairs | Iman Keyhanfard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -29,6 +29,7 @@
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
+  "inLanguage": "en",
   "name": "LinkedIn Journalism Archive | Iman Keyhanfard",
   "url": "https://imankeyhanfard.github.io/linkedin-archive.html",
   "description": "Searchable archive of Iman Keyhanfard's original LinkedIn posts on journalism, Iran, the Middle East and international affairs.",
@@ -312,10 +313,7 @@
     $("#next").textContent=state.lang==="fa"?"بعدی ←":"Next →";
   }
   $("#lang").addEventListener("click",()=>{
-    state.lang=state.lang==="en"?"fa":"en";
-    applyUiLanguage();
-    populateCategories();
-    filter();
+    location.href=state.lang==="en"?"/fa/linkedin-archive.html":"/linkedin-archive.html";
   });
   applyUiLanguage();
   fetch("archive-posts.json?v=20261119e",{cache:"no-store"})
