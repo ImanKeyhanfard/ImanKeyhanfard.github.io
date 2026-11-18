@@ -181,10 +181,19 @@
         ensureMeta('meta[name="twitter:title"]',"content",document.title);
         ensureMeta('meta[name="twitter:description"]',"content",settings["seo_description_"+lang()]||settings.seo_description_en);
         const email=settings.email, phone=settings.phone, linkedin=settings.linkedin, whatsapp=settings.whatsapp;
-        if(email)document.querySelectorAll('a[href^="mailto:"]').forEach(a=>a.href="mailto:"+email);
-        if(phone)document.querySelectorAll('.contact-card strong[dir="ltr"]').forEach(a=>a.textContent=phone);
-        if(linkedin){const a=document.querySelector('.contact-card[href*="linkedin.com"]');if(a)a.href=linkedin;}
-        if(whatsapp){const a=document.querySelector('.contact-card[href*="wa.me"]');if(a)a.href=whatsapp;}
+        if(email){
+          document.querySelectorAll('a[href^="mailto:"]').forEach(a=>a.href="mailto:"+email);
+          document.querySelectorAll('.contact-card[href^="mailto:"] strong,.footer-contact a[href^="mailto:"]').forEach(a=>a.textContent=email);
+        }
+        if(phone){
+          document.querySelectorAll('.contact-card strong[dir="ltr"],.footer-contact a[dir="ltr"]').forEach(a=>a.textContent=phone);
+        }
+        if(linkedin)document.querySelectorAll('a[href*="linkedin.com"]').forEach(a=>a.href=linkedin);
+        if(whatsapp)document.querySelectorAll('a[href*="wa.me"]').forEach(a=>a.href=whatsapp);
+        const tagline=settings["tagline_"+lang()];
+        if(tagline){const welcome=document.querySelector(".welcome-drop p");if(welcome)welcome.textContent=tagline;}
+        const profile=safeUrl(settings.profile_image);
+        if(profile)document.querySelectorAll(".hero-profile-photo,.contact-profile-photo").forEach(img=>img.src=profile);
       }
       if(pageSeo) {
         applySeoRecord(pageSeo);
