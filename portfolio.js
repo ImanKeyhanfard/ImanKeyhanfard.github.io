@@ -78,9 +78,7 @@
         !/نسخه.{0,5}اصلی اسکریپت/.test(value)) return value;
     const tags = (post.tags || []).filter(tag => !String(tag).startsWith("category:"));
     if (lang() === "fa") {
-      return tags.length
-        ? "این مطلب در چارچوب موضوع «" + tags.join("، ") + "» منتشر شده است. برای مشاهده متن کامل و رسانه‌های پیوست، پست اصلی لینکدین را باز کنید."
-        : "برای مشاهده متن کامل و رسانه‌های پیوست، پست اصلی لینکدین را باز کنید.";
+      return "این مطلب در دسته‌بندی «" + (topic.label_fa || "نمونه‌کارهای منتخب") + "» قرار دارد. برای مشاهده متن کامل و رسانه‌های پیوست، پست اصلی لینکدین را باز کنید.";
     }
     return tags.length
       ? "This post is part of the " + topic.label_en + " coverage thread, with a focus on " + tags.join(", ") + ". Open the original LinkedIn item for its full text and attached media."
@@ -114,7 +112,8 @@
     if (!group || !post) return;
     const isFa = lang() === "fa";
     const title = post["title_" + lang()] || post.title_en || post.title_fa || "";
-    const tags = (post.tags || []).filter(tag => !String(tag).startsWith("category:")).slice(0,5);
+    const tagSource = lang() === "fa" ? (post.tags_fa || []) : (post.tags || []);
+    const tags = tagSource.filter(tag => !String(tag).startsWith("category:")).slice(0,5);
     const id = itemId(post);
     const original = String(post.original_url || "");
     const description = itemDescription(post, group);
