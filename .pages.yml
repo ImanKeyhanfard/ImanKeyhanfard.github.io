@@ -504,6 +504,12 @@ content:
       - name: canonical_url
         label: Canonical URL
         type: string
+      - name: alternate_en
+        label: English language equivalent URL
+        type: string
+      - name: alternate_fa
+        label: Persian language equivalent URL
+        type: string
       - name: og_image
         label: Social sharing image URL or path
         type: string
