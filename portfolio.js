@@ -76,12 +76,17 @@
       if(gallery.length)return imageMarkup(gallery[0],(post.gallery_alt||[])[0]||title);
       return embed||'<div class="story-media-fallback">' + esc(isFa ? "پیش‌نمایش در دسترس نیست" : "Preview unavailable") + '</div>';
     }
-    const images=[...new Set([cover,...gallery].filter(Boolean))];
-    const galleryHtml=images.length?'<div class="work-media-gallery">'+images.map((src,index)=>{
-      const alt=(post.gallery_alt||[])[index]||post.image_alt||title+" — "+(index+1);
-      const caption=(post["gallery_caption_"+lang()]||[])[index]||"";
-      return '<figure>'+imageMarkup(src,alt)+(caption?'<figcaption>'+esc(caption)+'</figcaption>':"")+'</figure>';
-    }).join("")+'</div>':"";
+    const images=[];
+    const seen=new Set();
+    if(cover){images.push({src:cover,alt:post.image_alt||title,caption:""});seen.add(cover);}
+    gallery.forEach((src,index)=>{
+      if(seen.has(src))return;
+      seen.add(src);
+      images.push({src,alt:(post.gallery_alt||[])[index]||title+" — "+(index+1),caption:(post["gallery_caption_"+lang()]||[])[index]||""});
+    });
+    const galleryHtml=images.length?'<div class="work-media-gallery">'+images.map(item=>
+      '<figure>'+imageMarkup(item.src,item.alt)+(item.caption?'<figcaption>'+esc(item.caption)+'</figcaption>':"")+'</figure>'
+    ).join("")+'</div>':"";
     return (videoMarkup+galleryHtml)||embed||'<div class="story-media-fallback">' + esc(isFa ? "پیش‌نمایش در دسترس نیست" : "Preview unavailable") + '</div>';
   }
 
