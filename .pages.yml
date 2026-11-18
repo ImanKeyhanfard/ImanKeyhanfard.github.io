@@ -424,10 +424,8 @@ content:
         label: SEO keywords (Persian)
         type: string
       - name: seo_og_image
-        label: Social sharing image
-        type: image
-        options:
-          media: images
+        label: Social sharing image URL or path
+        type: string
       - name: layout_content_width
         label: Main content maximum width (px, 900–1800)
         type: number
@@ -478,10 +476,8 @@ content:
         label: Canonical URL
         type: string
       - name: og_image
-        label: Social sharing image
-        type: image
-        options:
-          media: images
+        label: Social sharing image URL or path
+        type: string
       - name: noindex
         label: Hide page from search engines
         type: boolean
