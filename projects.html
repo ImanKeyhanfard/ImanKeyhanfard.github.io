@@ -298,62 +298,48 @@ h1{font:700 clamp(42px,6vw,72px)/1.05 'Space Grotesk',sans-serif;letter-spacing:
 </main>
 <script>
 document.addEventListener("cms-ready", function(){
-
-  const files = [
-    "assets/fakhrizadeh-interview-01.jpg",
-    "assets/fakhrizadeh-interview-02.jpg",
-    "assets/fakhrizadeh-interview-03.jpg",
-    "assets/fakhrizadeh-interview-04.jpg",
-    "assets/fakhrizadeh-interview-05.jpg",
-    "assets/fakhrizadeh-interview-06.jpg",
-    "assets/fakhrizadeh-interview-07.jpg"
-  ];
-  const captions = [
-    "The interview setup before recording",
-    "The interviewer and guest during the production",
-    "A moment from the recorded conversation",
-    "The interview in progress",
-    "The camera and production team at work",
-    "A wider view of the interview setup",
-    "The interview setting and camera position"
-  ];
-  const gallery = document.getElementById("fakhrizadehGallery");
-  if (!gallery) return;
-  const lightbox = document.getElementById("fakhrizadehLightbox");
-  const largeImage = document.getElementById("fakhrizadehLightboxImage");
-  const caption = document.getElementById("fakhrizadehLightboxCaption");
-  let current = 0;
+  const gallery=document.getElementById("fakhrizadehGallery");
+  const lightbox=document.getElementById("fakhrizadehLightbox");
+  const image=document.getElementById("fakhrizadehLightboxImage");
+  const caption=document.getElementById("fakhrizadehLightboxCaption");
+  if(!gallery||!lightbox||!image||!caption)return;
+  const buttons=[...gallery.querySelectorAll(".fakhrizadeh-photo")];
+  const entries=buttons.map(button=>{
+    const img=button.querySelector("img");
+    return img?{src:img.getAttribute("src"),caption:img.alt||""}:null;
+  }).filter(Boolean);
+  if(!entries.length)return;
+  let current=0;
   function show(index){
-    current = (index + files.length) % files.length;
-    largeImage.src = files[current];
-    caption.textContent = (current + 1) + " / " + files.length + " · " + captions[current];
+    current=(index+entries.length)%entries.length;
+    image.src=entries[current].src;
+    image.alt=entries[current].caption;
+    caption.textContent=(current+1)+" / "+entries.length+" · "+entries[current].caption;
   }
   function open(index){
     show(index);
     lightbox.classList.add("is-open");
-    document.body.style.overflow = "hidden";
-    document.getElementById("fakhrizadehClose").focus();
+    lightbox.classList.add("open");
+    document.body.style.overflow="hidden";
+    document.getElementById("fakhrizadehClose")?.focus();
   }
   function close(){
-    lightbox.classList.remove("is-open");
-    document.body.style.overflow = "";
+    lightbox.classList.remove("is-open","open");
+    document.body.style.overflow="";
   }
-  document.querySelectorAll(".fakhrizadeh-photo").forEach(button=>{
-    button.addEventListener("click",()=>open(Number(button.dataset.index)));
-  });
-  document.getElementById("fakhrizadehPrev").addEventListener("click",()=>gallery.scrollBy({left:-gallery.clientWidth*.82,behavior:"smooth"}));
-  document.getElementById("fakhrizadehNext").addEventListener("click",()=>gallery.scrollBy({left:gallery.clientWidth*.82,behavior:"smooth"}));
-  document.getElementById("fakhrizadehClose").addEventListener("click",close);
-  document.getElementById("fakhrizadehLightboxPrev").addEventListener("click",()=>show(current-1));
-  document.getElementById("fakhrizadehLightboxNext").addEventListener("click",()=>show(current+1));
+  buttons.forEach((button,index)=>button.addEventListener("click",()=>open(index)));
+  document.getElementById("fakhrizadehPrev")?.addEventListener("click",()=>gallery.scrollBy({left:-gallery.clientWidth*.82,behavior:"smooth"}));
+  document.getElementById("fakhrizadehNext")?.addEventListener("click",()=>gallery.scrollBy({left:gallery.clientWidth*.82,behavior:"smooth"}));
+  document.getElementById("fakhrizadehClose")?.addEventListener("click",close);
+  document.getElementById("fakhrizadehLightboxPrev")?.addEventListener("click",()=>show(current-1));
+  document.getElementById("fakhrizadehLightboxNext")?.addEventListener("click",()=>show(current+1));
   lightbox.addEventListener("click",event=>{if(event.target===lightbox)close();});
   document.addEventListener("keydown",event=>{
-    if(!lightbox.classList.contains("is-open"))return;
+    if(!lightbox.classList.contains("is-open")&&!lightbox.classList.contains("open"))return;
     if(event.key==="Escape")close();
     if(event.key==="ArrowLeft")show(current-1);
     if(event.key==="ArrowRight")show(current+1);
   });
-
-}, {once:true});
+},{once:true});
 </script>
 </body></html>
