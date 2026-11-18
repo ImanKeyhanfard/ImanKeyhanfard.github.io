@@ -282,8 +282,9 @@ content:
         options:
           media: images
       - name: video_url
-        label: Video URL
+        label: Direct video file URL (MP4/WebM)
         type: string
+        description: Use a public direct video-file URL. The carousel displays it with native video controls; use original publication URL for a LinkedIn or YouTube page.
       - name: original_url
         label: Original publication / source URL
         type: string
