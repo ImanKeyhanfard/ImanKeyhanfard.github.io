@@ -1,0 +1,11 @@
+{
+  "name": "contact",
+  "slug": "contact",
+  "label_en": "Contact",
+  "label_fa": "تماس",
+  "description_en": "Contact and commissioning",
+  "description_fa": "راه‌های ارتباط و سفارش پروژه",
+  "order": 6,
+  "visible": true,
+  "layout": "mixed"
+}
