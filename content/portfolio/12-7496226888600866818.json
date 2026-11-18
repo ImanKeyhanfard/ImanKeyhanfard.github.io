@@ -17,6 +17,8 @@
   "order": 12,
   "featured": false,
   "status": "published",
-  "description_en": "The original portfolio script also uses an alternate headline for this same LinkedIn post: Oil prices climb amid fears of prolonged Hormuz disruption / افزایش قیمت نفت در پی نگرانی از اختلال طولانی در هرمز",
-  "description_fa": "در نسخهٔ اصلی اسکریپت، برای همین پست لینکدین عنوان جایگزین دیگری نیز آمده است: Oil prices climb amid fears of prolonged Hormuz disruption / افزایش قیمت نفت در پی نگرانی از اختلال طولانی در هرمز"
+  "description_en": "",
+  "description_fa": "",
+  "alternate_title_en": "Oil prices climb amid fears of prolonged Hormuz disruption",
+  "alternate_title_fa": "افزایش قیمت نفت در پی نگرانی از اختلال طولانی در هرمز"
 }
