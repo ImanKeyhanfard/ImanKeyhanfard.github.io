@@ -56,6 +56,22 @@
     return fromUrl ? fromUrl[1] : "";
   }
 
+  function safeMedia(value) {
+    const raw=String(value||"").trim();
+    return /^(https:\/\/|\/|\.\/|\.\.\/)/i.test(raw) ? raw : "";
+  }
+
+  function mediaMarkup(post,title,isFa) {
+    const video=safeMedia(post.video_url);
+    const image=safeMedia(post.thumbnail || (Array.isArray(post.gallery) ? post.gallery[0] : ""));
+    if(video) return '<video class="work-media-video" controls playsinline preload="metadata"><source src="' + esc(video) + '"></video>';
+    if(image) return '<img class="work-media-image" src="' + esc(image) + '" alt="' + esc(title) + '" loading="lazy">';
+    const id=itemId(post);
+    if(id) return '<iframe loading="lazy" tabindex="-1" aria-hidden="true" title="' + esc(title) +
+      '" src="https://www.linkedin.com/embed/feed/update/urn:li:activity:' + esc(id) + '?compact=1"></iframe>';
+    return '<div class="story-media-fallback">' + esc(isFa ? "پیش‌نمایش در دسترس نیست" : "Preview unavailable") + '</div>';
+  }
+
   function itemDescription(post, topic) {
     const value = post["description_" + lang()] || post.description_en || post.description_fa || "";
     if (value && !/original portfolio script also uses an alternate headline/i.test(value) &&
@@ -107,15 +123,8 @@
     eyebrow.textContent = (group["label_" + lang()] || group.label_en || "").toLocaleUpperCase(isFa ? "fa" : "en");
     counter.textContent = String(itemIndex + 1).padStart(2,"0") + " / " + String(group.items.length).padStart(2,"0");
     deck.classList.toggle("expanded", expanded);
-    const embed = id
-      ? '<iframe loading="lazy" tabindex="-1" aria-hidden="true" title="' + esc(title) +
-        '" src="https://www.linkedin.com/embed/feed/update/urn:li:activity:' + esc(id) +
-        '?compact=1"></iframe>'
-      : '<div class="story-media-fallback">' + esc(isFa ? "پیش‌نمایش در دسترس نیست" : "Preview unavailable") + '</div>';
-    const detailEmbed = id
-      ? '<iframe loading="lazy" title="' + esc(title) +
-        '" src="https://www.linkedin.com/embed/feed/update/urn:li:activity:' + esc(id) +
-        '?compact=1" allowfullscreen></iframe>' : "";
+    const previewMedia = mediaMarkup(post,title,isFa);
+    const detailMedia = mediaMarkup(post,title,isFa);
     const originalLink = /^https:\/\/www\.linkedin\.com\//i.test(original)
       ? '<a class="original-post" href="' + esc(original) +
         '" target="_blank" rel="noopener noreferrer">' +
@@ -136,7 +145,7 @@
       (isFa ? "زمینه و منبع اصلی" : "STORY CONTEXT & ORIGINAL SOURCE") +
       '</div><h4>' + esc(title) + '</h4><p>' + esc(description) +
       '</p><div class="detail-tags">' + tags.map(esc).join(" · ") +
-      '</div>' + detailEmbed + originalLink + '</aside>';
+      '</div>' + detailMedia + originalLink + '</aside>';
 
     const card = deck.querySelector(".topic-card");
     card.addEventListener("click", () => {
