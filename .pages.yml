@@ -181,7 +181,7 @@ content:
         label: Media type
         type: select
         options:
-          values: [video, photo, article, interview, audio, research, translation, other]
+          values: [video, photo, article, interview, audio, research, translation, other, "LinkedIn post"]
       - name: role_en
         label: My role (English)
         type: text
