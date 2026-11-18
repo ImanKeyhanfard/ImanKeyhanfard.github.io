@@ -3,25 +3,12 @@ import base64
 import gzip
 import json
 import re
+import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "linkedin-archive.html"
-POSTS_DIR = ROOT / "content" / "archive-posts"
-INDEX = ROOT / "archive-posts.json"
-
-html = SOURCE.read_text(encoding="utf-8")
-match = re.search(r"const compressed=['\"]([A-Za-z0-9+/=]+)['\"]", html)
-if not match:
-    raise SystemExit("Could not find the embedded gzip archive string in linkedin-archive.html")
-
-raw = gzip.decompress(base64.b64decode(match.group(1)))
-payload = json.loads(raw.decode("utf-8"))
-if isinstance(payload, dict):
-    source_posts = payload.get("posts") or payload.get("items") or payload.get("data") or []
-else:
-    source_posts = payload
-if not isinstance(source_posts, list):
-    raise SystemExit(f"Unexpected archive payload type: {type(source_posts).__name__}")
+LEGACY_DIR = ROOT / "content" / "archive-posts"
+POSTS_DIR = ROOT / "_data" / "archive_posts"
 
 CATEGORY_FA = {
     "Conflict & Military Affairs": "درگیری‌ها و امور نظامی",
@@ -35,9 +22,21 @@ CATEGORY_FA = {
     "Media & Journalism": "رسانه و روزنامه‌نگاری"
 }
 
+html = SOURCE.read_text(encoding="utf-8")
+match = re.search(r"const compressed=['\"]([A-Za-z0-9+/=]+)['\"]", html)
+if not match:
+    raise SystemExit("Could not find the embedded gzip archive string in linkedin-archive.html")
+
+payload = json.loads(gzip.decompress(base64.b64decode(match.group(1))).decode("utf-8"))
+if isinstance(payload, dict):
+    source_posts = payload.get("posts") or payload.get("items") or payload.get("data") or []
+else:
+    source_posts = payload
+if not isinstance(source_posts, list):
+    raise SystemExit(f"Unexpected archive payload type: {type(payload).__name__}")
+
 POSTS_DIR.mkdir(parents=True, exist_ok=True)
-created = 0
-updated = 0
+created = migrated = updated = 0
 for source_post in source_posts:
     if not isinstance(source_post, dict):
         continue
@@ -45,14 +44,22 @@ for source_post in source_posts:
     if not post_id:
         continue
     target = POSTS_DIR / f"{post_id}.json"
-    # Preserve edited fields, but fill newly introduced defaults when absent.
     if target.exists():
         existing = json.loads(target.read_text(encoding="utf-8"))
         if not existing.get("category_fa"):
-            existing["category_fa"] = CATEGORY_FA.get(str(source_post.get("category") or ""), "")
+            existing["category_fa"] = CATEGORY_FA.get(str(existing.get("category") or ""), "")
             target.write_text(json.dumps(existing, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             updated += 1
         continue
+
+    legacy = LEGACY_DIR / f"{post_id}.json"
+    if legacy.exists():
+        post = json.loads(legacy.read_text(encoding="utf-8"))
+        post.setdefault("category_fa", CATEGORY_FA.get(str(post.get("category") or ""), ""))
+        target.write_text(json.dumps(post, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        migrated += 1
+        continue
+
     post = {
         "id": post_id,
         "date": str(source_post.get("date") or ""),
@@ -63,6 +70,7 @@ for source_post in source_posts:
         "category_fa": CATEGORY_FA.get(str(source_post.get("category") or ""), ""),
         "status": "published",
         "thumbnail": "",
+        "image_alt": "",
         "video_url": "",
         "gallery": [],
         "gallery_alt": [],
@@ -72,21 +80,12 @@ for source_post in source_posts:
     target.write_text(json.dumps(post, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     created += 1
 
-posts = []
-for path in POSTS_DIR.glob("*.json"):
-    try:
-        item = json.loads(path.read_text(encoding="utf-8"))
-        if isinstance(item, dict):
-            posts.append(item)
-    except (OSError, json.JSONDecodeError) as exc:
-        raise SystemExit(f"Invalid archive record {path.name}: {exc}")
+if LEGACY_DIR.exists():
+    shutil.rmtree(LEGACY_DIR)
 
-posts.sort(key=lambda item: str(item.get("date") or ""), reverse=True)
-INDEX.write_text(json.dumps(posts, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
-categories = sorted({str(item.get("category") or "") for item in posts if item.get("category")})
+total = len(list(POSTS_DIR.glob("*.json")))
 print(f"Source posts: {len(source_posts)}")
 print(f"New CMS records created: {created}")
-print(f"Existing CMS records updated with missing category translations: {updated}")
-print(f"Total CMS records compiled: {len(posts)}")
-print(f"Categories: {len(categories)}")
-print(f"Compiled index size: {INDEX.stat().st_size:,} bytes")
+print(f"Legacy CMS records migrated: {migrated}")
+print(f"Existing records updated with missing Persian categories: {updated}")
+print(f"Total CMS data files: {total}")
