@@ -73,7 +73,49 @@
     if (fa) element.dataset.fa = format(fa);
     element.innerHTML = element.dataset[lang()] || element.dataset.en || element.dataset.fa || "";
   }
+  function applyHomepageLabels(settings) {
+    const labels = settings.home_labels || {};
+    const fields = [
+      [".availability span:last-child","availability"],
+      [".hero-actions .primary-action span:first-child","hero_cta_services"],
+      [".hero-actions .text-action span:first-child","hero_cta_work"],
+      [".home-note .micro-label","profile_label"],
+      [".home-note .inline-link","profile_cta"],
+      [".home-stat-card .stat-label","stats_label"],
+      [".home-stat-card .stat-list span:nth-child(1)","stat_item_1"],
+      [".home-stat-card .stat-list span:nth-child(2)","stat_item_2"],
+      [".home-stat-card .stat-list span:nth-child(3)","stat_item_3"],
+      [".home-stat-card .stat-list span:nth-child(4)","stat_item_4"],
+      [".home-archive .view-heading .micro-label","archive_label"],
+      [".home-archive > div:nth-of-type(2) .micro-label","archive_period"],
+      [".home-archive > div:nth-of-type(2) .original-post","archive_link"],
+      ["#view-work > .view-heading .micro-label","work_label"],
+      ["#view-work .work-aside > .micro-label","work_browse_label"],
+      ["#view-projects > .view-heading .micro-label","projects_label"],
+      ["#view-experience > .view-heading .micro-label","experience_label"],
+      ["#view-services > .view-heading .micro-label","services_label"],
+      ["#view-contact .contact-hero .micro-label","contact_label"],
+      [".delivery-flow > .micro-label","process_label"],
+      [".delivery-flow .flow-steps span:nth-of-type(1) b","process_step_1"],
+      [".delivery-flow .flow-steps span:nth-of-type(2) b","process_step_2"],
+      [".delivery-flow .flow-steps span:nth-of-type(3) b","process_step_3"],
+      [".delivery-flow .flow-steps span:nth-of-type(4) b","process_step_4"],
+      [".delivery-flow .flow-steps span:nth-of-type(5) b","process_step_5"],
+      [".delivery-flow .flow-steps span:nth-of-type(6) b","process_step_6"],
+      [".delivery-flow p","process_intro"],
+      [".contact-grid .contact-card:nth-child(1) .micro-label","contact_email_label"],
+      [".contact-grid .contact-card:nth-child(2) .micro-label","contact_linkedin_label"],
+      [".contact-grid .contact-card:nth-child(3) .micro-label","contact_phone_label"],
+      [".site-footer .footer-brand span","footer_tagline"],
+      [".site-footer .footer-end span:first-child","footer_status"],
+      [".welcome-drop .welcome-kicker","welcome_kicker"],
+      [".welcome-drop .welcome-role","welcome_role"],
+      [".welcome-drop p","welcome_intro"]
+    ];
+    for (const [selector,key] of fields) applyLocalizedCopy(labels,selector,key,false);
+  }
   function applyHomepageCopy(settings) {
+    applyHomepageLabels(settings);
     const fields = [
       [".hero-overline","home_hero_overline",false],
       [".hero-title","home_hero_roles",false],
