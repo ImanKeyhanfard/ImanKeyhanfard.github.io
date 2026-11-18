@@ -58,7 +58,53 @@
     const content = String(record.page_content || "").trim();
     if (!content) return;
     const main = document.querySelector("body > main") || document.querySelector("main");
-    if (main) main.innerHTML = content;
+    if (main) {
+      main.innerHTML = content;
+      document.dispatchEvent(new CustomEvent("cms-page-content-applied"));
+    }
+  }
+  function applyLocalizedCopy(settings, selector, key, addDot = false) {
+    const element = document.querySelector(selector);
+    if (!element) return;
+    const en = settings[key + "_en"], fa = settings[key + "_fa"];
+    if (!en && !fa) return;
+    if (en) element.dataset.en = en;
+    if (fa) element.dataset.fa = fa;
+    const value = (lang() === "fa" ? fa : en) || en || fa || "";
+    element.innerHTML = esc(value).replace(/\n/g, "<br>") + (addDot ? '<span class="red-dot">.</span>' : "");
+  }
+  function applyHomepageCopy(settings) {
+    const fields = [
+      [".hero-overline","home_hero_overline",false],
+      [".hero-title","home_hero_roles",false],
+      [".hero-lead","home_hero_intro",false],
+      [".home-note h2","home_profile_heading",false],
+      [".home-note p","home_profile_intro",false],
+      [".home-archive .view-heading h2","home_archive_heading",true],
+      [".home-archive .view-heading p","home_archive_intro",false],
+      ["#view-work > .view-heading h2","home_work_heading",true],
+      ["#view-work > .view-heading p","home_work_intro",false],
+      ["#view-projects > .view-heading h2","home_projects_heading",true],
+      ["#view-projects > .view-heading p","home_projects_intro",false],
+      ["#view-experience > .view-heading h2","home_experience_heading",true],
+      ["#view-experience > .view-heading p","home_experience_intro",false],
+      ["#view-services > .view-heading h2","home_services_heading",true],
+      ["#view-services > .view-heading p","home_services_intro",false],
+      ["#view-contact .contact-hero h2","home_contact_heading",true],
+      ["#view-contact .contact-hero p","home_contact_intro",false],
+      ["#view-contact .contact-cta span:first-child","home_contact_cta",false]
+    ];
+    for (const [selector,key,dot] of fields) applyLocalizedCopy(settings,selector,key,dot);
+  }
+  function applyArchiveCopy(settings) {
+    if (!location.pathname.endsWith("linkedin-archive.html")) return;
+    const fields = [
+      [".hero .eyebrow","archive_page_eyebrow",false],
+      [".hero h1","archive_page_heading",false],
+      [".hero p","archive_page_intro",false],
+      [".foot","archive_page_footer",false]
+    ];
+    for (const [selector,key,dot] of fields) applyLocalizedCopy(settings,selector,key,dot);
   }
   function applySeoRecord(record) {
     const l = lang();
@@ -211,6 +257,8 @@
       renderCmsItems(posts,projects);
       if(settings){
         applyLayoutSettings(settings);
+        applyHomepageCopy(settings);
+        applyArchiveCopy(settings);
         if(settings.site_title)document.title=settings["seo_title_"+lang()]||settings.site_title;
         const meta=document.querySelector('meta[name="description"]');
         if(meta){const d=settings["seo_description_"+lang()]||settings.seo_description_en;if(d)meta.content=d;}
@@ -246,7 +294,11 @@
         document.addEventListener("portfolio-language-change",()=>{applyPageContent(pageSeo);applySeoRecord(pageSeo);});
       }
       document.documentElement.dataset.cmsLoaded="true";
-    } catch(error) { console.warn("Pages CMS content could not be loaded; using built-in portfolio content.",error); }
+      document.dispatchEvent(new CustomEvent("cms-ready"));
+    } catch(error) {
+      console.warn("Pages CMS content could not be loaded; using built-in portfolio content.",error);
+      document.dispatchEvent(new CustomEvent("cms-ready"));
+    }
   }
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});else start();
 })();
