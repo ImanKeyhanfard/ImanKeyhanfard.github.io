@@ -56,12 +56,137 @@ body>section.featured-project:first-of-type:hover .project-cover img{transform:n
 }
 </script>
 
+
 <style>
-.linkedin-feature-embed{margin:24px clamp(20px,3vw,38px) 8px;max-width:504px;width:calc(100% - 2*clamp(20px,3vw,38px));border:1px solid #303746;border-radius:14px;overflow:hidden;background:#111923}
-.linkedin-feature-embed iframe{display:block;width:100%;height:1077px;max-height:none;border:0;background:#111923}
-@media(max-width:680px){.linkedin-feature-embed{width:calc(100% - 36px);margin-left:18px;margin-right:18px}.linkedin-feature-embed iframe{height:1077px}}
+.fakhrizadeh-project{border-color:#46546a;background:linear-gradient(135deg,#182131 0%,#10151e 58%,#0d1118 100%);}
+.fakhrizadeh-heading{padding:clamp(24px,4vw,46px) clamp(22px,4vw,48px) 8px;border-bottom:1px solid #303746;background:radial-gradient(ellipse at 90% 0%,#29364a66,transparent 55%)}
+.fakhrizadeh-heading .kicker{color:#b8c8df}
+.fakhrizadeh-heading h2{max-width:900px;font-size:clamp(27px,4vw,44px);line-height:1.14;margin:16px 0}
+.fakhrizadeh-heading .fakhrizadeh-deck{font-size:clamp(16px,2vw,19px);color:#d0d8e5;max-width:850px;margin:0 0 28px}
+.fakhrizadeh-copy{padding:10px clamp(22px,4vw,48px) 6px}
+.fakhrizadeh-copy p{max-width:900px}
+.fakhrizadeh-copy .original-post{margin-left:0;margin-top:6px}
 </style>
+
+
+<style>
+/* Hamed Fakhrizadeh RT interview project */
+.fakhrizadeh-project{padding:0 0 28px;border-color:#46536a;background:linear-gradient(145deg,#171e2a,#0d1119)}
+.fakhrizadeh-project .project-intro{padding:28px clamp(20px,3vw,38px) 8px}
+.fakhrizadeh-project h2{max-width:980px}
+.fakhrizadeh-project .project-intro p{max-width:920px}
+.fakhrizadeh-gallery-wrap{position:relative;margin:20px clamp(20px,3vw,38px) 12px}
+.fakhrizadeh-gallery{display:flex;gap:14px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:0 0 14px;scrollbar-width:thin;scrollbar-color:#68758b #202633}
+.fakhrizadeh-gallery figure{flex:0 0 min(72%,560px);margin:0;scroll-snap-align:start;border:1px solid #394354;border-radius:13px;overflow:hidden;background:#090d14}
+.fakhrizadeh-gallery button{display:block;width:100%;padding:0;border:0;background:#090d14;cursor:zoom-in}
+.fakhrizadeh-gallery img{display:block;width:100%;height:clamp(220px,38vw,390px);object-fit:contain;background:#090d14}
+.fakhrizadeh-gallery figcaption{padding:10px 13px;color:#aeb8c8;font-size:12px;letter-spacing:.02em}
+.fakhrizadeh-gallery-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:10px 0 0}
+.fakhrizadeh-gallery-controls .gallery-hint{color:#9da9bb;font-size:12px}
+.gallery-arrows{display:flex;gap:8px}
+.gallery-arrows button,.fakhrizadeh-lightbox button{border:1px solid #526078;background:#171e2a;color:#f1f4fa;border-radius:999px;padding:8px 13px;cursor:pointer;font:inherit}
+.gallery-arrows button:hover,.fakhrizadeh-lightbox button:hover{background:#283449}
+.fakhrizadeh-project .project-details{padding:8px clamp(20px,3vw,38px) 0}
+.fakhrizadeh-project .project-details p{max-width:980px}
+.fakhrizadeh-project .project-details p:last-child{padding-bottom:0}
+.fakhrizadeh-lightbox{position:fixed;inset:0;z-index:9999;background:rgba(2,4,8,.96);display:none;align-items:center;justify-content:center;padding:22px}
+.fakhrizadeh-lightbox.is-open{display:flex}
+.fakhrizadeh-lightbox-inner{width:min(1100px,100%);height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.fakhrizadeh-lightbox img{max-width:100%;max-height:calc(100vh - 130px);width:auto;height:auto;object-fit:contain}
+.fakhrizadeh-lightbox-controls{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.fakhrizadeh-lightbox-caption{color:#d4dbe7;font-size:13px;text-align:center}
+.fakhrizadeh-lightbox .lightbox-close{position:absolute;top:16px;right:18px;font-size:22px;line-height:1;padding:8px 13px}
+@media(max-width:680px){
+ .fakhrizadeh-gallery figure{flex-basis:88%}
+ .fakhrizadeh-gallery img{height:260px}
+ .fakhrizadeh-gallery-controls{align-items:flex-start;flex-direction:column}
+ .fakhrizadeh-lightbox{padding:12px}
+}
+</style>
+
 </head><body><p class="projects-back"><a href="index.html#work" target="_top">← Back to portfolio</a></p><span class="kicker">SELECTED PROJECTS / POLITICAL & GEOPOLITICAL</span><h1>Projects & Analysis</h1><p>A selection of interview production, editorial research and geopolitical analysis.</p>
+
+<section class="project fakhrizadeh-project" id="hamed-fakhrizadeh-rt-interview">
+  <div class="project-intro">
+    <span class="kicker">RT · EXCLUSIVE INTERVIEW · FIELD PRODUCTION</span>
+    <h2>Exclusive Interview with Hamed Fakhrizadeh</h2>
+    <p>An RT interview with Hamed Fakhrizadeh, son of Iranian nuclear scientist Dr. Mohsen Fakhrizadeh, approached a major political and security story through the perspective of a family member.</p>
+    <p>Dr. Mohsen Fakhrizadeh was assassinated near Tehran on 27 November 2020. His killing drew international attention to Iran’s nuclear program, national security and wider regional tensions. The conversation offered a more personal perspective on a figure often discussed through political and security headlines, including how his son remembers him.</p>
+  </div>
+
+  <div class="fakhrizadeh-gallery-wrap">
+    <div class="fakhrizadeh-gallery" id="fakhrizadehGallery" aria-label="Behind-the-scenes photographs from the RT interview">
+      <figure>
+        <button type="button" class="fakhrizadeh-photo" data-index="0" aria-label="Open photograph 1 at full size">
+          <img src="assets/fakhrizadeh-interview-01.jpg" alt="The interview setup before recording" loading="eager">
+        </button>
+        <figcaption>01 / 07 · The interview setup before recording</figcaption>
+      </figure>
+      <figure>
+        <button type="button" class="fakhrizadeh-photo" data-index="1" aria-label="Open photograph 2 at full size">
+          <img src="assets/fakhrizadeh-interview-02.jpg" alt="The interviewer and guest during the production" loading="lazy">
+        </button>
+        <figcaption>02 / 07 · The interviewer and guest during the production</figcaption>
+      </figure>
+      <figure>
+        <button type="button" class="fakhrizadeh-photo" data-index="2" aria-label="Open photograph 3 at full size">
+          <img src="assets/fakhrizadeh-interview-03.jpg" alt="A moment from the recorded conversation" loading="lazy">
+        </button>
+        <figcaption>03 / 07 · A moment from the recorded conversation</figcaption>
+      </figure>
+      <figure>
+        <button type="button" class="fakhrizadeh-photo" data-index="3" aria-label="Open photograph 4 at full size">
+          <img src="assets/fakhrizadeh-interview-04.jpg" alt="The interview in progress" loading="lazy">
+        </button>
+        <figcaption>04 / 07 · The interview in progress</figcaption>
+      </figure>
+      <figure>
+        <button type="button" class="fakhrizadeh-photo" data-index="4" aria-label="Open photograph 5 at full size">
+          <img src="assets/fakhrizadeh-interview-05.jpg" alt="The camera and production team at work" loading="lazy">
+        </button>
+        <figcaption>05 / 07 · The camera and production team at work</figcaption>
+      </figure>
+      <figure>
+        <button type="button" class="fakhrizadeh-photo" data-index="5" aria-label="Open photograph 6 at full size">
+          <img src="assets/fakhrizadeh-interview-06.jpg" alt="A wider view of the interview setup" loading="lazy">
+        </button>
+        <figcaption>06 / 07 · A wider view of the interview setup</figcaption>
+      </figure>
+      <figure>
+        <button type="button" class="fakhrizadeh-photo" data-index="6" aria-label="Open photograph 7 at full size">
+          <img src="assets/fakhrizadeh-interview-07.jpg" alt="The interview setting and camera position" loading="lazy">
+        </button>
+        <figcaption>07 / 07 · The interview setting and camera position</figcaption>
+      </figure>
+    </div>
+    <div class="fakhrizadeh-gallery-controls">
+      <span class="gallery-hint">Scroll horizontally or use the arrows. Select any photograph to view it full size.</span>
+      <div class="gallery-arrows">
+        <button type="button" id="fakhrizadehPrev" aria-label="Scroll photographs left">← Previous</button>
+        <button type="button" id="fakhrizadehNext" aria-label="Scroll photographs right">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-details">
+    <p><strong>Why this interview matters:</strong> It brings a personal and family perspective to a subject usually covered in the language of nuclear policy, intelligence and regional security. The photographs document the interview production; the original conversation was arranged for RT.</p>
+    <p><strong>My role:</strong> Interview planning, access and production coordination for RT.</p>
+    <a class="original-post" href="https://lnkd.in/p/eiMUbsGf" target="_blank" rel="noopener noreferrer">VIEW THE ORIGINAL LINKEDIN POST ↗</a>
+  </div>
+</section>
+
+<div class="fakhrizadeh-lightbox" id="fakhrizadehLightbox" role="dialog" aria-modal="true" aria-label="Photograph viewer">
+  <button type="button" class="lightbox-close" id="fakhrizadehClose" aria-label="Close photograph viewer">×</button>
+  <div class="fakhrizadeh-lightbox-inner">
+    <img id="fakhrizadehLightboxImage" src="assets/fakhrizadeh-interview-01.jpg" alt="Full-size behind-the-scenes photograph">
+    <div class="fakhrizadeh-lightbox-caption" id="fakhrizadehLightboxCaption"></div>
+    <div class="fakhrizadeh-lightbox-controls">
+      <button type="button" id="fakhrizadehLightboxPrev">← Previous</button>
+      <button type="button" id="fakhrizadehLightboxNext">Next →</button>
+    </div>
+  </div>
+</div>
+
 <section class="project featured-project"><div class="project-cover"><img src="assets/rezaei-interview-hq.jpg" alt="Interview with Ebrahim Rezaei for RT" loading="lazy"><span>RT INTERVIEW · EBRAHIM REZAEI</span></div>
 <span class="kicker">RT · INTERVIEW PRODUCTION · SEP–OCT 2026</span>
 <h2>Interview: Ebrahim Rezaei | Iran’s National Security and Foreign Policy</h2>
@@ -166,15 +291,64 @@ body>section.featured-project:first-of-type:hover .project-cover img{transform:n
 </section>
 
 <p><a href="index.html#work">← Back to selected work</a></p>
-<section class="project featured-project" id="fakhrizadeh-interview">
-<span class="kicker">RT · EXCLUSIVE INTERVIEW · FIELD PRODUCTION</span>
-<h2>Behind the Headlines: An Exclusive Interview with Hamed Fakhrizadeh</h2>
-<p>Conducted for RT, this interview with Hamed Fakhrizadeh, son of Iranian nuclear scientist Dr. Mohsen Fakhrizadeh, approaches a major regional and security story through the perspective of a family member. Dr. Mohsen Fakhrizadeh was assassinated near Tehran on 27 November 2020; his killing drew international attention to Iran’s nuclear program, national security and wider regional tensions.</p>
-<p>The interview offers an opportunity to explore the personal and human dimension behind a figure widely discussed in political and security terms, including his character, outlook and the way his son remembers him. The conversation was arranged and conducted exclusively for RT. At the time the behind-the-scenes post was published, the interview had not yet been released, so this portfolio entry focuses on the production and editorial significance of the assignment rather than presenting unreleased interview remarks.</p>
-<p><strong>My role:</strong> Interview planning, access and interview production for RT, with a focus on presenting a sensitive subject through a direct personal perspective.</p>
-<div class="linkedin-feature-embed" aria-label="Original LinkedIn post with behind-the-scenes photographs">
-<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7528389744867639296" title="Behind the scenes of the exclusive RT interview with Hamed Fakhrizadeh" loading="lazy" allowfullscreen></iframe>
-</div>
-<a class="original-post" href="https://lnkd.in/p/eiMUbsGf" target="_blank" rel="noopener noreferrer">VIEW THE ORIGINAL LINKEDIN POST ↗</a>
-</section>
+
+<script>
+(function(){
+  const files = [
+    "assets/fakhrizadeh-interview-01.jpg",
+    "assets/fakhrizadeh-interview-02.jpg",
+    "assets/fakhrizadeh-interview-03.jpg",
+    "assets/fakhrizadeh-interview-04.jpg",
+    "assets/fakhrizadeh-interview-05.jpg",
+    "assets/fakhrizadeh-interview-06.jpg",
+    "assets/fakhrizadeh-interview-07.jpg"
+  ];
+  const captions = [
+    "The interview setup before recording",
+    "The interviewer and guest during the production",
+    "A moment from the recorded conversation",
+    "The interview in progress",
+    "The camera and production team at work",
+    "A wider view of the interview setup",
+    "The interview setting and camera position"
+  ];
+  const gallery = document.getElementById("fakhrizadehGallery");
+  if (!gallery) return;
+  const lightbox = document.getElementById("fakhrizadehLightbox");
+  const largeImage = document.getElementById("fakhrizadehLightboxImage");
+  const caption = document.getElementById("fakhrizadehLightboxCaption");
+  let current = 0;
+  function show(index){
+    current = (index + files.length) % files.length;
+    largeImage.src = files[current];
+    caption.textContent = (current + 1) + " / " + files.length + " · " + captions[current];
+  }
+  function open(index){
+    show(index);
+    lightbox.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    document.getElementById("fakhrizadehClose").focus();
+  }
+  function close(){
+    lightbox.classList.remove("is-open");
+    document.body.style.overflow = "";
+  }
+  document.querySelectorAll(".fakhrizadeh-photo").forEach(button=>{
+    button.addEventListener("click",()=>open(Number(button.dataset.index)));
+  });
+  document.getElementById("fakhrizadehPrev").addEventListener("click",()=>gallery.scrollBy({left:-gallery.clientWidth*.82,behavior:"smooth"}));
+  document.getElementById("fakhrizadehNext").addEventListener("click",()=>gallery.scrollBy({left:gallery.clientWidth*.82,behavior:"smooth"}));
+  document.getElementById("fakhrizadehClose").addEventListener("click",close);
+  document.getElementById("fakhrizadehLightboxPrev").addEventListener("click",()=>show(current-1));
+  document.getElementById("fakhrizadehLightboxNext").addEventListener("click",()=>show(current+1));
+  lightbox.addEventListener("click",event=>{if(event.target===lightbox)close();});
+  document.addEventListener("keydown",event=>{
+    if(!lightbox.classList.contains("is-open"))return;
+    if(event.key==="Escape")close();
+    if(event.key==="ArrowLeft")show(current-1);
+    if(event.key==="ArrowRight")show(current+1);
+  });
+})();
+</script>
+
 </body></html>
