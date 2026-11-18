@@ -23,7 +23,7 @@ content:
     type: collection
     path: content/sections
     format: json
-    filename: "{primary}.json"
+    filename: "{slug}.json"
     view:
       primary: label_en
       sort: order
@@ -66,7 +66,7 @@ content:
     type: collection
     path: content/posts
     format: json
-    filename: "{primary}.json"
+    filename: "{slug}.json"
     view:
       primary: title_en
       sort: publication_date
@@ -144,6 +144,9 @@ content:
       - name: featured
         label: Feature on homepage
         type: boolean
+      - name: order
+        label: Manual display order / priority
+        type: number
       - name: status
         label: Publication status
         type: select
@@ -154,7 +157,7 @@ content:
     type: collection
     path: content/portfolio
     format: json
-    filename: "{primary}.json"
+    filename: "{slug}.json"
     view:
       primary: title_en
       sort: order
@@ -231,7 +234,7 @@ content:
     type: collection
     path: content/experience
     format: json
-    filename: "{primary}.json"
+    filename: "{slug}.json"
     view:
       primary: organization_en
       sort: order
@@ -267,6 +270,29 @@ content:
         label: Capabilities (Persian)
         type: string
         list: true
+      - name: tab_en
+        label: Experience tab label (English)
+        type: string
+      - name: tab_fa
+        label: Experience tab label (Persian)
+        type: string
+      - name: image
+        label: Experience image
+        type: image
+        options:
+          media: images
+      - name: image_alt
+        label: Image alternative text
+        type: string
+      - name: image_caption
+        label: Image caption
+        type: string
+      - name: client_value_en
+        label: Client value (English)
+        type: text
+      - name: client_value_fa
+        label: Client value (Persian)
+        type: text
       - name: order
         label: Display order
         type: number
@@ -278,7 +304,7 @@ content:
     type: collection
     path: content/services
     format: json
-    filename: "{primary}.json"
+    filename: "{slug}.json"
     view:
       primary: title_en
       sort: order
@@ -309,6 +335,26 @@ content:
         label: Service details (Persian)
         type: string
         list: true
+      - name: tab_en
+        label: Service tab label (English)
+        type: string
+      - name: tab_fa
+        label: Service tab label (Persian)
+        type: string
+      - name: delivery_en
+        label: Deliverables (English)
+        type: text
+      - name: delivery_fa
+        label: Deliverables (Persian)
+        type: text
+      - name: image
+        label: Service image
+        type: image
+        options:
+          media: images
+      - name: image_alt
+        label: Image alternative text
+        type: string
       - name: icon
         label: Icon name
         type: string
@@ -365,6 +411,80 @@ content:
       - name: seo_description_fa
         label: SEO description (Persian)
         type: text
+      - name: seo_title_en
+        label: SEO title (English)
+        type: string
+      - name: seo_title_fa
+        label: SEO title (Persian)
+        type: string
+      - name: seo_keywords_en
+        label: SEO keywords (English)
+        type: string
+      - name: seo_keywords_fa
+        label: SEO keywords (Persian)
+        type: string
+      - name: seo_og_image
+        label: Social sharing image
+        type: image
+        options:
+          media: images
+      - name: layout_content_width
+        label: Main content maximum width (px, 900–1800)
+        type: number
+      - name: layout_section_gap
+        label: Section spacing (px, 8–64)
+        type: number
+      - name: layout_card_min_width
+        label: Content card minimum width (px, 180–340)
+        type: number
+  - name: page_seo
+    label: Individual Page SEO
+    type: collection
+    path: content/seo-pages
+    format: json
+    filename: "{slug}.json"
+    view:
+      primary: title_en
+      sort: slug
+      order: asc
+    fields:
+      - name: slug
+        label: File ID
+        type: string
+        required: true
+      - name: page_path
+        label: Website page path
+        type: string
+        required: true
+      - name: title_en
+        label: SEO title (English)
+        type: string
+      - name: title_fa
+        label: SEO title (Persian)
+        type: string
+      - name: description_en
+        label: Meta description (English)
+        type: text
+      - name: description_fa
+        label: Meta description (Persian)
+        type: text
+      - name: keywords_en
+        label: Keywords (English)
+        type: text
+      - name: keywords_fa
+        label: Keywords (Persian)
+        type: text
+      - name: canonical_url
+        label: Canonical URL
+        type: string
+      - name: og_image
+        label: Social sharing image
+        type: image
+        options:
+          media: images
+      - name: noindex
+        label: Hide page from search engines
+        type: boolean
 settings:
   commit:
     templates:
