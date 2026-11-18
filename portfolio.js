@@ -61,15 +61,28 @@
     return /^(https:\/\/|\/|\.\/|\.\.\/)/i.test(raw) ? raw : "";
   }
 
-  function mediaMarkup(post,title,isFa) {
+  function mediaMarkup(post,title,isFa,detail=false) {
     const video=safeMedia(post.video_url);
-    const image=safeMedia(post.thumbnail || (Array.isArray(post.gallery) ? post.gallery[0] : ""));
-    if(video) return '<video class="work-media-video" controls playsinline preload="metadata"><source src="' + esc(video) + '"></video>';
-    if(image) return '<img class="work-media-image" src="' + esc(image) + '" alt="' + esc(title) + '" loading="lazy">';
+    const cover=safeMedia(post.thumbnail);
+    const gallery=(Array.isArray(post.gallery)?post.gallery:[]).map(safeMedia).filter(Boolean);
     const id=itemId(post);
-    if(id) return '<iframe loading="lazy" tabindex="-1" aria-hidden="true" title="' + esc(title) +
-      '" src="https://www.linkedin.com/embed/feed/update/urn:li:activity:' + esc(id) + '?compact=1"></iframe>';
-    return '<div class="story-media-fallback">' + esc(isFa ? "پیش‌نمایش در دسترس نیست" : "Preview unavailable") + '</div>';
+    const videoMarkup=video?'<video class="work-media-video" controls playsinline preload="metadata"><source src="' + esc(video) + '"></video>':"";
+    const imageMarkup=(src,alt)=>'<img class="work-media-image" src="' + esc(src) + '" alt="' + esc(alt) + '" loading="lazy">';
+    const embed=id?'<iframe loading="lazy" tabindex="-1" aria-hidden="true" title="' + esc(title) +
+      '" src="https://www.linkedin.com/embed/feed/update/urn:li:activity:' + esc(id) + '?compact=1"></iframe>':"";
+    if(!detail){
+      if(videoMarkup)return videoMarkup;
+      if(cover)return imageMarkup(cover,post.image_alt||title);
+      if(gallery.length)return imageMarkup(gallery[0],(post.gallery_alt||[])[0]||title);
+      return embed||'<div class="story-media-fallback">' + esc(isFa ? "پیش‌نمایش در دسترس نیست" : "Preview unavailable") + '</div>';
+    }
+    const images=[...new Set([cover,...gallery].filter(Boolean))];
+    const galleryHtml=images.length?'<div class="work-media-gallery">'+images.map((src,index)=>{
+      const alt=(post.gallery_alt||[])[index]||post.image_alt||title+" — "+(index+1);
+      const caption=(post["gallery_caption_"+lang()]||[])[index]||"";
+      return '<figure>'+imageMarkup(src,alt)+(caption?'<figcaption>'+esc(caption)+'</figcaption>':"")+'</figure>';
+    }).join("")+'</div>':"";
+    return (videoMarkup+galleryHtml)||embed||'<div class="story-media-fallback">' + esc(isFa ? "پیش‌نمایش در دسترس نیست" : "Preview unavailable") + '</div>';
   }
 
   function itemDescription(post, topic) {
@@ -123,8 +136,8 @@
     eyebrow.textContent = (group["label_" + lang()] || group.label_en || "").toLocaleUpperCase(isFa ? "fa" : "en");
     counter.textContent = String(itemIndex + 1).padStart(2,"0") + " / " + String(group.items.length).padStart(2,"0");
     deck.classList.toggle("expanded", expanded);
-    const previewMedia = mediaMarkup(post,title,isFa);
-    const detailMedia = mediaMarkup(post,title,isFa);
+    const previewMedia = mediaMarkup(post,title,isFa,false);
+    const detailMedia = mediaMarkup(post,title,isFa,true);
     const originalLink = /^https:\/\/www\.linkedin\.com\//i.test(original)
       ? '<a class="original-post" href="' + esc(original) +
         '" target="_blank" rel="noopener noreferrer">' +
