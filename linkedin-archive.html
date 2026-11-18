@@ -43,7 +43,7 @@
 </script>
 <meta property="og:image:alt" content="Iman Keyhanfard — journalism and regional affairs">
 
-<script src="cms.js?v=20261119c" defer></script>
+<script src="cms.js?v=20261119d" defer></script>
 <style>
 .post p{white-space:pre-wrap}
 .post-media{display:block;width:100%;max-height:360px;object-fit:contain;border-radius:12px;margin:0 0 14px;background:#05070b}
@@ -314,7 +314,7 @@
     populateCategories();
     filter();
   });
-  fetch("archive-posts.json?v=20261119c",{cache:"no-store"})
+  fetch("archive-posts.json?v=20261119d",{cache:"no-store"})
     .then(response=>{if(!response.ok)throw new Error("Archive data HTTP "+response.status);return response.json();})
     .then(data=>{
       state.all=data.filter(post=>post.status!=="draft"&&post.status!=="hidden")
