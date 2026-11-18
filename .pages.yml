@@ -234,7 +234,7 @@ content:
     type: collection
     path: content/experience
     format: json
-    filename: "{slug}.json"
+    filename: "{primary}.json"
     view:
       primary: organization_en
       sort: order
