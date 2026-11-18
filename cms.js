@@ -68,10 +68,10 @@
     if (!element) return;
     const en = settings[key + "_en"], fa = settings[key + "_fa"];
     if (!en && !fa) return;
-    if (en) element.dataset.en = en;
-    if (fa) element.dataset.fa = fa;
-    const value = (lang() === "fa" ? fa : en) || en || fa || "";
-    element.innerHTML = esc(value).replace(/\n/g, "<br>") + (addDot ? '<span class="red-dot">.</span>' : "");
+    const format = value => esc(value).replace(/\n/g, "<br>") + (addDot ? '<span class="red-dot">.</span>' : "");
+    if (en) element.dataset.en = format(en);
+    if (fa) element.dataset.fa = format(fa);
+    element.innerHTML = element.dataset[lang()] || element.dataset.en || element.dataset.fa || "";
   }
   function applyHomepageCopy(settings) {
     const fields = [
@@ -221,7 +221,7 @@
   function renderCmsItems(posts, projects) {
     const host=document.querySelector("#view-work .work-layout");
     if(!host || (!posts.length&&!projects.length)) return;
-    const items=[...posts.filter(x=>x.status==="published").map(x=>({...x,_kind:"post"})),...projects.filter(x=>x.status==="published").map(x=>({...x,_kind:"project"}))];
+    const items=[...posts.filter(x=>x.status==="published").map(x=>({...x,_kind:"post"})),...projects.filter(x=>x.status==="published"&&x.featured===true).map(x=>({...x,_kind:"project"}))];
     if(!items.length)return;
     const section=document.createElement("section"); section.className="cms-published-items";
     section.style.cssText="margin:32px 0 12px;padding-top:22px;border-top:1px solid var(--line)";
