@@ -948,3 +948,13 @@ html[dir=rtl] .experience-visual span{left:auto;right:20px}
 .view{padding-left:var(--cms-page-gutter);padding-right:var(--cms-page-gutter)}
 .contact-grid,.service-columns,.cms-published-items>div{gap:var(--cms-grid-gap)}
 .contact-card,.topic-tab,.service-visual,.cms-published-items article{border-radius:var(--cms-card-radius)}
+
+
+/* Expanded CMS layout controls. Defaults preserve the existing design. */
+:root{--cms-page-gutter:7.2%;--cms-card-radius:8px;--cms-grid-gap:12px;--cms-content-width:1600px;--cms-section-gap:24px;--cms-card-min-width:220px}
+main{max-width:var(--cms-content-width)}
+.view{padding-left:var(--cms-page-gutter);padding-right:var(--cms-page-gutter)}
+.contact-grid,.service-columns,.service-tabs{gap:var(--cms-grid-gap)}
+.work-layout,.experience-shell{gap:var(--cms-section-gap)}
+.contact-card,.topic-tab,.service-visual,.cms-published-items article{border-radius:var(--cms-card-radius)}
+.cms-published-items>div{grid-template-columns:repeat(auto-fit,minmax(var(--cms-card-min-width),1fr))!important}
