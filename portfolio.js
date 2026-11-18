@@ -134,7 +134,7 @@
       '<article class="topic-card" tabindex="0" role="button" aria-expanded="' + expanded +
       '" aria-label="' + esc(isFa ? "باز کردن جزئیات نمونه‌کار" : "Open story details") + '">' +
       '<div class="story-number">' + (isFa ? "نمونه‌کار " : "SELECTED STORY / ") +
-      String(itemIndex + 1).padStart(2,"0") + '</div><div class="story-media-preview">' + embed +
+      String(itemIndex + 1).padStart(2,"0") + '</div><div class="story-media-preview">' + previewMedia +
       '</div><h3>' + esc(title) + '</h3><div class="story-tags">' +
       tags.map(tag => '<span>' + esc(tag) + '</span>').join("") +
       '</div><div class="story-open-hint">' +
