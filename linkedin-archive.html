@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#08090d">
 <meta name="description" content="Original LinkedIn posts by Iman Keyhanfard on Iran, the Middle East, journalism, conflict, diplomacy and international affairs.">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="canonical" href="https://imankeyhanfard.github.io/linkedin-archive.html">
+<link rel="canonical" href="https://imankeyhanfard.github.io/linkedin-archive.html"><link rel="alternate" hreflang="en" href="https://imankeyhanfard.github.io/linkedin-archive.html"><link rel="alternate" hreflang="fa" href="https://imankeyhanfard.github.io/fa/linkedin-archive.html"><link rel="alternate" hreflang="x-default" href="https://imankeyhanfard.github.io/linkedin-archive.html">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Iman Keyhanfard"><meta property="og:url" content="https://imankeyhanfard.github.io/linkedin-archive.html"><meta property="og:title" content="LinkedIn Posts on Iran & International Affairs | Iman Keyhanfard"><meta property="og:description" content="Original LinkedIn posts by Iman Keyhanfard on Iran, the Middle East, journalism, conflict, diplomacy and international affairs."><meta property="og:image" content="https://imankeyhanfard.github.io/iman-field.jpg">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="LinkedIn Posts on Iran & International Affairs | Iman Keyhanfard"><meta name="twitter:description" content="Original LinkedIn posts by Iman Keyhanfard on Iran, the Middle East, journalism, conflict, diplomacy and international affairs."><meta name="twitter:image" content="https://imankeyhanfard.github.io/iman-field.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"LinkedIn Posts on Iran & International Affairs | Iman Keyhanfard","url":"https://imankeyhanfard.github.io/linkedin-archive.html","description":"Original LinkedIn posts by Iman Keyhanfard on Iran, the Middle East, journalism, conflict, diplomacy and international affairs.","isPartOf":{"@type":"WebSite","name":"Iman Keyhanfard","url":"https://imankeyhanfard.github.io/"}}</script>
@@ -43,7 +43,7 @@
 </script>
 <meta property="og:image:alt" content="Iman Keyhanfard — journalism and regional affairs">
 
-<script src="cms.js?v=20261119d" defer></script>
+<script src="cms.js?v=20261119e" defer></script>
 <style>
 .post p{white-space:pre-wrap}
 .post-media{display:block;width:100%;max-height:360px;object-fit:contain;border-radius:12px;margin:0 0 14px;background:#05070b}
@@ -219,7 +219,7 @@
 <script>
 (()=>{
   const $=selector=>document.querySelector(selector);
-  const state={all:[],filtered:[],page:1,size:20,lang:"en"};
+  const state={all:[],filtered:[],page:1,size:20,lang:document.documentElement.lang==="fa"?"fa":"en"};
   const search=$("#search"),category=$("#category"),grid=$("#posts"),status=$("#status");
   const esc=value=>String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const safeMedia=value=>{
@@ -302,8 +302,7 @@
   category.addEventListener("change",filter);
   $("#prev").addEventListener("click",()=>{state.page--;render();window.scrollTo({top:0,behavior:"smooth"});});
   $("#next").addEventListener("click",()=>{state.page++;render();window.scrollTo({top:0,behavior:"smooth"});});
-  $("#lang").addEventListener("click",()=>{
-    state.lang=state.lang==="en"?"fa":"en";
+  function applyUiLanguage(){
     document.documentElement.lang=state.lang;
     document.documentElement.dir=state.lang==="fa"?"rtl":"ltr";
     document.querySelectorAll("[data-en][data-fa]").forEach(element=>element.textContent=element.dataset[state.lang]);
@@ -311,10 +310,15 @@
     search.placeholder=state.lang==="fa"?"جست‌وجو در مطالب و موضوعات…":"Search posts, topics or keywords…";
     $("#prev").textContent=state.lang==="fa"?"→ قبلی":"← Previous";
     $("#next").textContent=state.lang==="fa"?"بعدی ←":"Next →";
+  }
+  $("#lang").addEventListener("click",()=>{
+    state.lang=state.lang==="en"?"fa":"en";
+    applyUiLanguage();
     populateCategories();
     filter();
   });
-  fetch("archive-posts.json?v=20261119d",{cache:"no-store"})
+  applyUiLanguage();
+  fetch("archive-posts.json?v=20261119e",{cache:"no-store"})
     .then(response=>{if(!response.ok)throw new Error("Archive data HTTP "+response.status);return response.json();})
     .then(data=>{
       state.all=data.filter(post=>post.status!=="draft"&&post.status!=="hidden")
