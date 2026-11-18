@@ -129,6 +129,10 @@ content:
         label: Tags
         type: string
         list: true
+      - name: tags_fa
+        label: Tags (Persian)
+        type: string
+        list: true
       - name: excerpt_en
         label: Summary (English)
         type: text
