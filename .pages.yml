@@ -609,6 +609,12 @@ content:
           - name: profile_cta_fa
             label: Profile experience button (Persian)
             type: string
+          - name: years_value_en
+            label: Years in media value (English)
+            type: string
+          - name: years_value_fa
+            label: Years in media value (Persian)
+            type: string
           - name: stats_label_en
             label: Experience statistic label (English)
             type: string
