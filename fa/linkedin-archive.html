@@ -308,10 +308,7 @@
     $("#next").textContent=state.lang==="fa"?"بعدی ←":"Next →";
   }
   $("#lang").addEventListener("click",()=>{
-    state.lang=state.lang==="en"?"fa":"en";
-    applyUiLanguage();
-    populateCategories();
-    filter();
+    location.href=state.lang==="fa"?"/linkedin-archive.html":"/fa/linkedin-archive.html";
   });
   applyUiLanguage();
   fetch("../archive-posts.json?v=20261119e",{cache:"no-store"})
