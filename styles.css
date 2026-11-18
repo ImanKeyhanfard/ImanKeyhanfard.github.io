@@ -986,3 +986,7 @@ main{max-width:var(--cms-content-width,1600px)}
 }
 
 .view[hidden],.nav-tab[hidden]{display:none!important}
+
+.view[data-cms-layout="article-list"] .cms-content-grid{grid-template-columns:1fr!important}
+.view[data-cms-layout="photo-gallery"] .cms-published-items img{aspect-ratio:1/1!important}
+.view[data-cms-layout="video-gallery"] .cms-published-items img{aspect-ratio:16/9!important}
