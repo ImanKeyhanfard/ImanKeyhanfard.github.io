@@ -20,7 +20,7 @@
   const safeColor = value => /^#[0-9a-f]{6}$/i.test(String(value || "")) ? value : "#6daeff";
 
   async function directory(path) {
-    const response = await fetch(api + path, {
+    const response = await fetch(api + path + "?ref=main&per_page=100", {
       headers: {"Accept":"application/vnd.github+json"},
       cache: "no-store"
     });
