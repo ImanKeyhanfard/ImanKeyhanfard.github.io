@@ -98,7 +98,7 @@ content:
     filename: "{slug}.json"
     view:
       primary: title_en
-      sort: publication_date
+      sort: order
       order: desc
     fields:
       - name: title_en
