@@ -527,6 +527,13 @@ content:
       - name: noindex
         label: Hide page from search engines
         type: boolean
+      - name: page_content
+        label: Full page content (HTML)
+        type: rich-text
+        description: Edit the complete visible content for this specific English or Persian page. Preserve the language switch, internal links and heading structure.
+        options:
+          format: html
+          switcher: true
 settings:
   commit:
     templates:
