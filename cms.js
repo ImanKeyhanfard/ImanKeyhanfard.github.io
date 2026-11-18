@@ -289,7 +289,7 @@
   document.addEventListener("portfolio-language-change", () => {
     const frame = document.getElementById("projectsFrame");
     if (!frame) return;
-    const target = lang() === "fa" ? "fa/projects.html?v=20261119a" : "projects.html?v=20261119a";
+    const target = lang() === "fa" ? "/fa/projects.html?v=20261119e" : "/projects.html?v=20261119e";
     if (frame.getAttribute("src") !== target) frame.setAttribute("src", target);
   });
   async function start() {
