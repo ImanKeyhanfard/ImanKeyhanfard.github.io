@@ -161,30 +161,48 @@ h1{font-size:clamp(34px,6vw,62px);line-height:1.25;margin:12px 0 16px;font-weigh
 
 <script>
 document.addEventListener("cms-ready", function(){
-  const files = [
-    "../assets/fakhrizadeh-interview-01.jpg","../assets/fakhrizadeh-interview-02.jpg",
-    "../assets/fakhrizadeh-interview-03.jpg","../assets/fakhrizadeh-interview-04.jpg",
-    "../assets/fakhrizadeh-interview-05.jpg","../assets/fakhrizadeh-interview-06.jpg",
-    "../assets/fakhrizadeh-interview-07.jpg"
-  ];
-  const captions = ["آماده‌سازی فضای مصاحبه","مصاحبه‌گر و مهمان","بخشی از گفت‌وگو","ضبط مصاحبه","گروه و تجهیزات تولید","نمای بازتر از فضای مصاحبه","چیدمان دوربین"];
   const gallery=document.getElementById("fakhrizadehGallery");
-  if(!gallery)return;
   const lightbox=document.getElementById("fakhrizadehLightbox");
   const image=document.getElementById("fakhrizadehLightboxImage");
   const caption=document.getElementById("fakhrizadehLightboxCaption");
+  if(!gallery||!lightbox||!image||!caption)return;
+  const buttons=[...gallery.querySelectorAll(".fakhrizadeh-photo")];
+  const entries=buttons.map(button=>{
+    const img=button.querySelector("img");
+    return img?{src:img.getAttribute("src"),caption:img.alt||""}:null;
+  }).filter(Boolean);
+  if(!entries.length)return;
   let current=0;
-  function show(index){current=(index+files.length)%files.length;image.src=files[current];caption.textContent=(current+1)+" / "+files.length+" · "+captions[current];}
-  function open(index){show(index);lightbox.classList.add("open");document.body.style.overflow="hidden";document.getElementById("fakhrizadehClose").focus();}
-  function close(){lightbox.classList.remove("open");document.body.style.overflow="";}
-  document.querySelectorAll(".fakhrizadeh-photo").forEach(button=>button.addEventListener("click",()=>open(Number(button.dataset.index))));
-  document.getElementById("fakhrizadehPrev").addEventListener("click",()=>gallery.scrollBy({left:-gallery.clientWidth*.82,behavior:"smooth"}));
-  document.getElementById("fakhrizadehNext").addEventListener("click",()=>gallery.scrollBy({left:gallery.clientWidth*.82,behavior:"smooth"}));
-  document.getElementById("fakhrizadehClose").addEventListener("click",close);
-  document.getElementById("fakhrizadehLightboxPrev").addEventListener("click",()=>show(current-1));
-  document.getElementById("fakhrizadehLightboxNext").addEventListener("click",()=>show(current+1));
+  function show(index){
+    current=(index+entries.length)%entries.length;
+    image.src=entries[current].src;
+    image.alt=entries[current].caption;
+    caption.textContent=(current+1)+" / "+entries.length+" · "+entries[current].caption;
+  }
+  function open(index){
+    show(index);
+    lightbox.classList.add("is-open");
+    lightbox.classList.add("open");
+    document.body.style.overflow="hidden";
+    document.getElementById("fakhrizadehClose")?.focus();
+  }
+  function close(){
+    lightbox.classList.remove("is-open","open");
+    document.body.style.overflow="";
+  }
+  buttons.forEach((button,index)=>button.addEventListener("click",()=>open(index)));
+  document.getElementById("fakhrizadehPrev")?.addEventListener("click",()=>gallery.scrollBy({left:-gallery.clientWidth*.82,behavior:"smooth"}));
+  document.getElementById("fakhrizadehNext")?.addEventListener("click",()=>gallery.scrollBy({left:gallery.clientWidth*.82,behavior:"smooth"}));
+  document.getElementById("fakhrizadehClose")?.addEventListener("click",close);
+  document.getElementById("fakhrizadehLightboxPrev")?.addEventListener("click",()=>show(current-1));
+  document.getElementById("fakhrizadehLightboxNext")?.addEventListener("click",()=>show(current+1));
   lightbox.addEventListener("click",event=>{if(event.target===lightbox)close();});
-  document.addEventListener("keydown",event=>{if(!lightbox.classList.contains("open"))return;if(event.key==="Escape")close();if(event.key==="ArrowLeft")show(current-1);if(event.key==="ArrowRight")show(current+1);});
+  document.addEventListener("keydown",event=>{
+    if(!lightbox.classList.contains("is-open")&&!lightbox.classList.contains("open"))return;
+    if(event.key==="Escape")close();
+    if(event.key==="ArrowLeft")show(current-1);
+    if(event.key==="ArrowRight")show(current+1);
+  });
 },{once:true});
 </script>
 </body>
