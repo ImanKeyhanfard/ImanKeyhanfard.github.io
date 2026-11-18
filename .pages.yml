@@ -261,6 +261,12 @@ content:
       - name: description_fa
         label: Description (Persian)
         type: rich-text
+      - name: alternate_title_en
+        label: Alternate headline (English)
+        type: string
+      - name: alternate_title_fa
+        label: Alternate headline (Persian)
+        type: string
       - name: thumbnail
         label: Cover image
         type: image
