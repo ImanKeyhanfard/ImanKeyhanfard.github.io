@@ -275,7 +275,8 @@
       const title=x["title_"+lang()]||x.title_en||"";
       const rawDesc=x["excerpt_"+lang()]||x["description_"+lang()]||x.excerpt_en||x.description_en||"";
       const desc=/original portfolio script also uses an alternate headline/i.test(rawDesc)||/نسخه.{0,4}اصلی اسکریپت/.test(rawDesc)?"":rawDesc;
-      const tags=Array.isArray(x.tags)?x.tags.filter(t=>!String(t).startsWith("category:")).slice(0,4):[];
+      const tagSource=lang()==="fa"?(x.tags_fa||[]):(x.tags||[]);
+      const tags=Array.isArray(tagSource)?tagSource.filter(t=>!String(t).startsWith("category:")).slice(0,4):[];
       const url=safeUrl(x.source_url||x.original_url||x.video_url), image=safeUrl(x.cover_image||x.thumbnail);
       const card=document.createElement("article");card.style.cssText="border:1px solid var(--line);padding:16px;background:#ffffff05;border-radius:var(--cms-card-radius);overflow:hidden";
       card.innerHTML=`<div style="font-size:9px;color:var(--muted);margin-bottom:8px">${esc(x.category||x.project_type||"")}</div><h4 style="font-size:15px;margin:0 0 8px">${esc(title)}</h4>${desc?`<p style="font-size:11px;color:var(--muted);line-height:1.8">${esc(desc)}</p>`:""}${tags.length?`<div class="cms-card-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:12px 0">${tags.map(t=>`<span style="font-size:9px;border:1px solid var(--line);border-radius:20px;padding:3px 8px;color:var(--muted)">${esc(t)}</span>`).join("")}</div>`:""}${url?`<a class="original-post" target="_blank" rel="noopener noreferrer" href="${esc(url)}">${lang()==="fa"?"مشاهده مطلب":"Open original"} ↗</a>`:""}`;
