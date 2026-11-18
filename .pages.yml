@@ -476,7 +476,7 @@ content:
         label: Content card minimum width (px, 180–340)
         type: number
   - name: page_seo
-    label: Individual Page SEO
+    label: Individual Page SEO & Content
     type: collection
     path: content/seo-pages
     format: json
