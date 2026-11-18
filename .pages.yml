@@ -219,6 +219,9 @@ content:
       - name: category
         label: Archive category
         type: string
+      - name: category_fa
+        label: Archive category (Persian)
+        type: string
       - name: status
         label: Publication status (published, draft, hidden)
         type: string
