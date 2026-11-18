@@ -1,13 +1,17 @@
 {
   "slug": "index",
   "page_path": "index.html",
-  "title_en": "Iman Keyhanfard | Journalist & Senior News Producer",
-  "description_en": "Tehran-based journalist and senior news producer with nearly 20 years in English-language media, field production, editorial research and Persian–English translation.",
+  "title_en": "Iman Keyhanfard | Iran Journalist & Field Producer",
+  "description_en": "Tehran-based senior news producer and field producer with nearly 20 years in English-language journalism, Iran research and Persian–English media translation.",
   "keywords_en": "",
   "canonical_url": "https://imankeyhanfard.github.io/",
   "og_image": "/iman-field.jpg",
   "noindex": false,
-  "title_fa": "ایمان کیهان‌فرد | روزنامه‌نگار و تهیه‌کننده ارشد خبر",
-  "description_fa": "روزنامه‌نگار و تهیه‌کننده ارشد خبر با نزدیک به ۲۰ سال تجربه در رسانه‌های انگلیسی‌زبان، تولید میدانی، پژوهش تحریریه‌ای و ترجمه فارسی–انگلیسی.",
-  "keywords_fa": "ایمان کیهان‌فرد، روزنامه‌نگار، تهیه‌کننده ارشد خبر، تهیه‌کننده میدانی، تولید خبر، ترجمه فارسی انگلیسی، پژوهش سیاسی ایران، رسانه‌های بین‌المللی"
+  "title_fa": "ایمان کیهان‌فرد | روزنامه‌نگار و تهیه‌کننده میدانی",
+  "description_fa": "تهیه‌کننده ارشد خبر و تهیه‌کننده میدانی در تهران با نزدیک به ۲۰ سال تجربه روزنامه‌نگاری انگلیسی‌زبان، پژوهش ایران و ترجمه رسانه‌ای فارسی و انگلیسی.",
+  "keywords_fa": "ایمان کیهان‌فرد، روزنامه‌نگار، تهیه‌کننده ارشد خبر، تهیه‌کننده میدانی، تولید خبر، ترجمه فارسی انگلیسی، پژوهش سیاسی ایران، رسانه‌های بین‌المللی",
+  "seo_title_en": "Iman Keyhanfard | Iran Journalist & Field Producer",
+  "seo_title_fa": "ایمان کیهان‌فرد | روزنامه‌نگار و تهیه‌کننده میدانی",
+  "seo_description_en": "Tehran-based senior news producer and field producer with nearly 20 years in English-language journalism, Iran research and Persian–English media translation.",
+  "seo_description_fa": "تهیه‌کننده ارشد خبر و تهیه‌کننده میدانی در تهران با نزدیک به ۲۰ سال تجربه روزنامه‌نگاری انگلیسی‌زبان، پژوهش ایران و ترجمه رسانه‌ای فارسی و انگلیسی."
 }
