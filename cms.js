@@ -79,7 +79,7 @@
     ensureMeta('meta[name="twitter:card"]', "content", "summary_large_image");
     ensureMeta('meta[name="twitter:title"]', "content", title);
     ensureMeta('meta[name="twitter:description"]', "content", description);
-    if (record.noindex === true) ensureMeta('meta[name="robots"]', "content", "noindex, nofollow");
+    ensureMeta('meta[name="robots"]', "content", record.noindex === true ? "noindex, nofollow" : "index, follow");
   }
   function applyNavigation(sections) {
     const nav = document.querySelector(".main-tabs");
@@ -162,7 +162,6 @@
       if(sections.length)applyNavigation(sections);
       const currentPath = decodeURIComponent(location.pathname.replace(/^\//, "") || "index.html");
       const pageSeo = seoPages.find(item => String(item.page_path || "").replace(/^\//, "") === currentPath);
-      if(pageSeo)applySeoRecord(pageSeo);
       if(experience.length)renderExperience(experience);
       if(services.length)renderServices(services);
       renderCmsItems(posts,projects);
@@ -186,6 +185,10 @@
         if(phone)document.querySelectorAll('.contact-card strong[dir="ltr"]').forEach(a=>a.textContent=phone);
         if(linkedin){const a=document.querySelector('.contact-card[href*="linkedin.com"]');if(a)a.href=linkedin;}
         if(whatsapp){const a=document.querySelector('.contact-card[href*="wa.me"]');if(a)a.href=whatsapp;}
+      }
+      if(pageSeo) {
+        applySeoRecord(pageSeo);
+        document.addEventListener("portfolio-language-change",()=>applySeoRecord(pageSeo));
       }
       document.documentElement.dataset.cmsLoaded="true";
     } catch(error) { console.warn("Pages CMS content could not be loaded; using built-in portfolio content.",error); }
