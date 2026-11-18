@@ -575,6 +575,220 @@ content:
       - name: home_contact_cta_fa
         label: Contact call-to-action (Persian)
         type: string
+      - name: home_labels
+        label: Homepage Labels, Buttons & Small Copy
+        type: object
+        fields:
+          - name: availability_en
+            label: Availability message (English)
+            type: string
+          - name: availability_fa
+            label: Availability message (Persian)
+            type: string
+          - name: hero_cta_services_en
+            label: Hero services button (English)
+            type: string
+          - name: hero_cta_services_fa
+            label: Hero services button (Persian)
+            type: string
+          - name: hero_cta_work_en
+            label: Hero selected-work button (English)
+            type: string
+          - name: hero_cta_work_fa
+            label: Hero selected-work button (Persian)
+            type: string
+          - name: profile_label_en
+            label: Profile section label (English)
+            type: string
+          - name: profile_label_fa
+            label: Profile section label (Persian)
+            type: string
+          - name: profile_cta_en
+            label: Profile experience button (English)
+            type: string
+          - name: profile_cta_fa
+            label: Profile experience button (Persian)
+            type: string
+          - name: stats_label_en
+            label: Experience statistic label (English)
+            type: string
+          - name: stats_label_fa
+            label: Experience statistic label (Persian)
+            type: string
+          - name: stat_item_1_en
+            label: Experience point 1 (English)
+            type: string
+          - name: stat_item_1_fa
+            label: Experience point 1 (Persian)
+            type: string
+          - name: stat_item_2_en
+            label: Experience point 2 (English)
+            type: string
+          - name: stat_item_2_fa
+            label: Experience point 2 (Persian)
+            type: string
+          - name: stat_item_3_en
+            label: Experience point 3 (English)
+            type: string
+          - name: stat_item_3_fa
+            label: Experience point 3 (Persian)
+            type: string
+          - name: stat_item_4_en
+            label: Experience point 4 (English)
+            type: string
+          - name: stat_item_4_fa
+            label: Experience point 4 (Persian)
+            type: string
+          - name: archive_label_en
+            label: Archive section label (English)
+            type: string
+          - name: archive_label_fa
+            label: Archive section label (Persian)
+            type: string
+          - name: archive_period_en
+            label: Archive period label (English)
+            type: string
+          - name: archive_period_fa
+            label: Archive period label (Persian)
+            type: string
+          - name: archive_link_en
+            label: Archive link label (English)
+            type: string
+          - name: archive_link_fa
+            label: Archive link label (Persian)
+            type: string
+          - name: work_label_en
+            label: Selected-work section label (English)
+            type: string
+          - name: work_label_fa
+            label: Selected-work section label (Persian)
+            type: string
+          - name: work_browse_label_en
+            label: Selected-work category label (English)
+            type: string
+          - name: work_browse_label_fa
+            label: Selected-work category label (Persian)
+            type: string
+          - name: projects_label_en
+            label: Projects section label (English)
+            type: string
+          - name: projects_label_fa
+            label: Projects section label (Persian)
+            type: string
+          - name: experience_label_en
+            label: Experience section label (English)
+            type: string
+          - name: experience_label_fa
+            label: Experience section label (Persian)
+            type: string
+          - name: services_label_en
+            label: Services section label (English)
+            type: string
+          - name: services_label_fa
+            label: Services section label (Persian)
+            type: string
+          - name: contact_label_en
+            label: Contact section label (English)
+            type: string
+          - name: contact_label_fa
+            label: Contact section label (Persian)
+            type: string
+          - name: process_label_en
+            label: Workflow label (English)
+            type: string
+          - name: process_label_fa
+            label: Workflow label (Persian)
+            type: string
+          - name: process_step_1_en
+            label: Workflow step 1 (English)
+            type: string
+          - name: process_step_1_fa
+            label: Workflow step 1 (Persian)
+            type: string
+          - name: process_step_2_en
+            label: Workflow step 2 (English)
+            type: string
+          - name: process_step_2_fa
+            label: Workflow step 2 (Persian)
+            type: string
+          - name: process_step_3_en
+            label: Workflow step 3 (English)
+            type: string
+          - name: process_step_3_fa
+            label: Workflow step 3 (Persian)
+            type: string
+          - name: process_step_4_en
+            label: Workflow step 4 (English)
+            type: string
+          - name: process_step_4_fa
+            label: Workflow step 4 (Persian)
+            type: string
+          - name: process_step_5_en
+            label: Workflow step 5 (English)
+            type: string
+          - name: process_step_5_fa
+            label: Workflow step 5 (Persian)
+            type: string
+          - name: process_step_6_en
+            label: Workflow step 6 (English)
+            type: string
+          - name: process_step_6_fa
+            label: Workflow step 6 (Persian)
+            type: string
+          - name: process_intro_en
+            label: Workflow introduction (English)
+            type: text
+          - name: process_intro_fa
+            label: Workflow introduction (Persian)
+            type: text
+          - name: contact_email_label_en
+            label: Contact email label (English)
+            type: string
+          - name: contact_email_label_fa
+            label: Contact email label (Persian)
+            type: string
+          - name: contact_linkedin_label_en
+            label: Contact LinkedIn label (English)
+            type: string
+          - name: contact_linkedin_label_fa
+            label: Contact LinkedIn label (Persian)
+            type: string
+          - name: contact_phone_label_en
+            label: Contact phone label (English)
+            type: string
+          - name: contact_phone_label_fa
+            label: Contact phone label (Persian)
+            type: string
+          - name: footer_tagline_en
+            label: Footer tagline (English)
+            type: string
+          - name: footer_tagline_fa
+            label: Footer tagline (Persian)
+            type: string
+          - name: footer_status_en
+            label: Footer status (English)
+            type: string
+          - name: footer_status_fa
+            label: Footer status (Persian)
+            type: string
+          - name: welcome_kicker_en
+            label: Welcome panel kicker (English)
+            type: string
+          - name: welcome_kicker_fa
+            label: Welcome panel kicker (Persian)
+            type: string
+          - name: welcome_role_en
+            label: Welcome panel roles (English)
+            type: string
+          - name: welcome_role_fa
+            label: Welcome panel roles (Persian)
+            type: string
+          - name: welcome_intro_en
+            label: Welcome panel introduction (English)
+            type: text
+          - name: welcome_intro_fa
+            label: Welcome panel introduction (Persian)
+            type: text
       - name: archive_page_eyebrow_en
         label: LinkedIn archive eyebrow (English)
         type: string
