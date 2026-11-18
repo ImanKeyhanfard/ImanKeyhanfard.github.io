@@ -128,5 +128,6 @@
     }
   ],
   "media_rule": "For each category, prioritize a genuine video with its headline and a short news context. If no suitable video exists, use the original post photo/image with its headline and news context. Keep the media preview visible on the card; clicking opens details and the original LinkedIn post.",
-  "status": "The original 32 categories are preserved. Twelve additional subject areas have been identified from public LinkedIn posts. The interactive portfolio currently contains 17 groups; the 32-topic archive still requires full media population and verification."
+  "status": "The homepage selected-work carousel now reads 17 active topic records from content/topics and 39 published LinkedIn post records from content/portfolio. The original 32 categories remain documented here. Categories without an identified, verified post and suitable media are not shown as active carousel topics; full population and verification of the remaining topics is still outstanding.",
+  "cms_note": "Topic labels, order, visibility and accent colors are editable in Pages CMS. Each displayed story is sourced from a published portfolio JSON record and opens its original LinkedIn post."
 }
