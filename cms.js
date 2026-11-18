@@ -27,9 +27,78 @@
     const gutter = clamp(settings.layout_page_gutter, 7.2, 3, 12);
     const radius = clamp(settings.layout_card_radius, 8, 0, 24);
     const gap = clamp(settings.layout_grid_gap, 12, 8, 32);
+    const width = clamp(settings.layout_content_width, 1600, 900, 1800);
+    const sectionGap = clamp(settings.layout_section_gap, 24, 8, 64);
+    const cardMin = clamp(settings.layout_card_min_width, 220, 180, 340);
     root.style.setProperty("--cms-page-gutter", `clamp(16px, ${gutter}vw, 120px)`);
     root.style.setProperty("--cms-card-radius", `${radius}px`);
     root.style.setProperty("--cms-grid-gap", `${gap}px`);
+    root.style.setProperty("--cms-content-width", `${width}px`);
+    root.style.setProperty("--cms-section-gap", `${sectionGap}px`);
+    root.style.setProperty("--cms-card-min-width", `${cardMin}px`);
+  }
+  function safeUrl(value) {
+    const raw = String(value || "").trim();
+    if (!raw) return "";
+    if (/^(https?:|mailto:|tel:)/i.test(raw) || raw.startsWith("/") || raw.startsWith("./") || raw.startsWith("../")) return raw;
+    return "";
+  }
+  function ensureMeta(selector, attribute, value) {
+    if (!value) return;
+    let node = document.querySelector(selector);
+    if (!node) {
+      node = document.createElement("meta");
+      const match = selector.match(/\[(name|property)=["']([^"']+)["']\]/);
+      if (match) node.setAttribute(match[1], match[2]);
+      document.head.appendChild(node);
+    }
+    node.setAttribute("content", value);
+  }
+  function applySeoRecord(record) {
+    const l = lang();
+    const title = record["title_" + l] || record.title_en;
+    const description = record["description_" + l] || record.description_en;
+    const keywords = record["keywords_" + l] || record.keywords_en;
+    if (title) document.title = title;
+    ensureMeta('meta[name="description"]', "content", description);
+    ensureMeta('meta[name="keywords"]', "content", keywords);
+    const canonical = safeUrl(record.canonical_url);
+    if (canonical) {
+      let link = document.querySelector('link[rel="canonical"]');
+      if (!link) { link = document.createElement("link"); link.rel = "canonical"; document.head.appendChild(link); }
+      link.href = canonical;
+      ensureMeta('meta[property="og:url"]', "content", canonical);
+    }
+    ensureMeta('meta[property="og:title"]', "content", title);
+    ensureMeta('meta[property="og:description"]', "content", description);
+    const image = safeUrl(record.og_image);
+    if (image) {
+      ensureMeta('meta[property="og:image"]', "content", new URL(image, location.origin).href);
+      ensureMeta('meta[name="twitter:image"]', "content", new URL(image, location.origin).href);
+    }
+    ensureMeta('meta[name="twitter:card"]', "content", "summary_large_image");
+    ensureMeta('meta[name="twitter:title"]', "content", title);
+    ensureMeta('meta[name="twitter:description"]', "content", description);
+    if (record.noindex === true) ensureMeta('meta[name="robots"]', "content", "noindex, nofollow");
+  }
+  function applyNavigation(sections) {
+    const nav = document.querySelector(".main-tabs");
+    if (!nav || !sections.length) return;
+    const buttons = [...nav.querySelectorAll(".nav-tab[data-view]")];
+    const ordered = [];
+    for (const section of [...sections].sort((a,b)=>(Number(a.order)||999)-(Number(b.order)||999))) {
+      const button = buttons.find(b => b.dataset.view === (section.slug || section.name));
+      if (!button) continue;
+      if (section.visible === false) button.hidden = true;
+      else button.hidden = false;
+      if (section.label_en) button.dataset.en = section.label_en;
+      if (section.label_fa) button.dataset.fa = section.label_fa;
+      button.textContent = button.dataset[lang()] || section.label_en || button.textContent;
+      ordered.push(button);
+    }
+    for (const button of buttons) if (!ordered.includes(button)) ordered.push(button);
+    const archive = nav.querySelector('a.nav-tab[href*="linkedin-archive"]');
+    ordered.forEach(button => nav.insertBefore(button, archive || null));
   }
   function renderExperience(items) {
     const visible = items.filter(x => x.visible !== false).sort((a,b)=>(a.order||999)-(b.order||999));
@@ -84,19 +153,34 @@
   }
   async function start() {
     try {
-      const [experience,services,posts,projects,settings]=await Promise.all([
+      const [experience,services,posts,projects,sections,seoPages,settings]=await Promise.all([
         directory("content/experience").catch(()=>[]),directory("content/services").catch(()=>[]),
         directory("content/posts").catch(()=>[]),directory("content/portfolio").catch(()=>[]),
+        directory("content/sections").catch(()=>[]),directory("content/seo-pages").catch(()=>[]),
         one("content/site-settings.json").catch(()=>null)
       ]);
+      if(sections.length)applyNavigation(sections);
+      const currentPath = decodeURIComponent(location.pathname.replace(/^\//, "") || "index.html");
+      const pageSeo = seoPages.find(item => String(item.page_path || "").replace(/^\//, "") === currentPath);
+      if(pageSeo)applySeoRecord(pageSeo);
       if(experience.length)renderExperience(experience);
       if(services.length)renderServices(services);
       renderCmsItems(posts,projects);
       if(settings){
         applyLayoutSettings(settings);
-        if(settings.site_title)document.title=settings.site_title;
+        if(settings.site_title)document.title=settings["seo_title_"+lang()]||settings.site_title;
         const meta=document.querySelector('meta[name="description"]');
         if(meta){const d=settings["seo_description_"+lang()]||settings.seo_description_en;if(d)meta.content=d;}
+        ensureMeta('meta[name="keywords"]',"content",settings["seo_keywords_"+lang()]||settings.seo_keywords_en);
+        if(settings.seo_og_image){
+          const image=safeUrl(settings.seo_og_image);
+          if(image){ensureMeta('meta[property="og:image"]',"content",new URL(image,location.origin).href);ensureMeta('meta[name="twitter:image"]',"content",new URL(image,location.origin).href);}
+        }
+        ensureMeta('meta[property="og:title"]',"content",document.title);
+        ensureMeta('meta[property="og:description"]',"content",settings["seo_description_"+lang()]||settings.seo_description_en);
+        ensureMeta('meta[name="twitter:card"]',"content","summary_large_image");
+        ensureMeta('meta[name="twitter:title"]',"content",document.title);
+        ensureMeta('meta[name="twitter:description"]',"content",settings["seo_description_"+lang()]||settings.seo_description_en);
         const email=settings.email, phone=settings.phone, linkedin=settings.linkedin, whatsapp=settings.whatsapp;
         if(email)document.querySelectorAll('a[href^="mailto:"]').forEach(a=>a.href="mailto:"+email);
         if(phone)document.querySelectorAll('.contact-card strong[dir="ltr"]').forEach(a=>a.textContent=phone);
