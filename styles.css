@@ -941,3 +941,10 @@ html[dir=rtl] .experience-visual span{left:auto;right:20px}
 .flow-steps span:hover{transform:translateY(-3px);border-color:rgba(109,174,255,.5)}
 .flow-steps i{animation:workflowArrow 1.8s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){.flow-steps span,.flow-steps i{animation:none!important;transition:none!important}}
+
+
+/* CMS-managed global layout controls; defaults preserve the existing design. */
+:root{--cms-page-gutter:7.2%;--cms-card-radius:8px;--cms-grid-gap:12px}
+.view{padding-left:var(--cms-page-gutter);padding-right:var(--cms-page-gutter)}
+.contact-grid,.service-columns,.cms-published-items>div{gap:var(--cms-grid-gap)}
+.contact-card,.topic-tab,.service-visual,.cms-published-items article{border-radius:var(--cms-card-radius)}
