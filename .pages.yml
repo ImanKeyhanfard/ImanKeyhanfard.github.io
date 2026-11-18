@@ -281,6 +281,18 @@ content:
         list: true
         options:
           media: images
+      - name: gallery_alt
+        label: Gallery image alternative text
+        type: string
+        list: true
+      - name: gallery_caption_en
+        label: Gallery captions (English)
+        type: string
+        list: true
+      - name: gallery_caption_fa
+        label: Gallery captions (Persian)
+        type: string
+        list: true
       - name: video_url
         label: Direct video file URL (MP4/WebM)
         type: string
