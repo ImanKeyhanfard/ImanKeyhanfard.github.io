@@ -61,6 +61,35 @@ content:
         type: select
         options:
           values: [article-list, portfolio-grid, photo-gallery, video-gallery, mixed]
+      - name: columns_desktop
+        label: Grid columns — desktop (1–6)
+        type: number
+      - name: columns_tablet
+        label: Grid columns — tablet (1–4)
+        type: number
+      - name: columns_mobile
+        label: Grid columns — mobile (1–2)
+        type: number
+      - name: grid_gap
+        label: Grid gap (px, 8–32)
+        type: number
+      - name: content_width
+        label: Section content width (px)
+        type: number
+      - name: padding_top
+        label: Section top spacing (px)
+        type: number
+      - name: padding_bottom
+        label: Section bottom spacing (px)
+        type: number
+      - name: card_min_width
+        label: Minimum card width (px)
+        type: number
+      - name: image_ratio
+        label: Image aspect ratio
+        type: select
+        options:
+          values: ["16/9", "4/3", "1/1", "3/4", "auto"]
   - name: posts
     label: News & Articles
     type: collection
