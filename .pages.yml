@@ -184,6 +184,37 @@ content:
         type: select
         options:
           values: [draft, published]
+  - name: topics
+    label: Work Carousel Topics
+    type: collection
+    path: content/topics
+    format: json
+    filename: "{slug}.json"
+    view:
+      primary: label_en
+      sort: order
+      order: asc
+    fields:
+      - name: slug
+        label: Topic ID
+        type: string
+        required: true
+      - name: label_en
+        label: Topic label (English)
+        type: string
+        required: true
+      - name: label_fa
+        label: Topic label (Persian)
+        type: string
+      - name: color
+        label: Accent color (hex)
+        type: string
+      - name: order
+        label: Display order
+        type: number
+      - name: visible
+        label: Show in selected-work carousel
+        type: boolean
   - name: portfolio
     label: Portfolio & Media Projects
     type: collection
