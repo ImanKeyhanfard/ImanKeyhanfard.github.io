@@ -6,7 +6,7 @@
   const lang = () => document.documentElement.lang === "fa" ? "fa" : "en";
   const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   async function directory(path) {
-    const r = await fetch(api + path, {headers:{"Accept":"application/vnd.github+json"}});
+    const r = await fetch(api + path + "?ref=main&per_page=100", {headers:{"Accept":"application/vnd.github+json"}});
     if (!r.ok) throw new Error("GitHub API " + r.status);
     const files = await r.json();
     return Promise.all(files.filter(f => f.type === "file" && f.name.endsWith(".json"))
