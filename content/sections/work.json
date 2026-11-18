@@ -1,0 +1,11 @@
+{
+  "name": "work",
+  "slug": "work",
+  "label_en": "Selected work",
+  "label_fa": "نمونه‌کارها",
+  "description_en": "Selected editorial and production work",
+  "description_fa": "نمونه‌کارهای تحریریه و تولید",
+  "order": 2,
+  "visible": true,
+  "layout": "portfolio-grid"
+}

@@ -7,5 +7,18 @@
   "linkedin": "https://www.linkedin.com/in/iman-keyhanfard-3b85439/",
   "whatsapp": "https://wa.me/989125958820",
   "seo_description_en": "Iman Keyhanfard — Senior News Producer, Field Producer, Journalist and Media Project Coordinator.",
-  "seo_description_fa": "ایمان کیهان‌فرد؛ تهیه‌کننده ارشد خبر، تهیه‌کننده میدانی، روزنامه‌نگار و هماهنگ‌کننده پروژه‌های رسانه‌ای."
+  "seo_description_fa": "ایمان کیهان‌فرد؛ تهیه‌کننده ارشد خبر، تهیه‌کننده میدانی، روزنامه‌نگار و هماهنگ‌کننده پروژه‌های رسانه‌ای.",
+  "layout_page_gutter": 7.2,
+  "layout_card_radius": 8,
+  "layout_grid_gap": 12,
+  "seo_title_en": "Iman Keyhanfard — Journalist & Senior News Producer",
+  "seo_title_fa": "ایمان کیهان‌فرد — روزنامه‌نگار و تهیه‌کننده ارشد خبر",
+  "seo_keywords_en": "Iran journalist, Tehran field producer, senior news producer, Persian English translation, Iran political research, Middle East media production",
+  "seo_keywords_fa": "روزنامه‌نگار ایران، تهیه‌کننده میدانی تهران، تهیه‌کننده ارشد خبر، ترجمه فارسی انگلیسی، پژوهش سیاسی ایران، تولید رسانه‌ای خاورمیانه",
+  "seo_og_image": "/iman-field.jpg",
+  "layout_content_width": 1600,
+  "layout_section_gap": 24,
+  "layout_card_min_width": 220,
+  "profile_image": "/iman-field.jpg",
+  "contact_image": "/iman-contact.jpg"
 }

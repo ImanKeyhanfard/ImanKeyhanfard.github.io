@@ -1,0 +1,11 @@
+{
+  "name": "services",
+  "slug": "services",
+  "label_en": "Services",
+  "label_fa": "خدمات",
+  "description_en": "Available services",
+  "description_fa": "خدمات قابل ارائه",
+  "order": 5,
+  "visible": true,
+  "layout": "mixed"
+}

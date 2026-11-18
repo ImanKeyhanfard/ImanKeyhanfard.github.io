@@ -1,0 +1,11 @@
+{
+  "name": "projects",
+  "slug": "projects",
+  "label_en": "Projects",
+  "label_fa": "پروژه‌ها",
+  "description_en": "Projects and case studies",
+  "description_fa": "پروژه‌ها و مطالعات موردی",
+  "order": 3,
+  "visible": true,
+  "layout": "mixed"
+}
