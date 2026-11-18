@@ -331,7 +331,7 @@
         }
         if(linkedin)document.querySelectorAll('a[href*="linkedin.com"]').forEach(a=>a.href=linkedin);
         if(whatsapp)document.querySelectorAll('a[href*="wa.me"]').forEach(a=>a.href=whatsapp);
-        const tagline=settings["tagline_"+lang()];
+        const tagline=(settings.home_labels||{})["welcome_intro_"+lang()]||settings["tagline_"+lang()];
         if(tagline){const welcome=document.querySelector(".welcome-drop p");if(welcome)welcome.textContent=tagline;}
         const profile=safeUrl(settings.profile_image), contactImage=safeUrl(settings.contact_image);
         if(profile)document.querySelectorAll(".hero-profile-photo").forEach(img=>img.src=profile);
