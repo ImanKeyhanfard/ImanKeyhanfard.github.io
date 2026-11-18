@@ -1,0 +1,50 @@
+{
+  "source": "linkedin-archive.html embedded gzip export",
+  "post_count": 1549,
+  "payload_type": "list",
+  "first_post_keys": [
+    "id",
+    "date",
+    "text",
+    "title",
+    "url",
+    "category"
+  ],
+  "categories": [
+    "Conflict & Military Affairs",
+    "Diplomacy & International Relations",
+    "Economy, Sanctions & Trade",
+    "Energy & Maritime Security",
+    "Humanitarian & Society",
+    "International News & Current Affairs",
+    "Iran & Domestic Affairs",
+    "Media & Journalism",
+    "US Politics & Policy"
+  ],
+  "sample_posts": [
+    {
+      "id": "7524791471070253056",
+      "date": "2026-11-07 11:14:50",
+      "text": "Iran’s Qeshm Island hit by at least 2 projectiles as Tehran launches ANTI-AIR MISSILES\"\n\n\"Intense JET ACTIVITY reported along IRAN-IRAQ BORDER\"\n\n\"US warns diplomats across Mid East to ‘INCREASE VIGILANCE’ and prep for ESCALATION — Ynet",
+      "title": "Iran’s Qeshm Island hit by at least 2 projectiles as Tehran launches ANTI-AIR MISSILES",
+      "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7524791471070253056",
+      "category": "Conflict & Military Affairs"
+    },
+    {
+      "id": "7524776823394828288",
+      "date": "2026-11-07 10:16:38",
+      "text": "IRAN WAR COULD TRIGGER GLOBAL ECONOMIC COLLAPSE?\"\n\n\"'The US is digging the hole deeper'\"\n\n\"'If we have further war, the Iranians will strike back very hard' — Professor Mohammad Marandi, University of Tehran\"\n\n\"WATCH HERE\"\n\"https://lnkd.in/ey2HpCVT",
+      "title": "IRAN WAR COULD TRIGGER GLOBAL ECONOMIC COLLAPSE?",
+      "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7524776823394828288",
+      "category": "Conflict & Military Affairs"
+    },
+    {
+      "id": "7524775690907332608",
+      "date": "2026-11-07 10:12:08",
+      "text": "TRUMP: Israel… entire Middle East WOULD NOT EXIST TODAY if I did not stop Iran from having a nuclear weapon",
+      "title": "TRUMP: Israel… entire Middle East WOULD NOT EXIST TODAY if I did not stop Iran from having a nuclear weapon",
+      "url": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7524775690907332608",
+      "category": "Conflict & Military Affairs"
+    }
+  ]
+}
