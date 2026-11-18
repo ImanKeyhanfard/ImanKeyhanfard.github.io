@@ -482,7 +482,7 @@ content:
     format: json
     filename: "{slug}.json"
     view:
-      primary: title_en
+      primary: slug
       sort: slug
       order: asc
     fields:
