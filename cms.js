@@ -226,8 +226,9 @@
         if(whatsapp)document.querySelectorAll('a[href*="wa.me"]').forEach(a=>a.href=whatsapp);
         const tagline=settings["tagline_"+lang()];
         if(tagline){const welcome=document.querySelector(".welcome-drop p");if(welcome)welcome.textContent=tagline;}
-        const profile=safeUrl(settings.profile_image);
-        if(profile)document.querySelectorAll(".hero-profile-photo,.contact-profile-photo").forEach(img=>img.src=profile);
+        const profile=safeUrl(settings.profile_image), contactImage=safeUrl(settings.contact_image);
+        if(profile)document.querySelectorAll(".hero-profile-photo").forEach(img=>img.src=profile);
+        if(contactImage)document.querySelectorAll(".contact-profile-photo").forEach(img=>img.src=contactImage);
       }
       if(pageSeo) {
         applySeoRecord(pageSeo);
