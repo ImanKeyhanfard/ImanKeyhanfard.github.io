@@ -10,7 +10,14 @@
     document.dispatchEvent(new CustomEvent("portfolio-language-change",{detail:{lang}}));
     renderExperience(activeExperience);renderService(activeService);
   }
-  langButton?.addEventListener("click",()=>setLanguage(document.documentElement.lang==="en"?"fa":"en"));
+  langButton?.addEventListener("click",()=>{
+    const current=document.documentElement.lang==="fa"?"fa":"en";
+    if(location.pathname==="/"||location.pathname==="/index.html"||location.pathname==="/fa/"||location.pathname==="/fa/index.html"){
+      location.href=current==="en"?"/fa/":"/";
+    }else{
+      setLanguage(current==="en"?"fa":"en");
+    }
+  });
   const views=["home","work","projects","experience","services","contact"];
   const projectsFrame=$("#projectsFrame");
   if(projectsFrame){const fitProjects=()=>{try{const d=projectsFrame.contentDocument;if(d)projectsFrame.style.height=Math.max(d.body.scrollHeight,d.documentElement.scrollHeight)+"px";}catch(e){}};projectsFrame.addEventListener("load",fitProjects);window.addEventListener("resize",fitProjects);}
@@ -100,5 +107,5 @@
   $$(".service-tab").forEach(b=>b.addEventListener("click",()=>renderService(b.dataset.service)));
   renderExperience("current");renderService("field");
   const glow=$(".cursor-glow");if(glow&&matchMedia("(pointer:fine)").matches){window.addEventListener("pointermove",e=>{glow.style.left=e.clientX+"px";glow.style.top=e.clientY+"px";},{passive:true});}
-  setLanguage("en");
+  setLanguage(document.documentElement.lang==="fa"?"fa":"en");
 })();
