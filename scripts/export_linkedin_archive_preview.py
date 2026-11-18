@@ -23,8 +23,21 @@ else:
 if not isinstance(source_posts, list):
     raise SystemExit(f"Unexpected archive payload type: {type(source_posts).__name__}")
 
+CATEGORY_FA = {
+    "Conflict & Military Affairs": "درگیری‌ها و امور نظامی",
+    "Diplomacy & International Relations": "دیپلماسی و روابط بین‌الملل",
+    "International News & Current Affairs": "اخبار بین‌الملل و تحولات روز",
+    "Energy & Maritime Security": "انرژی و امنیت دریایی",
+    "Iran & Domestic Affairs": "ایران و امور داخلی",
+    "US Politics & Policy": "سیاست و خط‌مشی آمریکا",
+    "Humanitarian & Society": "امور بشردوستانه و جامعه",
+    "Economy, Sanctions & Trade": "اقتصاد، تحریم‌ها و تجارت",
+    "Media & Journalism": "رسانه و روزنامه‌نگاری"
+}
+
 POSTS_DIR.mkdir(parents=True, exist_ok=True)
 created = 0
+updated = 0
 for source_post in source_posts:
     if not isinstance(source_post, dict):
         continue
@@ -32,8 +45,13 @@ for source_post in source_posts:
     if not post_id:
         continue
     target = POSTS_DIR / f"{post_id}.json"
-    # Never overwrite an existing CMS-edited record during a later source refresh.
+    # Preserve edited fields, but fill newly introduced defaults when absent.
     if target.exists():
+        existing = json.loads(target.read_text(encoding="utf-8"))
+        if not existing.get("category_fa"):
+            existing["category_fa"] = CATEGORY_FA.get(str(source_post.get("category") or ""), "")
+            target.write_text(json.dumps(existing, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+            updated += 1
         continue
     post = {
         "id": post_id,
@@ -42,6 +60,7 @@ for source_post in source_posts:
         "text": str(source_post.get("text") or ""),
         "url": str(source_post.get("url") or ""),
         "category": str(source_post.get("category") or ""),
+        "category_fa": CATEGORY_FA.get(str(source_post.get("category") or ""), ""),
         "status": "published",
         "thumbnail": "",
         "video_url": "",
@@ -67,6 +86,7 @@ INDEX.write_text(json.dumps(posts, ensure_ascii=False, separators=(",", ":")) + 
 categories = sorted({str(item.get("category") or "") for item in posts if item.get("category")})
 print(f"Source posts: {len(source_posts)}")
 print(f"New CMS records created: {created}")
+print(f"Existing CMS records updated with missing category translations: {updated}")
 print(f"Total CMS records compiled: {len(posts)}")
 print(f"Categories: {len(categories)}")
 print(f"Compiled index size: {INDEX.stat().st_size:,} bytes")
