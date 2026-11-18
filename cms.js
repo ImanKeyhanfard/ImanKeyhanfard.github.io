@@ -100,6 +100,32 @@
     const archive = nav.querySelector('a.nav-tab[href*="linkedin-archive"]');
     ordered.forEach(button => nav.insertBefore(button, archive || null));
   }
+  function applySectionLayouts(sections) {
+    const clamp = (value, fallback, min, max) => {
+      const n = Number(value);
+      return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : fallback;
+    };
+    for (const section of sections) {
+      const slug = String(section.slug || section.name || "");
+      const panel = document.querySelector('[data-view-panel="' + CSS.escape(slug) + '"]');
+      if (!panel) continue;
+      const desktop = clamp(section.columns_desktop, 3, 1, 6);
+      const tablet = clamp(section.columns_tablet, 2, 1, 4);
+      const mobile = clamp(section.columns_mobile, 1, 1, 2);
+      panel.style.setProperty("--cms-grid-columns", desktop);
+      panel.style.setProperty("--cms-grid-columns-tablet", tablet);
+      panel.style.setProperty("--cms-grid-columns-mobile", mobile);
+      panel.style.setProperty("--cms-section-grid-gap", clamp(section.grid_gap, 12, 8, 32) + "px");
+      panel.style.setProperty("--cms-section-card-min-width", clamp(section.card_min_width, 220, 180, 340) + "px");
+      panel.style.setProperty("--cms-section-content-width", clamp(section.content_width, 1600, 900, 1800) + "px");
+      panel.style.setProperty("--cms-view-padding-top", clamp(section.padding_top, 50, 12, 120) + "px");
+      panel.style.setProperty("--cms-view-padding-bottom", clamp(section.padding_bottom, 42, 12, 120) + "px");
+      const ratio = ["16/9","4/3","1/1","3/4","auto"].includes(section.image_ratio) ? section.image_ratio : "16/9";
+      panel.style.setProperty("--cms-section-image-ratio", ratio);
+      if (section.visible === false) panel.hidden = true;
+      else panel.hidden = false;
+    }
+  }
   function renderExperience(items) {
     const visible = items.filter(x => x.visible !== false).sort((a,b)=>(a.order||999)-(b.order||999));
     if (!visible.length) return;
@@ -140,7 +166,7 @@
     const section=document.createElement("section"); section.className="cms-published-items";
     section.style.cssText="margin:32px 0 12px;padding-top:22px;border-top:1px solid var(--line)";
     const heading=document.createElement("h3"); heading.textContent=lang()==="fa"?"مطالب و پروژه‌های منتشرشده از CMS":"Published from CMS"; heading.style.cssText="font-size:20px;margin:0 0 16px";
-    const grid=document.createElement("div");grid.style.cssText="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px";
+    const grid=document.createElement("div");grid.className="cms-content-grid";
     items.sort((a,b)=>Number(Boolean(b.featured))-Number(Boolean(a.featured)) || (Number(a.order)||999)-(Number(b.order)||999) || String(b.publication_date||b.date||"").localeCompare(String(a.publication_date||a.date||"")));
     for(const x of items){
       const title=x["title_"+lang()]||x.title_en||"", desc=x["excerpt_"+lang()]||x["description_"+lang()]||x.excerpt_en||x.description_en||"";
@@ -160,7 +186,7 @@
         directory("content/sections").catch(()=>[]),directory("content/seo-pages").catch(()=>[]),
         one("content/site-settings.json").catch(()=>null)
       ]);
-      if(sections.length)applyNavigation(sections);
+      if(sections.length){applyNavigation(sections);applySectionLayouts(sections);}
       const currentPath = decodeURIComponent(location.pathname.replace(/^\//, "") || "index.html");
       const pageSeo = seoPages.find(item => String(item.page_path || "").replace(/^\//, "") === currentPath);
       if(experience.length)renderExperience(experience);
