@@ -528,9 +528,9 @@ content:
         label: Hide page from search engines
         type: boolean
       - name: page_content
-        label: Full page content (HTML)
+        label: Service page content (HTML)
         type: rich-text
-        description: Edit the complete visible content for this specific English or Persian page. Preserve the language switch, internal links and heading structure.
+        description: For dedicated service pages only. Edit the visible content for this English or Persian page; preserve the language switch, internal links and heading structure.
         options:
           format: html
           switcher: true
