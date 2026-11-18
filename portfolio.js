@@ -117,6 +117,7 @@
     const id = itemId(post);
     const original = String(post.original_url || "");
     const description = itemDescription(post, group);
+    const alternateTitle = post["alternate_title_" + lang()] || "";
     const color = safeColor(group.color);
     root.style.setProperty("--accent", color);
     eyebrow.textContent = (group["label_" + lang()] || group.label_en || "").toLocaleUpperCase(isFa ? "fa" : "en");
@@ -143,7 +144,8 @@
       '<aside class="topic-detail"><div class="micro-label">' +
       (isFa ? "زمینه و منبع اصلی" : "STORY CONTEXT & ORIGINAL SOURCE") +
       '</div><h4>' + esc(title) + '</h4><p>' + esc(description) +
-      '</p><div class="detail-tags">' + tags.map(esc).join(" · ") +
+      '</p>' + (alternateTitle ? '<p class="alternate-title"><span>' + esc(isFa ? "عنوان جایگزین: " : "ALTERNATE HEADLINE: ") + '</span>' + esc(alternateTitle) + '</p>' : '') +
+      '<div class="detail-tags">' + tags.map(esc).join(" · ") +
       '</div>' + detailMedia + originalLink + '</aside>';
 
     const card = deck.querySelector(".topic-card");
