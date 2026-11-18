@@ -436,6 +436,138 @@ content:
         type: image
         options:
           media: images
+      - name: home_hero_overline_en
+        label: Homepage hero overline (English)
+        type: string
+      - name: home_hero_overline_fa
+        label: Homepage hero overline (Persian)
+        type: string
+      - name: home_hero_roles_en
+        label: Homepage professional roles (English)
+        type: string
+      - name: home_hero_roles_fa
+        label: Homepage professional roles (Persian)
+        type: string
+      - name: home_hero_intro_en
+        label: Homepage hero introduction (English)
+        type: text
+      - name: home_hero_intro_fa
+        label: Homepage hero introduction (Persian)
+        type: text
+      - name: home_profile_heading_en
+        label: Homepage profile heading (English)
+        type: text
+      - name: home_profile_heading_fa
+        label: Homepage profile heading (Persian)
+        type: text
+      - name: home_profile_intro_en
+        label: Homepage profile introduction (English)
+        type: text
+      - name: home_profile_intro_fa
+        label: Homepage profile introduction (Persian)
+        type: text
+      - name: home_archive_heading_en
+        label: Homepage archive heading (English)
+        type: string
+      - name: home_archive_heading_fa
+        label: Homepage archive heading (Persian)
+        type: string
+      - name: home_archive_intro_en
+        label: Homepage archive introduction (English)
+        type: text
+      - name: home_archive_intro_fa
+        label: Homepage archive introduction (Persian)
+        type: text
+      - name: home_work_heading_en
+        label: Selected work heading (English)
+        type: string
+      - name: home_work_heading_fa
+        label: Selected work heading (Persian)
+        type: string
+      - name: home_work_intro_en
+        label: Selected work introduction (English)
+        type: text
+      - name: home_work_intro_fa
+        label: Selected work introduction (Persian)
+        type: text
+      - name: home_projects_heading_en
+        label: Projects heading (English)
+        type: string
+      - name: home_projects_heading_fa
+        label: Projects heading (Persian)
+        type: string
+      - name: home_projects_intro_en
+        label: Projects introduction (English)
+        type: text
+      - name: home_projects_intro_fa
+        label: Projects introduction (Persian)
+        type: text
+      - name: home_experience_heading_en
+        label: Experience heading (English)
+        type: text
+      - name: home_experience_heading_fa
+        label: Experience heading (Persian)
+        type: text
+      - name: home_experience_intro_en
+        label: Experience introduction (English)
+        type: text
+      - name: home_experience_intro_fa
+        label: Experience introduction (Persian)
+        type: text
+      - name: home_services_heading_en
+        label: Services heading (English)
+        type: text
+      - name: home_services_heading_fa
+        label: Services heading (Persian)
+        type: text
+      - name: home_services_intro_en
+        label: Services introduction (English)
+        type: text
+      - name: home_services_intro_fa
+        label: Services introduction (Persian)
+        type: text
+      - name: home_contact_heading_en
+        label: Contact heading (English)
+        type: text
+      - name: home_contact_heading_fa
+        label: Contact heading (Persian)
+        type: text
+      - name: home_contact_intro_en
+        label: Contact introduction (English)
+        type: text
+      - name: home_contact_intro_fa
+        label: Contact introduction (Persian)
+        type: text
+      - name: home_contact_cta_en
+        label: Contact call-to-action (English)
+        type: string
+      - name: home_contact_cta_fa
+        label: Contact call-to-action (Persian)
+        type: string
+      - name: archive_page_eyebrow_en
+        label: LinkedIn archive eyebrow (English)
+        type: string
+      - name: archive_page_eyebrow_fa
+        label: LinkedIn archive eyebrow (Persian)
+        type: string
+      - name: archive_page_heading_en
+        label: LinkedIn archive heading (English)
+        type: string
+      - name: archive_page_heading_fa
+        label: LinkedIn archive heading (Persian)
+        type: string
+      - name: archive_page_intro_en
+        label: LinkedIn archive introduction (English)
+        type: text
+      - name: archive_page_intro_fa
+        label: LinkedIn archive introduction (Persian)
+        type: text
+      - name: archive_page_footer_en
+        label: LinkedIn archive footer (English)
+        type: text
+      - name: archive_page_footer_fa
+        label: LinkedIn archive footer (Persian)
+        type: text
       - name: layout_page_gutter
         label: Page side spacing (vw, 3–12)
         type: number
@@ -528,9 +660,9 @@ content:
         label: Hide page from search engines
         type: boolean
       - name: page_content
-        label: Service page content (HTML)
+        label: Dedicated page content (HTML)
         type: rich-text
-        description: For dedicated service pages only. Edit the visible content for this English or Persian page; preserve the language switch, internal links and heading structure.
+        description: Edit the visible content of this standalone page in the selected language. Preserve required IDs, gallery containers, language controls and internal links.
         options:
           format: html
           switcher: true
