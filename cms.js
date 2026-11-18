@@ -54,6 +54,12 @@
     }
     node.setAttribute("content", value);
   }
+  function applyPageContent(record) {
+    const content = String(record.page_content || "").trim();
+    if (!content) return;
+    const main = document.querySelector("body > main") || document.querySelector("main");
+    if (main) main.innerHTML = content;
+  }
   function applySeoRecord(record) {
     const l = lang();
     const title = record["title_" + l] || record.title_en;
@@ -235,8 +241,9 @@
         if(contactImage)document.querySelectorAll(".contact-profile-photo").forEach(img=>img.src=contactImage);
       }
       if(pageSeo) {
+        applyPageContent(pageSeo);
         applySeoRecord(pageSeo);
-        document.addEventListener("portfolio-language-change",()=>applySeoRecord(pageSeo));
+        document.addEventListener("portfolio-language-change",()=>{applyPageContent(pageSeo);applySeoRecord(pageSeo);});
       }
       document.documentElement.dataset.cmsLoaded="true";
     } catch(error) { console.warn("Pages CMS content could not be loaded; using built-in portfolio content.",error); }
