@@ -7,16 +7,16 @@
 body{max-width:1280px;margin:auto;padding:34px clamp(18px,4vw,56px) 60px;color:#e9eaf0;background:#08090d;font:16px/1.75 'DM Sans',sans-serif}
 body:before{display:none!important}
 h1{font:700 clamp(42px,6vw,72px)/1.05 'Space Grotesk',sans-serif;letter-spacing:-2px;margin:12px 0}
-body>p:not(.projects-back){max-width:760px;color:#aeb5c4;font-size:16px}
+#page-content>p:not(.projects-back){max-width:760px;color:#aeb5c4;font-size:16px}
 .project{border:1px solid #303746;border-radius:22px;padding:0;margin:28px 0;background:linear-gradient(145deg,#151a24,#0e1118);overflow:hidden;box-shadow:0 20px 60px #0005}
 .project-cover{height:clamp(190px,30vw,330px);position:relative;overflow:hidden;background:#151b26}
 .project-cover:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,8,13,.72),transparent 75%),linear-gradient(0deg,rgba(5,8,13,.65),transparent 60%)}
 .project-cover img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.78);transition:transform .8s ease}
 /* Keep the interview subject's full head in frame */
 /* Show the complete 4:3 Rezaei interview photo without cropping */
-body>section.featured-project:first-of-type .project-cover{height:auto;aspect-ratio:4/3;}
-body>section.featured-project:first-of-type .project-cover img{object-fit:contain;object-position:center;}
-body>section.featured-project:first-of-type:hover .project-cover img{transform:none;}
+#page-content>section.featured-project:nth-of-type(2) .project-cover{height:auto;aspect-ratio:4/3;}
+#page-content>section.featured-project:nth-of-type(2) .project-cover img{object-fit:contain;object-position:center;}
+#page-content>section.featured-project:nth-of-type(2):hover .project-cover img{transform:none;}
 .project:hover .project-cover img{transform:scale(1.045)}
 .project-cover span{position:absolute;z-index:1;left:28px;bottom:22px;color:#fff;font-size:11px;letter-spacing:2px;font-weight:700}
 .project>.kicker,.project>h2,.project>p,.project>h3,.project>a:not(.original-post),.project>.original-post{margin-left:clamp(20px,3vw,38px);margin-right:clamp(20px,3vw,38px)}
@@ -109,7 +109,9 @@ body>section.featured-project:first-of-type:hover .project-cover img{transform:n
 }
 </style>
 
-</head><body><p class="projects-back"><a href="index.html#work" target="_top">← Back to portfolio</a></p><span class="kicker">SELECTED PROJECTS / POLITICAL & GEOPOLITICAL</span><h1>Projects & Analysis</h1><p>A selection of interview production, editorial research and geopolitical analysis.</p>
+<script src="cms.js?v=20261119a" defer></script>
+</head><body><main id="page-content">
+<p class="projects-back"><a href="index.html#work" target="_top">← Back to portfolio</a></p><span class="kicker">SELECTED PROJECTS / INTERVIEW PRODUCTION / FIELD REPORTING / RESEARCH</span><h1>Selected Projects & Editorial Work</h1><p>Selected interview, field-production and research assignments. Each entry distinguishes my contribution from the reporter, correspondent or source credited by the publisher.</p>
 
 <section class="project fakhrizadeh-project" id="hamed-fakhrizadeh-rt-interview">
   <div class="project-intro">
@@ -230,7 +232,7 @@ body>section.featured-project:first-of-type:hover .project-cover img{transform:n
 <section class="project">
 <span class="kicker">RT · FIELD PRODUCTION & COORDINATION</span>
 <h2>RT Field Production & News Packages</h2>
-<p>Selected field-production assignments and news packages for RT. My contribution across these projects included production planning and coordination, field arrangements, scheduling and editorial support. Saman Kojouri is credited by RT as the correspondent on selected reports; he is a colleague and friend, and his reporting role is distinct from my production coordination work.</p>
+<p>Selected field-production assignments and news packages for RT. My contribution across these projects included production planning and coordination, field arrangements, scheduling and editorial support. RT credits Saman Kojouri as correspondent on selected reports; my contribution was production planning, field arrangements, scheduling and editorial support.</p>
 </section>
 <section class="project">
 <span class="kicker">RT · FIELD PRODUCTION COORDINATION</span>
@@ -244,13 +246,7 @@ body>section.featured-project:first-of-type:hover .project-cover img{transform:n
 <p>Production planning and field coordination for RT’s report from Minab.</p>
 <a class="original-post" href="https://rt-english.com/news/640396-minab-school-rt-report/" target="_blank" rel="noopener noreferrer">READ & WATCH ON RT ↗</a>
 </section>
-<section class="project">
-<span class="kicker">RT · INTERVIEW PRODUCTION</span>
-<h2>Iran’s IRGC Adviser on the Strait of Hormuz</h2>
-<p>Interview production coordination, including camera crew arrangements, translation and scheduling, for the exclusive interview with Mohammad Reza Naqdi.</p>
-<a class="original-post" href="https://rt-english.com/shows/rt-interview/644338-irgc-iran-naqdi-middle-east/" target="_blank" rel="noopener noreferrer">WATCH THE FULL INTERVIEW ON RT ↗</a>
-<a class="original-post" href="https://rt-english.com/news/644352-iranian-general-naqdi-hormuz-bypass/" target="_blank" rel="noopener noreferrer">READ THE RELATED RT REPORT ↗</a>
-</section>
+
 <section class="project">
 <span class="kicker">RT · NEWS PACKAGE COORDINATION</span>
 <h2>US Sanctions on Iranian Aviation</h2>
@@ -270,9 +266,9 @@ body>section.featured-project:first-of-type:hover .project-cover img{transform:n
 <a class="original-post" href="https://rt-english.com/news/647398-iran-chabahar-zahedan-rail/" target="_blank" rel="noopener noreferrer">READ & WATCH THE FULL REPORT ON RT ↗</a>
 </section>
 <section class="project">
-<span class="kicker">RT · ADDITIONAL FIELD ASSIGNMENTS</span>
+<span class="kicker">RT · ADDITIONAL PUBLICATION REFERENCES</span>
 <h2>Further RT Coverage</h2>
-<p>Additional RT newsroom and field-production references shared from the official RT News Telegram channel. These are retained as source links; individual descriptions and images will be added once each post’s content can be verified.</p>
+<p>Selected references from RT’s official news channel related to newsroom and field coverage. These links are provided as publication references, not as standalone credits for work performed.</p>
 <ul class="telegram-references">
 <li><a href="https://t.me/rtnews/157638" target="_blank" rel="noopener noreferrer">RT News Telegram post 157638 ↗</a></li>
 <li><a href="https://t.me/rtnews/157080" target="_blank" rel="noopener noreferrer">RT News Telegram post 157080 ↗</a></li>
@@ -296,9 +292,10 @@ body>section.featured-project:first-of-type:hover .project-cover img{transform:n
 </section>
 
 <p><a href="index.html#work">← Back to selected work</a></p>
-
+</main>
 <script>
-(function(){
+document.addEventListener("cms-ready", function(){
+
   const files = [
     "assets/fakhrizadeh-interview-01.jpg",
     "assets/fakhrizadeh-interview-02.jpg",
@@ -353,7 +350,7 @@ body>section.featured-project:first-of-type:hover .project-cover img{transform:n
     if(event.key==="ArrowLeft")show(current-1);
     if(event.key==="ArrowRight")show(current+1);
   });
-})();
-</script>
 
+}, {once:true});
+</script>
 </body></html>
