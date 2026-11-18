@@ -146,6 +146,9 @@ content:
         type: image
         options:
           media: images
+      - name: image_alt
+        label: Featured image alternative text
+        type: string
       - name: gallery
         label: Additional images
         type: image
@@ -228,6 +231,9 @@ content:
         type: image
         options:
           media: images
+      - name: image_alt
+        label: Cover image alternative text
+        type: string
       - name: gallery
         label: Photo gallery
         type: image
@@ -422,6 +428,11 @@ content:
         type: string
       - name: profile_image
         label: Profile image
+        type: image
+        options:
+          media: images
+      - name: contact_image
+        label: Contact section image
         type: image
         options:
           media: images
