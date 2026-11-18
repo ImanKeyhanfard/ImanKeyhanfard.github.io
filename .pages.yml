@@ -189,7 +189,7 @@ content:
         options:
           values: [draft, published]
   - name: archive_posts
-    label: LinkedIn Archive (1,549 Original Posts)
+    label: LinkedIn Archive — Original Posts
     type: collection
     path: content/archive-posts
     format: json
@@ -230,6 +230,9 @@ content:
         type: image
         options:
           media: images
+      - name: image_alt
+        label: Cover image alternative text
+        type: string
       - name: video_url
         label: Direct video file URL (MP4/WebM)
         type: string
