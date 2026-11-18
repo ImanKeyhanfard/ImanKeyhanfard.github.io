@@ -141,10 +141,10 @@
     section.style.cssText="margin:32px 0 12px;padding-top:22px;border-top:1px solid var(--line)";
     const heading=document.createElement("h3"); heading.textContent=lang()==="fa"?"مطالب و پروژه‌های منتشرشده از CMS":"Published from CMS"; heading.style.cssText="font-size:20px;margin:0 0 16px";
     const grid=document.createElement("div");grid.style.cssText="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px";
-    items.sort((a,b)=>String(b.publication_date||b.date||"").localeCompare(String(a.publication_date||a.date||"")));
+    items.sort((a,b)=>Number(Boolean(b.featured))-Number(Boolean(a.featured)) || (Number(a.order)||999)-(Number(b.order)||999) || String(b.publication_date||b.date||"").localeCompare(String(a.publication_date||a.date||"")));
     for(const x of items){
       const title=x["title_"+lang()]||x.title_en||"", desc=x["excerpt_"+lang()]||x["description_"+lang()]||x.excerpt_en||x.description_en||"";
-      const url=x.source_url||x.original_url||x.video_url;
+      const url=safeUrl(x.source_url||x.original_url||x.video_url);
       const card=document.createElement("article");card.style.cssText="border:1px solid var(--line);padding:16px;background:#ffffff05";
       card.innerHTML=`<div style="font-size:9px;color:var(--muted);margin-bottom:8px">${esc(x.category||x.project_type||"")}</div><h4 style="font-size:15px;margin:0 0 8px">${esc(title)}</h4><p style="font-size:11px;color:var(--muted);line-height:1.8">${esc(desc)}</p>${url?`<a class="original-post" target="_blank" rel="noopener" href="${esc(url)}">${lang()==="fa"?"مشاهده مطلب":"Open original"} ↗</a>`:""}`;
       grid.append(card);
