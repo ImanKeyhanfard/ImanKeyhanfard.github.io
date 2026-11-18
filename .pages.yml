@@ -350,6 +350,15 @@ content:
         type: image
         options:
           media: images
+      - name: layout_page_gutter
+        label: Page side spacing (vw, 3–12)
+        type: number
+      - name: layout_card_radius
+        label: Card corner radius (px, 0–24)
+        type: number
+      - name: layout_grid_gap
+        label: Grid spacing (px, 8–32)
+        type: number
       - name: seo_description_en
         label: SEO description (English)
         type: text
