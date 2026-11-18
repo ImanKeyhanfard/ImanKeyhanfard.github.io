@@ -191,7 +191,7 @@ content:
   - name: archive_posts
     label: LinkedIn Archive — Original Posts
     type: collection
-    path: content/archive-posts
+    path: _data/archive_posts
     format: json
     filename: "{id}.json"
     view:
