@@ -176,11 +176,14 @@
     const grid=document.createElement("div");grid.className="cms-content-grid";
     items.sort((a,b)=>Number(Boolean(b.featured))-Number(Boolean(a.featured)) || (Number(a.order)||999)-(Number(b.order)||999) || String(b.publication_date||b.date||"").localeCompare(String(a.publication_date||a.date||"")));
     for(const x of items){
-      const title=x["title_"+lang()]||x.title_en||"", desc=x["excerpt_"+lang()]||x["description_"+lang()]||x.excerpt_en||x.description_en||"";
+      const title=x["title_"+lang()]||x.title_en||"";
+      const rawDesc=x["excerpt_"+lang()]||x["description_"+lang()]||x.excerpt_en||x.description_en||"";
+      const desc=/original portfolio script also uses an alternate headline/i.test(rawDesc)||/نسخه.{0,4}اصلی اسکریپت/.test(rawDesc)?"":rawDesc;
+      const tags=Array.isArray(x.tags)?x.tags.filter(t=>!String(t).startsWith("category:")).slice(0,4):[];
       const url=safeUrl(x.source_url||x.original_url||x.video_url), image=safeUrl(x.cover_image||x.thumbnail);
-      const card=document.createElement("article");card.style.cssText="border:1px solid var(--line);padding:16px;background:#ffffff05";
-      card.innerHTML=`<div style="font-size:9px;color:var(--muted);margin-bottom:8px">${esc(x.category||x.project_type||"")}</div><h4 style="font-size:15px;margin:0 0 8px">${esc(title)}</h4><p style="font-size:11px;color:var(--muted);line-height:1.8">${esc(desc)}</p>${url?`<a class="original-post" target="_blank" rel="noopener" href="${esc(url)}">${lang()==="fa"?"مشاهده مطلب":"Open original"} ↗</a>`:""}`;
-      if(image){const img=document.createElement("img");img.src=image;img.alt=String(x.image_alt||title);img.loading="lazy";img.style.cssText="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--cms-card-radius);margin-bottom:12px";card.prepend(img);}
+      const card=document.createElement("article");card.style.cssText="border:1px solid var(--line);padding:16px;background:#ffffff05;border-radius:var(--cms-card-radius);overflow:hidden";
+      card.innerHTML=`<div style="font-size:9px;color:var(--muted);margin-bottom:8px">${esc(x.category||x.project_type||"")}</div><h4 style="font-size:15px;margin:0 0 8px">${esc(title)}</h4>${desc?`<p style="font-size:11px;color:var(--muted);line-height:1.8">${esc(desc)}</p>`:""}${tags.length?`<div class="cms-card-tags" style="display:flex;flex-wrap:wrap;gap:6px;margin:12px 0">${tags.map(t=>`<span style="font-size:9px;border:1px solid var(--line);border-radius:20px;padding:3px 8px;color:var(--muted)">${esc(t)}</span>`).join("")}</div>`:""}${url?`<a class="original-post" target="_blank" rel="noopener noreferrer" href="${esc(url)}">${lang()==="fa"?"مشاهده مطلب":"Open original"} ↗</a>`:""}`;
+      if(image){const img=document.createElement("img");img.src=image;img.alt=String(x.image_alt||title);img.loading="lazy";img.style.cssText="width:100%;aspect-ratio:var(--cms-section-image-ratio,16/9);object-fit:cover;border-radius:var(--cms-card-radius);margin-bottom:12px";card.prepend(img);}
       grid.append(card);
     }
     section.append(heading,grid);host.after(section);
