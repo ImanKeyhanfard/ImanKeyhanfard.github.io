@@ -241,6 +241,13 @@
     }
     section.append(heading,grid);host.after(section);
   }
+
+  document.addEventListener("portfolio-language-change", () => {
+    const frame = document.getElementById("projectsFrame");
+    if (!frame) return;
+    const target = lang() === "fa" ? "fa/projects.html?v=20261119a" : "projects.html?v=20261119a";
+    if (frame.getAttribute("src") !== target) frame.setAttribute("src", target);
+  });
   async function start() {
     try {
       const [experience,services,posts,projects,sections,seoPages,settings]=await Promise.all([
