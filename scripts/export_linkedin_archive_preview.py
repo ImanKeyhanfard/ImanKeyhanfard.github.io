@@ -50,7 +50,7 @@ for source_post in source_posts:
         existing = json.loads(target.read_text(encoding="utf-8"))
         if not existing.get("category_fa"):
             existing["category_fa"] = CATEGORY_FA.get(str(source_post.get("category") or ""), "")
-            target.write_text(json.dumps(existing, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+            target.write_text(json.dumps(existing, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             updated += 1
         continue
     post = {
