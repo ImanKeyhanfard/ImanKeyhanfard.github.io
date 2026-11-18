@@ -1,0 +1,8 @@
+{
+  "slug": "sanctionsEconomy",
+  "label_en": "Sanctions & Economic Pressure",
+  "label_fa": "تحریم‌ها و فشار اقتصادی",
+  "color": "#c3a56b",
+  "order": 15,
+  "visible": true
+}
