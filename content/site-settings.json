@@ -7,5 +7,8 @@
   "linkedin": "https://www.linkedin.com/in/iman-keyhanfard-3b85439/",
   "whatsapp": "https://wa.me/989125958820",
   "seo_description_en": "Iman Keyhanfard — Senior News Producer, Field Producer, Journalist and Media Project Coordinator.",
-  "seo_description_fa": "ایمان کیهان‌فرد؛ تهیه‌کننده ارشد خبر، تهیه‌کننده میدانی، روزنامه‌نگار و هماهنگ‌کننده پروژه‌های رسانه‌ای."
+  "seo_description_fa": "ایمان کیهان‌فرد؛ تهیه‌کننده ارشد خبر، تهیه‌کننده میدانی، روزنامه‌نگار و هماهنگ‌کننده پروژه‌های رسانه‌ای.",
+  "layout_page_gutter": 7.2,
+  "layout_card_radius": 8,
+  "layout_grid_gap": 12
 }
