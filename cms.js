@@ -63,12 +63,12 @@
       document.dispatchEvent(new CustomEvent("cms-page-content-applied"));
     }
   }
-  function applyLocalizedCopy(settings, selector, key, addDot = false, addArrow = false) {
+  function applyLocalizedCopy(settings, selector, key, addDot = false, addArrow = false, addPlus = false) {
     const element = document.querySelector(selector);
     if (!element) return;
     const en = settings[key + "_en"], fa = settings[key + "_fa"];
     if (!en && !fa) return;
-    const format = value => esc(value).replace(/\n/g, "<br>") + (addDot ? '<span class="red-dot">.</span>' : "") + (addArrow ? ' <b>↗</b>' : "");
+    const format = value => esc(value).replace(/\n/g, "<br>") + (addDot ? '<span class="red-dot">.</span>' : "") + (addArrow ? ' <b>↗</b>' : "") + (addPlus ? '<span>+</span>' : "");
     if (en) element.dataset.en = format(en);
     if (fa) element.dataset.fa = format(fa);
     element.innerHTML = element.dataset[lang()] || element.dataset.en || element.dataset.fa || "";
@@ -113,6 +113,7 @@
     ];
     for (const [selector,key] of fields) applyLocalizedCopy(labels,selector,key,false);
     applyLocalizedCopy(labels,".home-note .inline-link","profile_cta",false,true);
+    applyLocalizedCopy(labels,".home-stat-card .stat-huge","years_value",false,false,true);
   }
   function applyHomepageCopy(settings) {
     applyHomepageLabels(settings);
