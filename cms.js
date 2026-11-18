@@ -63,12 +63,12 @@
       document.dispatchEvent(new CustomEvent("cms-page-content-applied"));
     }
   }
-  function applyLocalizedCopy(settings, selector, key, addDot = false) {
+  function applyLocalizedCopy(settings, selector, key, addDot = false, addArrow = false) {
     const element = document.querySelector(selector);
     if (!element) return;
     const en = settings[key + "_en"], fa = settings[key + "_fa"];
     if (!en && !fa) return;
-    const format = value => esc(value).replace(/\n/g, "<br>") + (addDot ? '<span class="red-dot">.</span>' : "");
+    const format = value => esc(value).replace(/\n/g, "<br>") + (addDot ? '<span class="red-dot">.</span>' : "") + (addArrow ? ' <b>↗</b>' : "");
     if (en) element.dataset.en = format(en);
     if (fa) element.dataset.fa = format(fa);
     element.innerHTML = element.dataset[lang()] || element.dataset.en || element.dataset.fa || "";
@@ -80,7 +80,6 @@
       [".hero-actions .primary-action span:first-child","hero_cta_services"],
       [".hero-actions .text-action span:first-child","hero_cta_work"],
       [".home-note .micro-label","profile_label"],
-      [".home-note .inline-link","profile_cta"],
       [".home-stat-card .stat-label","stats_label"],
       [".home-stat-card .stat-list span:nth-child(1)","stat_item_1"],
       [".home-stat-card .stat-list span:nth-child(2)","stat_item_2"],
@@ -113,6 +112,7 @@
       [".welcome-drop p","welcome_intro"]
     ];
     for (const [selector,key] of fields) applyLocalizedCopy(labels,selector,key,false);
+    applyLocalizedCopy(labels,".home-note .inline-link","profile_cta",false,true);
   }
   function applyHomepageCopy(settings) {
     applyHomepageLabels(settings);
