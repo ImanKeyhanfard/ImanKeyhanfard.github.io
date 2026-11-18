@@ -18,6 +18,19 @@
     return r.json();
   }
   function text(v) { return v || ""; }
+  function applyLayoutSettings(settings) {
+    const root = document.documentElement;
+    const clamp = (value, fallback, min, max) => {
+      const n = Number(value);
+      return Number.isFinite(n) ? Math.min(max, Math.max(min, n)) : fallback;
+    };
+    const gutter = clamp(settings.layout_page_gutter, 7.2, 3, 12);
+    const radius = clamp(settings.layout_card_radius, 8, 0, 24);
+    const gap = clamp(settings.layout_grid_gap, 12, 8, 32);
+    root.style.setProperty("--cms-page-gutter", `clamp(16px, ${gutter}vw, 120px)`);
+    root.style.setProperty("--cms-card-radius", `${radius}px`);
+    root.style.setProperty("--cms-grid-gap", `${gap}px`);
+  }
   function renderExperience(items) {
     const visible = items.filter(x => x.visible !== false).sort((a,b)=>(a.order||999)-(b.order||999));
     if (!visible.length) return;
@@ -80,6 +93,7 @@
       if(services.length)renderServices(services);
       renderCmsItems(posts,projects);
       if(settings){
+        applyLayoutSettings(settings);
         if(settings.site_title)document.title=settings.site_title;
         const meta=document.querySelector('meta[name="description"]');
         if(meta){const d=settings["seo_description_"+lang()]||settings.seo_description_en;if(d)meta.content=d;}
