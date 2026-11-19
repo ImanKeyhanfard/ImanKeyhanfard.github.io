@@ -194,9 +194,9 @@ collections:
       - { name: image_alt, label: Image alt text, widget: string }
       - { name: gallery, label: Photo gallery, widget: list, field: { label: Image, name: image, widget: image } }
       - { name: gallery_alt, label: Gallery alt text, widget: list }
-      - { name: gallery_caption_en, label: Gallery captions EN, widget: list }
-      - { name: gallery_caption_fa, label: Gallery captions FA, widget: list }
-      - { name: video_url, label: Direct video file URL, widget: string }
+      - { name: gallery_caption_en, label: Gallery captions EN, widget: list, required: false }
+      - { name: gallery_caption_fa, label: Gallery captions FA, widget: list, required: false }
+      - { name: video_url, label: Video file or direct video URL, widget: file, required: false, accept: video/mp4,video/webm,video/quicktime, media_folder: /media/videos, public_folder: /media/videos }
       - { name: original_url, label: Original publication URL, widget: string }
       - { name: date, label: Project date, widget: datetime, type: date }
       - { name: tags, label: Tags, widget: list }
