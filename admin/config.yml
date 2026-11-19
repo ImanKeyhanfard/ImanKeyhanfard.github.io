@@ -114,7 +114,7 @@ collections:
       - { name: alternate_fa, label: Persian alternate URL, widget: string }
       - { name: og_image, label: Social sharing image URL, widget: string }
       - { name: noindex, label: Hide from search engines, widget: boolean, default: false }
-      - { name: page_content, label: Page content HTML, widget: text }
+      - { name: page_content, label: Page content HTML, widget: richtext, format: html, modes: [raw, rich_text] }
 
   - name: services
     label: Services
