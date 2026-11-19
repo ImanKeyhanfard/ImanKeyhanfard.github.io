@@ -202,7 +202,7 @@ collections:
       - { name: ai_generate_on_save, label: Generate bilingual fields with AI on save, widget: boolean, default: false }
       - { name: original_url, label: Original publication URL, widget: string }
       - { name: date, label: Project date, widget: datetime, type: date }
-      - { name: tags, label: Tags, widget: list }
+      - { name: tags, label: Tags EN, widget: list, required: false }
       - { name: order, label: Display order, widget: number, value_type: int }
       - { name: featured, label: Feature on homepage, widget: boolean }
       - { name: status, label: Status, widget: select, options: [draft, published] }
