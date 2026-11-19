@@ -23,7 +23,7 @@
       if (!response.ok) throw new Error("AI content generation failed (HTTP " + response.status + "). Entry was not saved.");
       const generated = await response.json();
       let next = data;
-      const fill = (field, value) => {
+      const hasItems = value => value && ((value.size ?? value.length ?? 0) > 0);\n      const fill = (field, value) => {
         if (value && !String(next.get(field) || "").trim()) next = next.set(field, value);
       };
       fill("title_en", generated.title_en);
@@ -33,10 +33,10 @@
       fill("description_en", generated.description_en);
       fill("description_fa", generated.description_fa);
       fill("image_alt", generated.image_alt_en);
-      if (!next.get("tags")?.size && generated.tags_en) next = next.set("tags", String(generated.tags_en).split(/[,،]/).map(x => x.trim()).filter(Boolean));
-      if (!next.get("tags_fa")?.size && generated.tags_fa) next = next.set("tags_fa", String(generated.tags_fa).split(/[,،]/).map(x => x.trim()).filter(Boolean));
-      if (!next.get("gallery_caption_en")?.size && generated.caption_en) next = next.set("gallery_caption_en", [generated.caption_en]);
-      if (!next.get("gallery_caption_fa")?.size && generated.caption_fa) next = next.set("gallery_caption_fa", [generated.caption_fa]);
+      if (!hasItems(next.get("tags")) && generated.tags_en) next = next.set("tags", String(generated.tags_en).split(/[,،]/).map(x => x.trim()).filter(Boolean));
+      if (!hasItems(next.get("tags_fa")) && generated.tags_fa) next = next.set("tags_fa", String(generated.tags_fa).split(/[,،]/).map(x => x.trim()).filter(Boolean));
+      if (!hasItems(next.get("gallery_caption_en")) && generated.caption_en) next = next.set("gallery_caption_en", [generated.caption_en]);
+      if (!hasItems(next.get("gallery_caption_fa")) && generated.caption_fa) next = next.set("gallery_caption_fa", [generated.caption_fa]);
       // Never commit pasted source material. Generated entries remain drafts for editorial review.
       next = next.set("ai_source_text", "").set("ai_generate_on_save", false);
       if (next.get("status") === "published") next = next.set("status", "draft");
