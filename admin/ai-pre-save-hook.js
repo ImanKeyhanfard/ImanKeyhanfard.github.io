@@ -23,7 +23,8 @@
       if (!response.ok) throw new Error("AI content generation failed (HTTP " + response.status + "). Entry was not saved.");
       const generated = await response.json();
       let next = data;
-      const hasItems = value => value && ((value.size ?? value.length ?? 0) > 0);\n      const fill = (field, value) => {
+      const hasItems = value => value && ((value.size ?? value.length ?? 0) > 0);
+      const fill = (field, value) => {
         if (value && !String(next.get(field) || "").trim()) next = next.set(field, value);
       };
       fill("title_en", generated.title_en);
