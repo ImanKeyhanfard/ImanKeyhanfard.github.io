@@ -16,7 +16,14 @@ SITE = "https://imankeyhanfard.github.io"
 NS = "http://www.sitemaps.org/schemas/sitemap/0.9"
 ET.register_namespace("", NS)
 
-CHANGEFREQ = {\n    "index": "monthly",\n    "fa-index": "monthly",\n    "linkedin-archive": "weekly",\n    "fa-linkedin-archive": "weekly",\n}\n\nPRIORITY = {
+CHANGEFREQ = {
+    "index": "monthly",
+    "fa-index": "monthly",
+    "linkedin-archive": "weekly",
+    "fa-linkedin-archive": "weekly",
+}
+
+PRIORITY = {
     "index": "1.0",
     "fa-index": "1.0",
     "projects": "0.7",
