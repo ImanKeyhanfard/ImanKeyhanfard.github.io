@@ -12,18 +12,18 @@ A bilingual English/Persian editorial portfolio and professional website for Ima
 - `index.html`, `fa/index.html`: homepage structure and fallback content
 - `styles.css`: responsive layout and visual design
 - `script.js`: language switching, navigation and interaction
-- `cms.js`: Pages CMS integration; reads public JSON content from this repository and applies CMS-managed copy, layouts, sections, experience, services, featured content, page SEO and page content
+- `cms.js`: site-side content loader; reads public JSON content from this repository and applies CMS-managed copy, layouts, sections, experience, services, featured content, page SEO and page content
 - `content/site-settings.json`: bilingual homepage copy, labels, layout controls, contact information and site-level SEO
 - `content/sections/`: navigation and section visibility/layout settings
 - `content/experience/`, `content/services/`, `content/portfolio/`, `content/posts/`: CMS-managed content collections
 - `content/seo-pages/`: per-page SEO metadata and editable page content
 - `_data/archive_posts/`: original LinkedIn archive records; Jekyll exports these to the archive data file
-- `.pages.yml`: Pages CMS schema and editor configuration
+- `admin/`: Sveltia CMS editor and GitHub-backed configuration
 - `linkedin-archive.html`, `archive-posts.json`: searchable archive interface and generated data
 - `sitemap.xml`, `robots.txt`: search-engine discovery files
 
 ## Editing content
-Use Pages CMS with this repository connected. The CMS configuration is in `.pages.yml`.
+Use the Sveltia CMS editor at `/admin/`. Its configuration is in `admin/config.yml`; authenticate with a GitHub personal access token scoped to this repository with Contents read/write permission.
 
 1. **Website Settings & Contact** — update bilingual homepage copy, labels, images, contact links, layout and site-level SEO.
 2. **Website Sections & Tabs** — adjust navigation labels, order, visibility and section layout controls.
