@@ -198,7 +198,7 @@ collections:
       - { name: gallery_caption_fa, label: Gallery captions FA, widget: list }
       - { name: video_url, label: Direct video file URL, widget: string }
       - { name: original_url, label: Original publication URL, widget: string }
-      - { name: date, label: Project date, widget: date }
+      - { name: date, label: Project date, widget: datetime, type: date }
       - { name: tags, label: Tags, widget: list }
       - { name: order, label: Display order, widget: number, value_type: int }
       - { name: featured, label: Feature on homepage, widget: boolean }
