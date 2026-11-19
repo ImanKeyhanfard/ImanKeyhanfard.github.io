@@ -16,7 +16,7 @@ SITE = "https://imankeyhanfard.github.io"
 NS = "http://www.sitemaps.org/schemas/sitemap/0.9"
 ET.register_namespace("", NS)
 
-PRIORITY = {
+CHANGEFREQ = {\n    "index": "monthly",\n    "fa-index": "monthly",\n    "linkedin-archive": "weekly",\n    "fa-linkedin-archive": "weekly",\n}\n\nPRIORITY = {
     "index": "1.0",
     "fa-index": "1.0",
     "projects": "0.7",
@@ -44,7 +44,7 @@ def main():
         url = ET.SubElement(urlset, f"{{{NS}}}url")
         ET.SubElement(url, f"{{{NS}}}loc").text = canonical
         ET.SubElement(url, f"{{{NS}}}lastmod").text = today
-        ET.SubElement(url, f"{{{NS}}}changefreq").text = "monthly" if slug in {"index", "fa-index"} else "yearly"
+        ET.SubElement(url, f"{{{NS}}}changefreq").text = CHANGEFREQ.get(slug, "yearly")
         ET.SubElement(url, f"{{{NS}}}priority").text = PRIORITY.get(slug, "0.8")
 
     tree = ET.ElementTree(urlset)
