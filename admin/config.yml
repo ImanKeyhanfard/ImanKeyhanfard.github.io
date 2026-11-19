@@ -197,6 +197,9 @@ collections:
       - { name: gallery_caption_en, label: Gallery captions EN, widget: list, required: false }
       - { name: gallery_caption_fa, label: Gallery captions FA, widget: list, required: false }
       - { name: video_url, label: Video file or direct video URL, widget: file, required: false, accept: video/mp4,video/webm,video/quicktime, media_folder: /media/videos, public_folder: /media/videos }
+      - { name: tags_fa, label: Tags FA, widget: list, required: false }
+      - { name: ai_source_text, label: AI source text (temporary; removed on save), widget: text, required: false }
+      - { name: ai_generate_on_save, label: Generate bilingual fields with AI on save, widget: boolean, default: false }
       - { name: original_url, label: Original publication URL, widget: string }
       - { name: date, label: Project date, widget: datetime, type: date }
       - { name: tags, label: Tags, widget: list }
