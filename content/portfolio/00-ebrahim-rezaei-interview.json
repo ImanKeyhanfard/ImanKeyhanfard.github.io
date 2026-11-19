@@ -1,0 +1,19 @@
+{
+  "title_en": "Interview with Ebrahim Rezaei",
+  "title_fa": "مصاحبه با ابراهیم رضایی",
+  "slug": "ebrahim-rezaei-interview",
+  "section": "interviews",
+  "project_type": "interview",
+  "description_en": "Interview project documented in the portfolio, with the original high-quality interview photograph.",
+  "description_fa": "نمونه‌کار مصاحبه با تصویر اصلی باکیفیت ثبت‌شده در پورتفولیو.",
+  "thumbnail": "/assets/rezaei-interview-hq.jpg",
+  "image_alt": "Interview with Ebrahim Rezaei",
+  "date": "2026-11-18",
+  "tags": [
+    "Interview",
+    "Iran"
+  ],
+  "order": 2,
+  "featured": true,
+  "status": "published"
+}
