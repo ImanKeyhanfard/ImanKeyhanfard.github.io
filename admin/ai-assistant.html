@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Editorial Assistant</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#111827;color:#f3f4f6}body{margin:0;padding:24px;max-width:1100px;margin-inline:auto}h1{font-size:clamp(24px,4vw,36px)}p,.hint{color:#aab4c5}label{display:block;margin:14px 0 6px;font-weight:600}input,textarea,select{box-sizing:border-box;width:100%;padding:12px;border:1px solid #39465b;border-radius:8px;background:#1f2937;color:inherit;font:inherit}textarea{min-height:130px;resize:vertical}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{border:1px solid #39465b;border-radius:12px;padding:16px;margin-top:18px}.btn{border:0;border-radius:8px;padding:11px 16px;background:#2563eb;color:white;font-weight:700;cursor:pointer}.btn.secondary{background:#374151}.btn:disabled{opacity:.5}.field{margin:12px 0}.field textarea{min-height:90px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.status{margin-top:12px;color:#93c5fd}.error{color:#fca5a5}.outputs{display:none}.tag{display:inline-block;background:#334155;border-radius:20px;padding:4px 9px;margin:3px}.small{font-size:13px}.warning{border-left:3px solid #f59e0b;padding:10px;background:#332b1c;color:#fcd34d}@media(max-width:700px){body{padding:14px}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<h1>AI Editorial Assistant</h1>
+<p>Generate editable Persian and English headlines, project descriptions, captions, tags, alt text and SEO metadata from source material. Review everything before publishing.</p>
+<div class="card">
+<label for="endpoint">AI Worker endpoint</label><input id="endpoint" placeholder="https://your-worker.workers.dev">
+<div class="hint small">Your API key must remain on the Worker server—not in this page. Endpoint is saved only in this browser.</div>
+<label for="sourceUrl">Source URL (optional)</label><input id="sourceUrl" placeholder="https://...">
+<label for="source">Source text / notes / transcript</label><textarea id="source" placeholder="Paste original material here. Use reliable source text; the assistant will not invent facts."></textarea>
+<label for="kind">Content type</label><select id="kind"><option>Interview</option><option>Video report</option><option>Photo story</option><option>News article</option><option>Research</option><option>Translation</option><option>Other</option></select>
+<div class="toolbar"><button class="btn" id="generate">Generate bilingual content</button><button class="btn secondary" id="saveEndpoint">Save endpoint</button></div><div id="status" class="status"></div>
+</div>
+<div id="outputs" class="outputs">
+<div class="card"><h2>Generated fields — editable</h2><div id="fields"></div><div class="toolbar"><button class="btn secondary" id="copyJson">Copy all as JSON</button><button class="btn secondary" id="copyText">Copy all text</button></div></div>
+<div class="card"><h2>Review checklist</h2><p class="hint">Confirm names, dates, numbers, attribution, claims and source fidelity. AI output is a draft, not fact verification.</p></div>
+</div>
+<script src="./ai-assistant.js"></script>
+</body></html>
