@@ -1,0 +1,41 @@
+{
+  "title_en": "Behind the Headlines: An Exclusive Interview with Hamed Fakhrizadeh",
+  "title_fa": "پشت صحنه تیترها: مصاحبه اختصاصی با حامد فخری‌زاده",
+  "slug": "hamed-fakhrizadeh-exclusive-rt-interview",
+  "section": "interviews",
+  "project_type": "interview",
+  "role_en": "Interview production and field coordination for RT.",
+  "role_fa": "هماهنگی تولید و امور میدانی مصاحبه برای شبکه RT.",
+  "description_en": "An exclusive RT interview with Hamed Fakhrizadeh. This portfolio entry documents the interview and its behind-the-scenes production photographs.",
+  "description_fa": "مصاحبه اختصاصی شبکه RT با حامد فخری‌زاده؛ این مدخل نمونه‌کار، مصاحبه و تصاویر پشت‌صحنه تولید آن را ثبت می‌کند.",
+  "thumbnail": "/assets/fakhrizadeh-interview-01.jpg",
+  "image_alt": "Behind-the-scenes photograph from the RT interview with Hamed Fakhrizadeh",
+  "gallery": [
+    "/assets/fakhrizadeh-interview-01.jpg",
+    "/assets/fakhrizadeh-interview-02.jpg",
+    "/assets/fakhrizadeh-interview-03.jpg",
+    "/assets/fakhrizadeh-interview-04.jpg",
+    "/assets/fakhrizadeh-interview-05.jpg",
+    "/assets/fakhrizadeh-interview-06.jpg",
+    "/assets/fakhrizadeh-interview-07.jpg"
+  ],
+  "gallery_alt": [
+    "Behind-the-scenes photograph 1",
+    "Behind-the-scenes photograph 2",
+    "Behind-the-scenes photograph 3",
+    "Behind-the-scenes photograph 4",
+    "Behind-the-scenes photograph 5",
+    "Behind-the-scenes photograph 6",
+    "Behind-the-scenes photograph 7"
+  ],
+  "date": "2026-11-18",
+  "tags": [
+    "RT",
+    "Interview",
+    "Field production",
+    "Iran"
+  ],
+  "order": 0,
+  "featured": true,
+  "status": "published"
+}
