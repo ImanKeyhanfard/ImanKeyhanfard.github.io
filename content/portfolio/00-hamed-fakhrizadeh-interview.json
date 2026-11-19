@@ -8,6 +8,8 @@
   "role_fa": "هماهنگی تولید و امور میدانی مصاحبه برای شبکه RT.",
   "description_en": "An exclusive RT interview with Hamed Fakhrizadeh. This portfolio entry documents the interview and its behind-the-scenes production photographs.",
   "description_fa": "مصاحبه اختصاصی شبکه RT با حامد فخری‌زاده؛ این مدخل نمونه‌کار، مصاحبه و تصاویر پشت‌صحنه تولید آن را ثبت می‌کند.",
+  "alternate_title_en": "RT interview with Hamed Fakhrizadeh",
+  "alternate_title_fa": "مصاحبه اختصاصی شبکه RT با حامد فخری‌زاده- فرزند دانشمند هسته ای شهید محسن فخری زاده",
   "thumbnail": "/assets/fakhrizadeh-interview-01.jpg",
   "image_alt": "Behind-the-scenes photograph from the RT interview with Hamed Fakhrizadeh",
   "gallery": [
@@ -28,6 +30,14 @@
     "Behind-the-scenes photograph 6",
     "Behind-the-scenes photograph 7"
   ],
+  "gallery_caption_en": [
+    "Hamed-Fakhrizadeh"
+  ],
+  "gallery_caption_fa": [
+    "حامد فخری زاده"
+  ],
+  "video_url": "https://odysee.com/@RT:fd/Hamed-Fakhrizadeh-on-what%E2%80%99s-behind-the-nuclear-dispute:0",
+  "original_url": "https://odysee.com/@RT:fd/Hamed-Fakhrizadeh-on-what%E2%80%99s-behind-the-nuclear-dispute:0",
   "date": "2026-11-18",
   "tags": [
     "RT",
