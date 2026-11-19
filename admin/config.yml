@@ -1,0 +1,309 @@
+backend:
+  name: github
+  repo: ImanKeyhanfard/ImanKeyhanfard.github.io
+  branch: main
+
+site_url: https://imankeyhanfard.github.io
+display_url: https://imankeyhanfard.github.io
+
+media_folder: /media/images
+public_folder: /media/images
+slug:
+  encoding: unicode
+  clean_accents: false
+  lowercase: false
+  trim: true
+
+collections:
+  - name: site_settings
+    label: Website Settings
+    files:
+      - name: main
+        label: Main website settings
+        file: content/site-settings.json
+        format: json
+        fields:
+          - { name: site_title, label: Website title, widget: string }
+          - { name: tagline_en, label: Tagline English, widget: text }
+          - { name: tagline_fa, label: Tagline Persian, widget: text }
+          - { name: email, label: Contact email, widget: string }
+          - { name: phone, label: Contact phone, widget: string }
+          - { name: linkedin, label: LinkedIn URL, widget: string }
+          - { name: whatsapp, label: WhatsApp URL, widget: string }
+          - { name: profile_image, label: Profile image, widget: image }
+          - { name: contact_image, label: Contact image, widget: image }
+          - { name: home_hero_overline_en, label: Hero overline EN, widget: string }
+          - { name: home_hero_overline_fa, label: Hero overline FA, widget: string }
+          - { name: home_hero_roles_en, label: Hero roles EN, widget: string }
+          - { name: home_hero_roles_fa, label: Hero roles FA, widget: string }
+          - { name: home_hero_intro_en, label: Hero introduction EN, widget: text }
+          - { name: home_hero_intro_fa, label: Hero introduction FA, widget: text }
+          - { name: home_profile_heading_en, label: Profile heading EN, widget: text }
+          - { name: home_profile_heading_fa, label: Profile heading FA, widget: text }
+          - { name: home_profile_intro_en, label: Profile introduction EN, widget: text }
+          - { name: home_profile_intro_fa, label: Profile introduction FA, widget: text }
+          - { name: home_archive_heading_en, label: Archive heading EN, widget: string }
+          - { name: home_archive_heading_fa, label: Archive heading FA, widget: string }
+          - { name: home_archive_intro_en, label: Archive intro EN, widget: text }
+          - { name: home_archive_intro_fa, label: Archive intro FA, widget: text }
+          - { name: home_work_heading_en, label: Work heading EN, widget: string }
+          - { name: home_work_heading_fa, label: Work heading FA, widget: string }
+          - { name: home_work_intro_en, label: Work intro EN, widget: text }
+          - { name: home_work_intro_fa, label: Work intro FA, widget: text }
+          - { name: home_projects_heading_en, label: Projects heading EN, widget: string }
+          - { name: home_projects_heading_fa, label: Projects heading FA, widget: string }
+          - { name: home_projects_intro_en, label: Projects intro EN, widget: text }
+          - { name: home_projects_intro_fa, label: Projects intro FA, widget: text }
+          - { name: home_experience_heading_en, label: Experience heading EN, widget: text }
+          - { name: home_experience_heading_fa, label: Experience heading FA, widget: text }
+          - { name: home_experience_intro_en, label: Experience intro EN, widget: text }
+          - { name: home_experience_intro_fa, label: Experience intro FA, widget: text }
+          - { name: home_services_heading_en, label: Services heading EN, widget: text }
+          - { name: home_services_heading_fa, label: Services heading FA, widget: text }
+          - { name: home_services_intro_en, label: Services intro EN, widget: text }
+          - { name: home_services_intro_fa, label: Services intro FA, widget: text }
+          - { name: home_contact_heading_en, label: Contact heading EN, widget: text }
+          - { name: home_contact_heading_fa, label: Contact heading FA, widget: text }
+          - { name: home_contact_intro_en, label: Contact intro EN, widget: text }
+          - { name: home_contact_intro_fa, label: Contact intro FA, widget: text }
+          - { name: home_contact_cta_en, label: Contact button EN, widget: string }
+          - { name: home_contact_cta_fa, label: Contact button FA, widget: string }
+          - { name: home_labels, label: Homepage labels and microcopy, widget: object, fields: [{ name: availability_en, label: Availability EN }, { name: availability_fa, label: Availability FA }, { name: hero_cta_services_en, label: Services button EN }, { name: hero_cta_services_fa, label: Services button FA }, { name: hero_cta_work_en, label: Work button EN }, { name: hero_cta_work_fa, label: Work button FA }, { name: profile_label_en, label: Profile label EN }, { name: profile_label_fa, label: Profile label FA }, { name: profile_cta_en, label: Profile CTA EN }, { name: profile_cta_fa, label: Profile CTA FA }, { name: archive_label_en, label: Archive label EN }, { name: archive_label_fa, label: Archive label FA }, { name: work_label_en, label: Work label EN }, { name: work_label_fa, label: Work label FA }, { name: experience_label_en, label: Experience label EN }, { name: experience_label_fa, label: Experience label FA }, { name: services_label_en, label: Services label EN }, { name: services_label_fa, label: Services label FA }, { name: contact_label_en, label: Contact label EN }, { name: contact_label_fa, label: Contact label FA }] }
+          - { name: archive_page_eyebrow_en, label: Archive eyebrow EN, widget: string }
+          - { name: archive_page_eyebrow_fa, label: Archive eyebrow FA, widget: string }
+          - { name: archive_page_heading_en, label: Archive page heading EN, widget: string }
+          - { name: archive_page_heading_fa, label: Archive page heading FA, widget: string }
+          - { name: archive_page_intro_en, label: Archive intro EN, widget: text }
+          - { name: archive_page_intro_fa, label: Archive intro FA, widget: text }
+          - { name: archive_page_footer_en, label: Archive footer EN, widget: text }
+          - { name: archive_page_footer_fa, label: Archive footer FA, widget: text }
+          - { name: seo_title_en, label: SEO title EN, widget: string }
+          - { name: seo_title_fa, label: SEO title FA, widget: string }
+          - { name: seo_description_en, label: SEO description EN, widget: text }
+          - { name: seo_description_fa, label: SEO description FA, widget: text }
+          - { name: seo_keywords_en, label: SEO keywords EN, widget: text }
+          - { name: seo_keywords_fa, label: SEO keywords FA, widget: text }
+          - { name: seo_og_image, label: Social sharing image, widget: string }
+          - { name: layout_page_gutter, label: Page side spacing, widget: number, value_type: int }
+          - { name: layout_card_radius, label: Card radius, widget: number, value_type: int }
+          - { name: layout_grid_gap, label: Grid gap, widget: number, value_type: int }
+          - { name: layout_content_width, label: Content width, widget: number, value_type: int }
+          - { name: layout_section_gap, label: Section spacing, widget: number, value_type: int }
+          - { name: layout_card_min_width, label: Card minimum width, widget: number, value_type: int }
+
+  - name: page_seo
+    label: SEO Pages and Page Content
+    folder: content/seo-pages
+    extension: json
+    format: json
+    identifier_field: slug
+    create: true
+    delete: false
+    summary: '{{slug}} — {{page_path}}'
+    fields:
+      - { name: slug, label: Record ID, widget: string }
+      - { name: page_path, label: Website page path, widget: string, required: true }
+      - { name: title_en, label: SEO title EN, widget: string }
+      - { name: title_fa, label: SEO title FA, widget: string }
+      - { name: description_en, label: Meta description EN, widget: text }
+      - { name: description_fa, label: Meta description FA, widget: text }
+      - { name: keywords_en, label: Keywords EN, widget: text }
+      - { name: keywords_fa, label: Keywords FA, widget: text }
+      - { name: canonical_url, label: Canonical URL, widget: string }
+      - { name: alternate_en, label: English alternate URL, widget: string }
+      - { name: alternate_fa, label: Persian alternate URL, widget: string }
+      - { name: og_image, label: Social sharing image URL, widget: string }
+      - { name: noindex, label: Hide from search engines, widget: boolean, default: false }
+      - { name: page_content, label: Page content HTML, widget: text }
+
+  - name: services
+    label: Services
+    folder: content/services
+    extension: json
+    format: json
+    identifier_field: slug
+    create: true
+    summary: '{{title_en}}'
+    fields:
+      - { name: title_en, label: Service title EN, widget: string, required: true }
+      - { name: title_fa, label: Service title FA, widget: string }
+      - { name: slug, label: Service ID, widget: string, required: true }
+      - { name: intro_en, label: Introduction EN, widget: text }
+      - { name: intro_fa, label: Introduction FA, widget: text }
+      - { name: details_en, label: Details EN, widget: list }
+      - { name: details_fa, label: Details FA, widget: list }
+      - { name: tab_en, label: Tab label EN, widget: string }
+      - { name: tab_fa, label: Tab label FA, widget: string }
+      - { name: delivery_en, label: Deliverables EN, widget: text }
+      - { name: delivery_fa, label: Deliverables FA, widget: text }
+      - { name: image, label: Image, widget: image }
+      - { name: image_alt, label: Image alt text, widget: string }
+      - { name: icon, label: Icon, widget: string }
+      - { name: order, label: Display order, widget: number, value_type: int }
+      - { name: visible, label: Visible, widget: boolean }
+
+  - name: experience
+    label: Professional Experience
+    folder: content/experience
+    extension: json
+    format: json
+    identifier_field: organization_en
+    create: true
+    summary: '{{organization_en}} — {{role_en}}'
+    fields:
+      - { name: organization_en, label: Organization EN, widget: string, required: true }
+      - { name: organization_fa, label: Organization FA, widget: string }
+      - { name: role_en, label: Role EN, widget: string }
+      - { name: role_fa, label: Role FA, widget: string }
+      - { name: period, label: Period, widget: string }
+      - { name: description_en, label: Description EN, widget: richtext }
+      - { name: description_fa, label: Description FA, widget: richtext }
+      - { name: capabilities_en, label: Capabilities EN, widget: list }
+      - { name: capabilities_fa, label: Capabilities FA, widget: list }
+      - { name: tab_en, label: Tab label EN, widget: string }
+      - { name: tab_fa, label: Tab label FA, widget: string }
+      - { name: image, label: Image, widget: image }
+      - { name: image_alt, label: Image alt text, widget: string }
+      - { name: image_caption, label: Image caption, widget: string }
+      - { name: client_value_en, label: Client value EN, widget: text }
+      - { name: client_value_fa, label: Client value FA, widget: text }
+      - { name: order, label: Display order, widget: number, value_type: int }
+      - { name: visible, label: Visible, widget: boolean }
+
+  - name: portfolio
+    label: Portfolio Projects
+    folder: content/portfolio
+    extension: json
+    format: json
+    identifier_field: slug
+    create: true
+    summary: '{{title_en}}'
+    fields:
+      - { name: title_en, label: Project title EN, widget: string, required: true }
+      - { name: title_fa, label: Project title FA, widget: string }
+      - { name: slug, label: Project slug, widget: string, required: true }
+      - { name: section, label: Section, widget: string }
+      - { name: project_type, label: Media type, widget: select, options: [video, photo, article, interview, audio, research, translation, other, LinkedIn post] }
+      - { name: role_en, label: Role EN, widget: text }
+      - { name: role_fa, label: Role FA, widget: text }
+      - { name: description_en, label: Description EN, widget: richtext }
+      - { name: description_fa, label: Description FA, widget: richtext }
+      - { name: alternate_title_en, label: Alternate headline EN, widget: string }
+      - { name: alternate_title_fa, label: Alternate headline FA, widget: string }
+      - { name: thumbnail, label: Cover image, widget: image }
+      - { name: image_alt, label: Image alt text, widget: string }
+      - { name: gallery, label: Photo gallery, widget: list, field: { label: Image, name: image, widget: image } }
+      - { name: gallery_alt, label: Gallery alt text, widget: list }
+      - { name: gallery_caption_en, label: Gallery captions EN, widget: list }
+      - { name: gallery_caption_fa, label: Gallery captions FA, widget: list }
+      - { name: video_url, label: Direct video file URL, widget: string }
+      - { name: original_url, label: Original publication URL, widget: string }
+      - { name: date, label: Project date, widget: date }
+      - { name: tags, label: Tags, widget: list }
+      - { name: order, label: Display order, widget: number, value_type: int }
+      - { name: featured, label: Feature on homepage, widget: boolean }
+      - { name: status, label: Status, widget: select, options: [draft, published] }
+
+  - name: posts
+    label: News and Articles
+    folder: content/posts
+    extension: json
+    format: json
+    identifier_field: slug
+    create: true
+    summary: '{{title_en}}'
+    fields:
+      - { name: title_en, label: Headline EN, widget: string, required: true }
+      - { name: title_fa, label: Headline FA, widget: string }
+      - { name: subtitle_en, label: Subtitle EN, widget: text }
+      - { name: subtitle_fa, label: Subtitle FA, widget: text }
+      - { name: slug, label: URL slug, widget: string, required: true }
+      - { name: section, label: Section ID, widget: string, required: true }
+      - { name: category, label: Category, widget: string }
+      - { name: tags, label: Tags EN, widget: list }
+      - { name: tags_fa, label: Tags FA, widget: list }
+      - { name: excerpt_en, label: Summary EN, widget: text }
+      - { name: excerpt_fa, label: Summary FA, widget: text }
+      - { name: body_en, label: Article body EN, widget: richtext }
+      - { name: body_fa, label: Article body FA, widget: richtext }
+      - { name: cover_image, label: Featured image, widget: image }
+      - { name: image_alt, label: Image alt text, widget: string }
+      - { name: gallery, label: Additional images, widget: list, field: { label: Image, name: image, widget: image } }
+      - { name: audio_file, label: Audio file, widget: file }
+      - { name: video_url, label: Video URL, widget: string }
+      - { name: source_url, label: Original source URL, widget: string }
+      - { name: author, label: Byline, widget: string }
+      - { name: publication_date, label: Publication date, widget: datetime }
+      - { name: featured, label: Feature on homepage, widget: boolean }
+      - { name: order, label: Display order, widget: number, value_type: int }
+      - { name: status, label: Status, widget: select, options: [draft, published] }
+
+  - name: sections
+    label: Website Sections
+    folder: content/sections
+    extension: json
+    format: json
+    identifier_field: slug
+    create: true
+    summary: '{{label_en}}'
+    fields:
+      - { name: name, label: Internal name, widget: string }
+      - { name: slug, label: Section ID, widget: string, required: true }
+      - { name: label_en, label: Tab title EN, widget: string, required: true }
+      - { name: label_fa, label: Tab title FA, widget: string }
+      - { name: description_en, label: Description EN, widget: text }
+      - { name: description_fa, label: Description FA, widget: text }
+      - { name: order, label: Menu order, widget: number, value_type: int }
+      - { name: visible, label: Visible in navigation, widget: boolean }
+      - { name: layout, label: Layout, widget: select, options: [article-list, portfolio-grid, photo-gallery, video-gallery, mixed] }
+      - { name: columns_desktop, label: Desktop columns, widget: number, value_type: int }
+      - { name: columns_tablet, label: Tablet columns, widget: number, value_type: int }
+      - { name: columns_mobile, label: Mobile columns, widget: number, value_type: int }
+      - { name: grid_gap, label: Grid gap, widget: number, value_type: int }
+      - { name: content_width, label: Content width, widget: number, value_type: int }
+      - { name: padding_top, label: Top padding, widget: number, value_type: int }
+      - { name: padding_bottom, label: Bottom padding, widget: number, value_type: int }
+      - { name: card_min_width, label: Card minimum width, widget: number, value_type: int }
+      - { name: image_ratio, label: Image ratio, widget: select, options: ['16/9', '4/3', '1/1', '3/4', auto] }
+
+  - name: topics
+    label: Work Carousel Topics
+    folder: content/topics
+    extension: json
+    format: json
+    identifier_field: slug
+    create: true
+    summary: '{{label_en}}'
+    fields:
+      - { name: slug, label: Topic ID, widget: string, required: true }
+      - { name: label_en, label: Topic EN, widget: string, required: true }
+      - { name: label_fa, label: Topic FA, widget: string }
+      - { name: color, label: Accent color, widget: string }
+      - { name: order, label: Display order, widget: number, value_type: int }
+      - { name: visible, label: Visible, widget: boolean }
+
+  - name: archive_posts
+    label: LinkedIn Archive
+    folder: _data/archive_posts
+    extension: json
+    format: json
+    identifier_field: id
+    create: false
+    delete: false
+    summary: '{{date}} — {{title}}'
+    fields:
+      - { name: id, label: LinkedIn activity ID, widget: string, required: true }
+      - { name: date, label: Original date and time, widget: string, required: true }
+      - { name: title, label: Post title, widget: string }
+      - { name: text, label: Original post text, widget: text }
+      - { name: url, label: Original LinkedIn URL, widget: string }
+      - { name: category, label: Category EN, widget: string }
+      - { name: category_fa, label: Category FA, widget: string }
+      - { name: status, label: Status (published/draft/hidden), widget: select, options: [published, draft, hidden] }
+      - { name: thumbnail, label: Cover image, widget: image }
+      - { name: image_alt, label: Image alt text, widget: string }
+      - { name: video_url, label: Direct video URL, widget: string }
+      - { name: gallery, label: Photo gallery, widget: list, field: { label: Image, name: image, widget: image } }
+      - { name: gallery_alt, label: Gallery alt text, widget: list }
+      - { name: gallery_caption_en, label: Gallery captions EN, widget: list }
+      - { name: gallery_caption_fa, label: Gallery captions FA, widget: list }
