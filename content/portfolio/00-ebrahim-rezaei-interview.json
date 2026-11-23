@@ -4,10 +4,27 @@
   "slug": "ebrahim-rezaei-interview",
   "section": "interviews",
   "project_type": "interview",
+  "role_en": "Interviewer – Coordinator – Translator – International Liaison – News Dispatch and Editing",
+  "role_fa": "مصاحبه‌گر – هماهنگ‌کننده – مترجم – رابط بین‌المللی – ارسال و ویرایش اخبار",
   "description_en": "Interview project documented in the portfolio, with the original high-quality interview photograph.",
   "description_fa": "نمونه‌کار مصاحبه با تصویر اصلی باکیفیت ثبت‌شده در پورتفولیو.",
+  "alternate_title_en": "Interview with Ebrahim Rezaei",
+  "alternate_title_fa": "مصاحبه با ابراهیم رضایی",
   "thumbnail": "/assets/rezaei-interview-hq.jpg",
   "image_alt": "Interview with Ebrahim Rezaei",
+  "gallery": [
+    "/media/images/20261021_101410.jpg"
+  ],
+  "gallery_alt": [
+    "image"
+  ],
+  "gallery_caption_en": [],
+  "gallery_caption_fa": [],
+  "video_url": "",
+  "tags_fa": [],
+  "ai_source_text": "",
+  "ai_generate_on_save": true,
+  "original_url": "https://www.linkedin.com/in/iman-keyhanfard-3b85439/overlay/1792747948979/single-media-viewer/?profileId=ACoAAAGuZnwBKaTPk74RBhMejCs9JDAJBEA-38g",
   "date": "2026-11-18",
   "tags": [
     "Interview",
