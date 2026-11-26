@@ -263,13 +263,18 @@ document.addEventListener("cms-ready", function(){
 <script>
 (async function(){
  try{
-  const r=await fetch('../content/portfolio/40-minab-families-seeking-justice.json?v='+Date.now(),{cache:'no-store'});
-  if(!r.ok)throw new Error('CMS project unavailable');
+  const r=await fetch('../content/portfolio/40-minab-families-seeking-justice.json?v=20261126b',{cache:'no-store'});
+  if(!r.ok)throw new Error('Project unavailable');
   const x=await r.json();
   if(x.status!=='published'||document.getElementById('minab-families-seeking-justice'))return;
-  const card=document.createElement('section');card.className='project featured-project';card.id='minab-families-seeking-justice';
+  const card=document.createElement('section');
+  card.className='project featured-project';
+  card.id='minab-families-seeking-justice';
   const date=new Date(x.date+'T00:00:00').toLocaleDateString('fa-IR',{day:'numeric',month:'long',year:'numeric'});
-  card.innerHTML='<span class="kicker">هماهنگی تولید و پوشش میدانی · '+date+'</span><h2>'+x.title_fa+'</h2><p>'+x.description_fa+'</p><p><strong>نقش من:</strong> '+x.role_fa+'.</p><a class="original-post" href="'+x.video_url+'" target="_blank" rel="noopener noreferrer">مشاهده گزارش اصلی در Odysee ↗</a>';
+  const title=x.title_fa;
+  const description=x.description_fa;
+  const role=x.role_fa;
+  card.innerHTML='<div class="project-cover" style="height:clamp(190px,30vw,330px);display:flex;align-items:flex-end;padding:24px;background:linear-gradient(120deg,#172333,#26384d 55%,#10151e)"><span>پوشش میدانی میناب</span></div><span class="kicker">هماهنگی تولید و پوشش میدانی · '+date+'</span><h2>'+title+'</h2><p>'+description+'</p><p><strong>نقش من:</strong> '+role+'.</p><div class="project-links"><a class="original-post" href="'+x.video_url+'" target="_blank" rel="noopener noreferrer">تماشای گزارش در Odysee ↗</a> <a class="original-post" href="'+x.rumble_url+'" target="_blank" rel="noopener noreferrer">مشاهده در Rumble ↗</a></div>';
   document.querySelector('#page-content').append(card);
  }catch(e){console.warn('Minab project card could not be loaded',e);}
 })();
