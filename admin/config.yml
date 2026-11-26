@@ -200,12 +200,12 @@ collections:
       - { name: gallery_caption_fa, label: Gallery captions FA, widget: list, required: false }
       - { name: video_url, label: Video file or direct video URL, widget: file, required: false, accept: video/mp4,video/webm,video/quicktime, media_folder: /media/videos, public_folder: /media/videos }
       - { name: tags_fa, label: Tags FA, widget: list, required: false }
-      - { name: original_url, label: Original publication URL, widget: string }
-      - { name: date, label: Project date, widget: datetime, type: date }
+      - { name: original_url, label: Original publication URL, widget: string, required: false }
+      - { name: date, label: Project date, widget: datetime, type: date, required: false }
       - { name: tags, label: Tags EN, widget: list, required: false }
-      - { name: order, label: Display order, widget: number, value_type: int }
-      - { name: featured, label: Feature on homepage, widget: boolean }
-      - { name: status, label: Status, widget: select, options: [draft, published] }
+      - { name: order, label: Display order, widget: number, value_type: int, default: 0 }
+      - { name: featured, label: Feature on homepage, widget: boolean, default: false }
+      - { name: status, label: Status, widget: select, options: [draft, published], default: published }
 
   - name: posts
     label: News and Articles
