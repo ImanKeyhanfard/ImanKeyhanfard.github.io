@@ -406,4 +406,20 @@ document.addEventListener("cms-ready", function(){
   });
 },{once:true});
 </script>
+
+<script>
+(async function(){
+ try{
+  const r=await fetch('/content/portfolio/40-minab-families-seeking-justice.json?v='+Date.now(),{cache:'no-store'});
+  if(!r.ok)throw new Error('CMS project unavailable');
+  const x=await r.json();
+  if(x.status!=='published'||document.getElementById('minab-families-seeking-justice'))return;
+  const card=document.createElement('section');card.className='project featured-project';card.id='minab-families-seeking-justice';
+  const date=new Date(x.date+'T00:00:00').toLocaleDateString('en-US',{day:'numeric',month:'long',year:'numeric'});
+  card.innerHTML='<span class="kicker">FIELD PRODUCTION & NEWS COORDINATION · '+date.toUpperCase()+'</span><h2>'+x.title_en+'</h2><p>'+x.description_en+'</p><p><strong>My role:</strong> '+x.role_en+'.</p><a class="original-post" href="'+x.video_url+'" target="_blank" rel="noopener noreferrer">WATCH THE ORIGINAL COVERAGE ON ODYSEE ↗</a>';
+  document.querySelector('#page-content').append(card);
+ }catch(e){console.warn('Minab project card could not be loaded',e);}
+})();
+</script>
+
 </body></html>
