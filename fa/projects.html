@@ -268,7 +268,8 @@ document.addEventListener("cms-ready", function(){
   const x=await r.json();
   if(x.status!=='published'||document.getElementById('minab-families-seeking-justice'))return;
   const card=document.createElement('section');card.className='project featured-project';card.id='minab-families-seeking-justice';
-  card.innerHTML='<span class="kicker">هماهنگی تولید و پوشش میدانی · ${new Date(x.date+'T00:00:00').toLocaleDateString('fa-IR',{day:'numeric',month:'long',year:'numeric'})}</span><h2>'+x.title_fa+'</h2><p>'+x.description_fa+'</p><p><strong>نقش من:</strong> '+x.role_fa+'.</p><a class="original-post" href="'+x.video_url+'" target="_blank" rel="noopener noreferrer">مشاهده گزارش اصلی در Odysee ↗</a>';
+  const date=new Date(x.date+'T00:00:00').toLocaleDateString('fa-IR',{day:'numeric',month:'long',year:'numeric'});
+  card.innerHTML='<span class="kicker">هماهنگی تولید و پوشش میدانی · '+date+'</span><h2>'+x.title_fa+'</h2><p>'+x.description_fa+'</p><p><strong>نقش من:</strong> '+x.role_fa+'.</p><a class="original-post" href="'+x.video_url+'" target="_blank" rel="noopener noreferrer">مشاهده گزارش اصلی در Odysee ↗</a>';
   document.querySelector('#page-content').append(card);
  }catch(e){console.warn('Minab project card could not be loaded',e);}
 })();
