@@ -359,6 +359,14 @@ h1{font:700 clamp(42px,6vw,72px)/1.05 'Space Grotesk',sans-serif;letter-spacing:
 </section>
 
 <p><a href="index.html#work">← Back to selected work</a></p>
+<section class="project featured-project minab-project" id="minab-families-seeking-justice">
+<div class="project-cover" style="height:clamp(190px,30vw,330px);background:linear-gradient(120deg,#172333,#26384d 55%,#10151e);display:flex;align-items:flex-end;padding:24px"><span>MINAB · FIELD PRODUCTION & NEWS COORDINATION</span></div>
+<span class="kicker">FIELD PRODUCTION & COORDINATION · NOVEMBER 24, 2026</span>
+<h2>Minab Families Seeking Justice</h2>
+<p>Planned and coordinated the field production and logistical arrangements for news coverage at the gravesites of the children killed in the Minab school attack. The coverage documented a public gathering attended by approximately 15,000 Basij members and provincial officials, focusing on the victims’ families and their pursuit of justice.</p>
+<p><strong>My role:</strong> Production planning, field coordination, logistical arrangements, and organizing the operational requirements for the assignment.</p>
+<div style="margin:0 38px 22px;display:flex;gap:18px;flex-wrap:wrap"><a class="original-post" href="https://odysee.com/@RT:fd/Iran-school-attack-killed-156-%E2%80%94-victims%E2%80%99-families-take-fight-for-justice-to-court:c" target="_blank" rel="noopener noreferrer">WATCH THE REPORT ON ODYSEE ↗</a><a class="original-post" href="https://rumble.com/v7iw9ry-iran-school-attack-killed-156-victims-families-take-fight-for-justice-to-co.html" target="_blank" rel="noopener noreferrer">WATCH ON RUMBLE ↗</a></div>
+</section>
 </main>
 <script>
 document.addEventListener("cms-ready", function(){
@@ -407,24 +415,6 @@ document.addEventListener("cms-ready", function(){
 },{once:true});
 </script>
 
-<script>
-(async function(){
- try{
-  const r=await fetch('content/portfolio/40-minab-families-seeking-justice.json?v=20261126b',{cache:'no-store'});
-  if(!r.ok)throw new Error('Project unavailable');
-  const x=await r.json();
-  if(x.status!=='published'||document.getElementById('minab-families-seeking-justice'))return;
-  const card=document.createElement('section');
-  card.className='project featured-project';
-  card.id='minab-families-seeking-justice';
-  const date=new Date(x.date+'T00:00:00').toLocaleDateString('en-US',{day:'numeric',month:'long',year:'numeric'});
-  const title=x.title_en;
-  const description=x.description_en;
-  const role=x.role_en;
-  card.innerHTML='<div class="project-cover" style="height:clamp(190px,30vw,330px);display:flex;align-items:flex-end;padding:24px;background:linear-gradient(120deg,#172333,#26384d 55%,#10151e)"><span>MINAB · FIELD PRODUCTION</span></div><span class="kicker">FIELD PRODUCTION & COORDINATION · '+date+'</span><h2>'+title+'</h2><p>'+description+'</p><p><strong>My role:</strong> '+role+'.</p><div class="project-links"><a class="original-post" href="'+x.video_url+'" target="_blank" rel="noopener noreferrer">WATCH THE REPORT ON ODYSEE ↗</a> <a class="original-post" href="'+x.rumble_url+'" target="_blank" rel="noopener noreferrer">WATCH ON RUMBLE ↗</a></div>';
-  document.querySelector('#page-content').append(card);
- }catch(e){console.warn('Minab project card could not be loaded',e);}
-})();
-</script>
+
 
 </body></html>
