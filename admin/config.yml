@@ -179,11 +179,13 @@ collections:
     create: true
     summary: '{{title_en}}'
     fields:
-      - { name: title_en, label: Project title EN, widget: string, required: true }
-      - { name: title_fa, label: Project title FA, widget: string }
-      - { name: slug, label: Project slug, widget: string, required: true }
-      - { name: section, label: Section, widget: string }
-      - { name: project_type, label: Media type, widget: select, options: [video, photo, article, interview, audio, research, translation, other, LinkedIn post] }
+      - { name: ai_source_text, label: "QUICK PUBLISH — paste source text (AI fills the rest)", widget: text, required: false }
+      - { name: ai_generate_on_save, label: "Generate missing fields with AI when saving", widget: boolean, default: true }
+      - { name: title_en, label: Project title EN (optional with AI), widget: string, required: false }
+      - { name: title_fa, label: Project title FA (optional with AI), widget: string, required: false }
+      - { name: slug, label: Project slug (optional with AI), widget: string, required: false }
+      - { name: section, label: Section, widget: string, default: work }
+      - { name: project_type, label: Media type, widget: select, options: [video, photo, article, interview, audio, research, translation, other, LinkedIn post], default: other }
       - { name: role_en, label: Role EN, widget: text }
       - { name: role_fa, label: Role FA, widget: text }
       - { name: description_en, label: Description EN, widget: richtext }
@@ -198,8 +200,6 @@ collections:
       - { name: gallery_caption_fa, label: Gallery captions FA, widget: list, required: false }
       - { name: video_url, label: Video file or direct video URL, widget: file, required: false, accept: video/mp4,video/webm,video/quicktime, media_folder: /media/videos, public_folder: /media/videos }
       - { name: tags_fa, label: Tags FA, widget: list, required: false }
-      - { name: ai_source_text, label: AI source text (temporary; removed on save), widget: text, required: false }
-      - { name: ai_generate_on_save, label: Generate bilingual fields with AI on save, widget: boolean, default: false }
       - { name: original_url, label: Original publication URL, widget: string }
       - { name: date, label: Project date, widget: datetime, type: date }
       - { name: tags, label: Tags EN, widget: list, required: false }
@@ -216,30 +216,32 @@ collections:
     create: true
     summary: '{{title_en}}'
     fields:
-      - { name: title_en, label: Headline EN, widget: string, required: true }
-      - { name: title_fa, label: Headline FA, widget: string }
-      - { name: subtitle_en, label: Subtitle EN, widget: text }
-      - { name: subtitle_fa, label: Subtitle FA, widget: text }
-      - { name: slug, label: URL slug, widget: string, required: true }
-      - { name: section, label: Section ID, widget: string, required: true }
-      - { name: category, label: Category, widget: string }
-      - { name: tags, label: Tags EN, widget: list }
-      - { name: tags_fa, label: Tags FA, widget: list }
-      - { name: excerpt_en, label: Summary EN, widget: text }
-      - { name: excerpt_fa, label: Summary FA, widget: text }
-      - { name: body_en, label: Article body EN, widget: richtext }
-      - { name: body_fa, label: Article body FA, widget: richtext }
-      - { name: cover_image, label: Featured image, widget: image }
-      - { name: image_alt, label: Image alt text, widget: string }
-      - { name: gallery, label: Additional images, widget: list, field: { label: Image, name: image, widget: image } }
-      - { name: audio_file, label: Audio file, widget: file }
-      - { name: video_url, label: Video URL, widget: string }
-      - { name: source_url, label: Original source URL, widget: string }
-      - { name: author, label: Byline, widget: string }
-      - { name: publication_date, label: Publication date, widget: datetime }
-      - { name: featured, label: Feature on homepage, widget: boolean }
-      - { name: order, label: Display order, widget: number, value_type: int }
-      - { name: status, label: Status, widget: select, options: [draft, published] }
+      - { name: ai_source_text, label: "QUICK PUBLISH — paste source text (AI fills the rest)", widget: text, required: false }
+      - { name: ai_generate_on_save, label: "Generate missing fields with AI when saving", widget: boolean, default: true }
+      - { name: title_en, label: Headline EN (optional with AI), widget: string, required: false }
+      - { name: title_fa, label: Headline FA (optional with AI), widget: string, required: false }
+      - { name: slug, label: URL slug (optional with AI), widget: string, required: false }
+      - { name: section, label: Section ID, widget: string, default: work }
+      - { name: subtitle_en, label: Subtitle EN, widget: text, required: false }
+      - { name: subtitle_fa, label: Subtitle FA, widget: text, required: false }
+      - { name: category, label: Category, widget: string, required: false }
+      - { name: tags, label: Tags EN, widget: list, required: false }
+      - { name: tags_fa, label: Tags FA, widget: list, required: false }
+      - { name: excerpt_en, label: Summary EN, widget: text, required: false }
+      - { name: excerpt_fa, label: Summary FA, widget: text, required: false }
+      - { name: body_en, label: Article body EN, widget: richtext, required: false }
+      - { name: body_fa, label: Article body FA, widget: richtext, required: false }
+      - { name: cover_image, label: Featured image, widget: image, required: false }
+      - { name: image_alt, label: Image alt text, widget: string, required: false }
+      - { name: gallery, label: Additional images, widget: list, field: { label: Image, name: image, widget: image, required: false } }
+      - { name: audio_file, label: Audio file, widget: file, required: false }
+      - { name: video_url, label: Video URL, widget: string, required: false }
+      - { name: source_url, label: Original source URL, widget: string, required: false }
+      - { name: author, label: Byline, widget: string, default: Iman Keyhanfard }
+      - { name: publication_date, label: Publication date, widget: datetime, required: false }
+      - { name: featured, label: Feature on homepage, widget: boolean, required: false }
+      - { name: order, label: Display order, widget: number, value_type: int, required: false }
+      - { name: status, label: Status, widget: select, options: [draft, published], default: published }
 
   - name: sections
     label: Website Sections
