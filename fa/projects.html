@@ -259,5 +259,20 @@ document.addEventListener("cms-ready", function(){
   });
 },{once:true});
 </script>
+
+<script>
+(async function(){
+ try{
+  const r=await fetch('../content/portfolio/40-minab-families-seeking-justice.json?v='+Date.now(),{cache:'no-store'});
+  if(!r.ok)throw new Error('CMS project unavailable');
+  const x=await r.json();
+  if(x.status!=='published'||document.getElementById('minab-families-seeking-justice'))return;
+  const card=document.createElement('section');card.className='project featured-project';card.id='minab-families-seeking-justice';
+  card.innerHTML='<span class="kicker">هماهنگی تولید و پوشش میدانی · ۴ آذر ۱۴۰۵</span><h2>'+x.title_fa+'</h2><p>'+x.description_fa+'</p><p><strong>نقش من:</strong> '+x.role_fa+'.</p><a class="original-post" href="'+x.video_url+'" target="_blank" rel="noopener noreferrer">مشاهده گزارش اصلی در Odysee ↗</a>';
+  document.querySelector('#page-content').append(card);
+ }catch(e){console.warn('Minab project card could not be loaded',e);}
+})();
+</script>
+
 </body>
 </html>
