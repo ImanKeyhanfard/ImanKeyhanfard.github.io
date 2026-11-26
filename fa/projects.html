@@ -202,6 +202,14 @@ h1{font-size:clamp(34px,6vw,62px);line-height:1.25;margin:12px 0 16px;font-weigh
 <p>پیوندهای RT و لینکدین به محتوای منتشرشده یا مرجع اصلی هدایت می‌کنند. عنوان خبرنگار، مصاحبه‌شونده و نقش‌های تولیدی بر اساس اطلاعات درج‌شده در منابع معرفی شده‌اند؛ هرجا نقش من هماهنگی تولید بوده، آن را از گزارشگری یا اجرای مصاحبه تفکیک کرده‌ام.</p>
 <div class="links"><a href="../index.html">بازگشت به صفحه اصلی ↗</a><a href="https://www.linkedin.com/in/iman-keyhanfard-3b85439/" target="_blank" rel="noopener noreferrer">پروفایل لینکدین ↗</a></div>
 </div>
+<section class="project featured-project minab-project" id="minab-families-seeking-justice">
+<div class="project-cover" style="height:clamp(190px,30vw,330px);background:linear-gradient(120deg,#172333,#26384d 55%,#10151e);display:flex;align-items:flex-end;padding:24px"><span>میناب · هماهنگی تولید و پوشش میدانی</span></div>
+<div class="project-body"><span class="kicker">هماهنگی تولید و پوشش میدانی · ۴ آذر ۱۴۰۵</span>
+<h2>دادخواهی خانواده‌های میناب</h2>
+<p>برنامه‌ریزی و هماهنگی تولید و الزامات اجرایی و لجستیکی پوشش خبری در مزار جان‌باختگان حمله به مدرسه میناب. این پوشش، مراسمی با حضور حدود ۱۵ هزار نفر از اعضای بسیج و مسئولان استانی را مستند کرد و بر خانواده‌های قربانیان و پیگیری دادخواهی آنان تمرکز داشت.</p>
+<p><strong>نقش من:</strong> برنامه‌ریزی تولید، هماهنگی میدانی، هماهنگی امور لجستیکی و سازمان‌دهی الزامات اجرایی این مأموریت.</p>
+<div class="links"><a href="https://odysee.com/@RT:fd/Iran-school-attack-killed-156-%E2%80%94-victims%E2%80%99-families-take-fight-for-justice-to-court:c" target="_blank" rel="noopener noreferrer">تماشای گزارش در Odysee ↗</a><a href="https://rumble.com/v7iw9ry-iran-school-attack-killed-156-victims-families-take-fight-for-justice-to-co.html" target="_blank" rel="noopener noreferrer">تماشای گزارش در Rumble ↗</a></div></div>
+</section>
 </main>
 
 <div class="lightbox" id="fakhrizadehLightbox" role="dialog" aria-modal="true" aria-label="نمایش تصویر">
@@ -260,25 +268,7 @@ document.addEventListener("cms-ready", function(){
 },{once:true});
 </script>
 
-<script>
-(async function(){
- try{
-  const r=await fetch('../content/portfolio/40-minab-families-seeking-justice.json?v=20261126b',{cache:'no-store'});
-  if(!r.ok)throw new Error('Project unavailable');
-  const x=await r.json();
-  if(x.status!=='published'||document.getElementById('minab-families-seeking-justice'))return;
-  const card=document.createElement('section');
-  card.className='project featured-project';
-  card.id='minab-families-seeking-justice';
-  const date=new Date(x.date+'T00:00:00').toLocaleDateString('fa-IR',{day:'numeric',month:'long',year:'numeric'});
-  const title=x.title_fa;
-  const description=x.description_fa;
-  const role=x.role_fa;
-  card.innerHTML='<div class="project-cover" style="height:clamp(190px,30vw,330px);display:flex;align-items:flex-end;padding:24px;background:linear-gradient(120deg,#172333,#26384d 55%,#10151e)"><span>پوشش میدانی میناب</span></div><span class="kicker">هماهنگی تولید و پوشش میدانی · '+date+'</span><h2>'+title+'</h2><p>'+description+'</p><p><strong>نقش من:</strong> '+role+'.</p><div class="project-links"><a class="original-post" href="'+x.video_url+'" target="_blank" rel="noopener noreferrer">تماشای گزارش در Odysee ↗</a> <a class="original-post" href="'+x.rumble_url+'" target="_blank" rel="noopener noreferrer">مشاهده در Rumble ↗</a></div>';
-  document.querySelector('#page-content').append(card);
- }catch(e){console.warn('Minab project card could not be loaded',e);}
-})();
-</script>
+
 
 </body>
 </html>
